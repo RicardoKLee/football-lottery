@@ -42,6 +42,55 @@ def generate_score_grid(xg1, xg2, max_goals=5):
             
     return grid
 
+def map_score_grid_to_crs_probs(score_grid):
+    """
+    Map a 2D grid of score probabilities to the standard 31 Chinese Sports Lottery options.
+    """
+    crs_probs = {
+        # Home win (13 options)
+        "1-0": 0.0, "2-0": 0.0, "2-1": 0.0, "3-0": 0.0, "3-1": 0.0, "3-2": 0.0,
+        "4-0": 0.0, "4-1": 0.0, "4-2": 0.0, "5-0": 0.0, "5-1": 0.0, "5-2": 0.0,
+        "胜其他": 0.0,
+        # Draw (5 options)
+        "0-0": 0.0, "1-1": 0.0, "2-2": 0.0, "3-3": 0.0, "平其他": 0.0,
+        # Away win (13 options)
+        "0-1": 0.0, "0-2": 0.0, "1-2": 0.0, "0-3": 0.0, "1-3": 0.0, "2-3": 0.0,
+        "0-4": 0.0, "1-4": 0.0, "2-4": 0.0, "0-5": 0.0, "1-5": 0.0, "2-5": 0.0,
+        "负其他": 0.0
+    }
+    
+    h_options = ["1-0", "2-0", "2-1", "3-0", "3-1", "3-2", "4-0", "4-1", "4-2", "5-0", "5-1", "5-2"]
+    d_options = ["0-0", "1-1", "2-2", "3-3"]
+    a_options = ["0-1", "0-2", "1-2", "0-3", "1-3", "2-3", "0-4", "1-4", "2-4", "0-5", "1-5", "2-5"]
+    
+    for (g1, g2), p in score_grid.items():
+        if g1 > g2:
+            key = f"{g1}-{g2}"
+            if key in h_options:
+                crs_probs[key] += p
+            else:
+                crs_probs["胜其他"] += p
+        elif g1 == g2:
+            key = f"{g1}-{g2}"
+            if key in d_options:
+                crs_probs[key] += p
+            else:
+                crs_probs["平其他"] += p
+        else:
+            key = f"{g1}-{g2}"
+            if key in a_options:
+                crs_probs[key] += p
+            else:
+                crs_probs["负其他"] += p
+                
+    # Normalize
+    total_crs = sum(crs_probs.values())
+    if total_crs > 0:
+        for k in crs_probs:
+            crs_probs[k] /= total_crs
+            
+    return crs_probs
+
 def estimate_xg_from_probabilities(p_win, p_draw, p_loss, expected_total_goals=2.6):
     """
     Estimate expected goals (xG) for both teams based on win/draw/loss probabilities
@@ -115,7 +164,7 @@ def analyze_match_betting(match, elo_data):
     p_draw_raw = float(elo_data["match"]["mathematical_probabilities"]["draw"].replace("%", "")) / 100.0
     p_loss_raw = float(elo_data["match"]["mathematical_probabilities"]["team2_win"].replace("%", "")) / 100.0
     
-    # 2. Adjust probabilities based on market value and dynamic factors (simulating ten-factor model)
+    # 2. Adjust probabilities based on market value, average age and dynamic factors (simulating ten-factor model)
     # Market value factor
     mv1 = elo_data["match"]["team1"]["market_value_eur"]
     mv2 = elo_data["match"]["team2"]["market_value_eur"]
@@ -123,9 +172,20 @@ def analyze_match_betting(match, elo_data):
     mv_log = 3.0 * math.log2(mv_ratio)
     mv_adj = max(-5.0, min(5.0, mv_log)) * 0.02 # up to 10% adjustment
     
+    # Team average age and peak age bonus factor
+    age1 = elo_data["match"]["team1"].get("average_age", 26.5)
+    age2 = elo_data["match"]["team2"].get("average_age", 26.5)
+    # Peak age is centered around 26.0 years with a std-dev of 1.8 years
+    eff1 = math.exp(-((age1 - 26.0) ** 2) / (2.0 * (1.8 ** 2)))
+    eff2 = math.exp(-((age2 - 26.0) ** 2) / (2.0 * (1.8 ** 2)))
+    age_bonus_diff = eff1 - eff2
+    age_adj = age_bonus_diff * 0.03 # up to 3% adjustment
+    
+    print(f"  [Age Audit] Team Average Age - {elo_data['match']['team1']['name_cn']}: {age1} (Peak Eff: {eff1:.1%}) vs {elo_data['match']['team2']['name_cn']}: {age2} (Peak Eff: {eff2:.1%}) | Net Adj: {age_adj:+.2%}")
+    
     # Adjust win/loss probabilities
-    p_win = p_win_raw + mv_adj
-    p_loss = p_loss_raw - mv_adj
+    p_win = p_win_raw + mv_adj + age_adj
+    p_loss = p_loss_raw - mv_adj - age_adj
     
     # Normalize
     total_p = p_win + p_draw_raw + p_loss
@@ -135,7 +195,7 @@ def analyze_match_betting(match, elo_data):
     
     # 3. Estimate expected goals and score grid
     xg1, xg2 = estimate_xg_from_probabilities(p_win, p_loss, p_draw)
-    score_grid = generate_score_grid(xg1, xg2)
+    score_grid = generate_score_grid(xg1, xg2, max_goals=6)
     
     odds = match.get("odds", {})
     recommendations = []
@@ -227,10 +287,43 @@ def analyze_match_betting(match, elo_data):
                     "ev": ev,
                     "kelly": calculate_kelly_position(ev, o_val)
                 })
+                    
+    # Analyze CRS (比分)
+    crs_odds = odds.get("crs")
+    if crs_odds:
+        crs_probs = map_score_grid_to_crs_probs(score_grid)
+        crs_margin, _, crs_implied = calculate_market_margin_and_implied_probs(crs_odds)
+        for opt_key, o_val in crs_odds.items():
+            if o_val:
+                p_model = crs_probs.get(opt_key, 0.0)
+                p_implied = crs_implied.get(opt_key.upper(), p_model)
+                # Golden Ratio Blend: 0.618 model + 0.382 market
+                p_final = 0.618 * p_model + 0.382 * p_implied
+                ev = p_final * o_val - 1
+                recommendations.append({
+                    "market": "CRS",
+                    "option": opt_key,
+                    "model_prob": p_model,
+                    "implied_prob": p_implied,
+                    "margin": crs_margin,
+                    "probability": p_final,
+                    "odds": o_val,
+                    "ev": ev,
+                    "kelly": calculate_kelly_position(ev, o_val)
+                })
                 
     # Sort recommendations by EV descending
     recommendations.sort(key=lambda x: x["ev"], reverse=True)
     
+    # Format score grid with string keys for JSON serialization and audit transparency
+    json_score_grid = {f"{g1}-{g2}": p for (g1, g2), p in score_grid.items()}
+    argmax_score = max(json_score_grid, key=json_score_grid.get)
+    argmax_prob = json_score_grid[argmax_score]
+    
+    print(f"  [Transparency Audit] Simulated score probabilities P_sim(X, Y) and argmax results:")
+    print(f"    - argmax_(X,Y) P_sim(X, Y) = {argmax_score} (Probability: {argmax_prob:.2%})")
+    print(f"    - Full P_sim score distribution details recorded in structural logs.")
+
     return {
         "match_id": match["match_id"],
         "match_num_str": match["match_num_str"],
@@ -245,7 +338,9 @@ def analyze_match_betting(match, elo_data):
             "loss": p_loss
         },
         "xg": (xg1, xg2),
-        "score_grid": score_grid,
+        "P_sim": json_score_grid,
+        "argmax_score": argmax_score,
+        "argmax_probability": argmax_prob,
         "betting_options": recommendations
     }
 
@@ -313,20 +408,20 @@ def generate_markdown_report(date_str, analyzed_matches):
     
     # 1. Single Bets
     md.append("### 1. 稳健单场方案 (HAD/HHAD)")
-    single_bets = [x for x in value_bets if x[1]["market"] in ["HAD", "HHAD (-1)", "HHAD (+1)"] and x[1]["probability"] >= 0.45]
+    single_bets = [x for x in value_bets if x[1]["market"] in ["HAD", "HHAD (-1)", "HHAD (+1)"] and x[1]["probability"] >= 0.45 and x[1]["ev"] > 0.08]
     if single_bets:
         single_bets.sort(key=lambda x: x[1]["ev"], reverse=True)
         for am, opt in single_bets[:2]:
             md.append(f"- **推荐选项**：{am['match_num_str']} {am['home_team']} vs {am['away_team']} ➔ **{opt['market']}-{opt['option']}** (赔率: {opt['odds']:.2f})")
             md.append(f"  - **预测概率**：{opt['probability']:.1%} | **期望值 (EV)**：{opt['ev']:+.1%}")
             md.append(f"  - **资金分配**：建议占总资金的 **{opt['kelly']:.1%}**")
-            md.append(f"  - **推荐理由**：模型预测该选项发生概率为 {opt['probability']:.1%}，远高于竞彩赔率对应的隐含概率（{1/opt['odds']:.1%}），具有极佳的性价比和安全边际。")
+            md.append(f"  - **推荐理由**：模型预测该选项发生概率为 {opt['probability']:.1%}，远高于竞彩赔率对应的隐含概率（{1/opt['odds']:.1%}），具有大于 8% 的极佳性价比和安全边际。")
     else:
-        md.append("- 今日暂无符合稳健标准的单场价值投注选项。")
+        md.append("- 今日暂无符合稳健且期望值大于 8% 标准的单场价值投注选项。")
         
     # 2. Parlay (2串1)
     md.append("\n### 2. 性价比串关方案 (2串1)")
-    parlay_candidates = [x for x in value_bets if x[1]["market"] in ["HAD", "HHAD (-1)", "HHAD (+1)"]]
+    parlay_candidates = [x for x in value_bets if x[1]["market"] in ["HAD", "HHAD (-1)", "HHAD (+1)"] and x[1]["ev"] > 0.08]
     if len(parlay_candidates) >= 2:
         # Find the best 2-play combination
         best_parlay = None
@@ -339,7 +434,7 @@ def generate_markdown_report(date_str, analyzed_matches):
                     p_combo = o1["probability"] * o2["probability"]
                     odds_combo = o1["odds"] * o2["odds"]
                     ev_combo = p_combo * odds_combo - 1
-                    if ev_combo > best_parlay_ev:
+                    if ev_combo > 0.08 and ev_combo > best_parlay_ev:
                         best_parlay_ev = ev_combo
                         best_parlay = (m1, o1, m2, o2, p_combo, odds_combo, ev_combo)
                         
@@ -349,15 +444,15 @@ def generate_markdown_report(date_str, analyzed_matches):
             md.append(f"  - **组合总赔率**：{odds_combo:.2f} | **组合胜率**：{p_combo:.1%}")
             md.append(f"  - **组合期望值 (EV)**：{ev_combo:+.1%}")
             md.append(f"  - **资金分配**：建议占总资金的 **{calculate_kelly_position(ev_combo, odds_combo):.1%}**")
-            md.append(f"  - **推荐理由**：两场独立正 EV 比赛强强联手，利用期望值乘数效应，将单场优势指数级放大，是今日最具投资价值的串关方案。")
+            md.append(f"  - **推荐理由**：两场独立正 EV 比赛强强联手，利用期望值乘数效应，将大于 8% 的单场优势指数级放大，是今日最具投资价值的串关方案。")
         else:
-            md.append("- 今日暂无可组合的串关方案。")
+            md.append("- 今日暂无组合期望值大于 8% 的串关方案。")
     else:
-        md.append("- 今日价值投注场次不足，不建议强行进行串关。")
+        md.append("- 今日期望值大于 8% 的价值投注场次不足，不建议强行进行串关。")
         
     # 3. Correct Score / High Yield
     md.append("\n### 3. 高回报博冷方案 (CRS比分/HAFU半全场)")
-    special_bets = [x for x in value_bets if x[1]["market"] in ["TTG", "CRS"] or x[1]["odds"] >= 3.5]
+    special_bets = [x for x in value_bets if (x[1]["market"] in ["TTG", "CRS"] or x[1]["odds"] >= 3.5) and x[1]["ev"] > 0.08]
     if special_bets:
         special_bets.sort(key=lambda x: x[1]["ev"], reverse=True)
         for am, opt in special_bets[:2]:
@@ -365,7 +460,7 @@ def generate_markdown_report(date_str, analyzed_matches):
             md.append(f"  - **预测概率**：{opt['probability']:.1%} | **期望值 (EV)**：{opt['ev']:+.1%}")
             md.append(f"  - **资金分配**：建议占总资金的 **{opt['kelly']:.1%}** (娱乐轻仓)")
     else:
-        md.append("- 今日暂无高性价比的博冷选项。")
+        md.append("- 今日暂无期望值大于 8% 的高性价比博冷选项。")
         
     md.append("\n## 四、 投资学风险提示与免责声明")
     md.append("1. **理性投注**：本报告基于定量数学模型与历史数据推导，旨在提供客观的性价比参考，不构成任何保本承诺。")
@@ -373,6 +468,20 @@ def generate_markdown_report(date_str, analyzed_matches):
     md.append("3. **彩票本质**：中国体育彩票是公益事业，请保持娱乐心态，量力而行，遵守国家相关法律法规。")
     
     return "\n".join(md)
+
+class DualLogger:
+    def __init__(self, filepath, terminal_stream):
+        self.terminal = terminal_stream
+        self.log = open(filepath, "a", encoding="utf-8")
+        
+    def write(self, message):
+        self.terminal.write(message)
+        self.log.write(message)
+        self.log.flush()
+        
+    def flush(self):
+        self.terminal.flush()
+        self.log.flush()
 
 def main():
     parser = argparse.ArgumentParser(description="Generate quantitative betting recommendations.")
@@ -383,6 +492,22 @@ def main():
     
     # Default to today's date if not specified
     date_str = args.date or "2026-06-20"
+    clean_date_str = date_str.replace("-", "")
+    
+    # Setup logs directory
+    log_dir = os.path.join("logs", clean_date_str)
+    os.makedirs(log_dir, exist_ok=True)
+    
+    script_name = os.path.basename(__file__).replace(".py", "")
+    log_path = os.path.join(log_dir, f"{script_name}.log")
+    
+    # Initialize dual logger
+    sys.stdout = DualLogger(log_path, sys.stdout)
+    sys.stderr = DualLogger(log_path, sys.stderr)
+    
+    print("\n" + "="*80)
+    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting betting recommendation run for date: {date_str}")
+    print("="*80)
     
     # 1. Fetch lottery matches and odds
     print(f"Fetching lottery data for {date_str}...")
@@ -430,10 +555,14 @@ def main():
         elo_data = {
             "match": {
                 "team1": {
+                    "name_cn": meta1["cn"],
                     "market_value_eur": meta1["market_value_eur"],
+                    "average_age": meta1.get("average_age", 26.5),
                 },
                 "team2": {
+                    "name_cn": meta2["cn"],
                     "market_value_eur": meta2["market_value_eur"],
+                    "average_age": meta2.get("average_age", 26.5),
                 },
                 "mathematical_probabilities": {
                     "team1_win": f"{p_win:.2%}",
@@ -463,6 +592,22 @@ def main():
         f.write(report_md)
         
     print(f"\nSuccessfully generated betting recommendation report and saved to {output_path}")
+    
+    # Save structured JSON logs for traceability
+    json_path = os.path.join(log_dir, f"{script_name}.json")
+    trace_data = {
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "script_name": script_name,
+        "date_str": clean_date_str,
+        "analyzed_matches": analyzed_matches
+    }
+    try:
+        with open(json_path, "w", encoding="utf-8") as f:
+            json.dump(trace_data, f, ensure_ascii=False, indent=2)
+        print(f"Successfully saved structured JSON trace to {json_path}")
+    except Exception as e:
+        sys.stderr.write(f"Failed to save structured JSON trace: {e}\n")
+        
     print("=" * 60)
     print(report_md[:1500] + "\n... (truncated for brevity) ...")
 

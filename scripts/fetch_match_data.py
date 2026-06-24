@@ -13,6 +13,7 @@ COUNTRY_METADATA = {
         "en": "Spain",
         "cn": "西班牙",
         "market_value_eur": 950000000,
+        "average_age": 25.2,
         "wc2026": {
             "group": "Group H",
             "fixtures": [
@@ -27,6 +28,7 @@ COUNTRY_METADATA = {
         "en": "Saudi Arabia",
         "cn": "沙特阿拉伯",
         "market_value_eur": 40000000,
+        "average_age": 27.8,
         "wc2026": {
             "group": "Group H",
             "fixtures": [
@@ -41,6 +43,7 @@ COUNTRY_METADATA = {
         "en": "Croatia",
         "cn": "克罗地亚",
         "market_value_eur": 320000000,
+        "average_age": 28.6,
         "wc2026": {
             "group": "Group L",
             "fixtures": [
@@ -55,6 +58,7 @@ COUNTRY_METADATA = {
         "en": "England",
         "cn": "英格兰",
         "market_value_eur": 1400000000,
+        "average_age": 25.8,
         "wc2026": {
             "group": "Group L",
             "fixtures": [
@@ -69,6 +73,7 @@ COUNTRY_METADATA = {
         "en": "Uruguay",
         "cn": "乌拉圭",
         "market_value_eur": 480000000,
+        "average_age": 25.5,
         "wc2026": {
             "group": "Group H",
             "fixtures": [
@@ -83,6 +88,7 @@ COUNTRY_METADATA = {
         "en": "Cape Verde",
         "cn": "佛得角",
         "market_value_eur": 25000000,
+        "average_age": 27.2,
         "wc2026": {
             "group": "Group H",
             "fixtures": [
@@ -97,6 +103,7 @@ COUNTRY_METADATA = {
         "en": "Argentina",
         "cn": "阿根廷",
         "market_value_eur": 850000000,
+        "average_age": 27.5,
         "wc2026": {"group": "Group A", "fixtures": []}
     },
     "FR": {
@@ -104,6 +111,7 @@ COUNTRY_METADATA = {
         "en": "France",
         "cn": "法国",
         "market_value_eur": 1200000000,
+        "average_age": 25.4,
         "wc2026": {"group": "Group B", "fixtures": []}
     },
     "BR": {
@@ -111,6 +119,7 @@ COUNTRY_METADATA = {
         "en": "Brazil",
         "cn": "巴西",
         "market_value_eur": 1050000000,
+        "average_age": 26.2,
         "wc2026": {"group": "Group C", "fixtures": []}
     },
     "PT": {
@@ -118,6 +127,7 @@ COUNTRY_METADATA = {
         "en": "Portugal",
         "cn": "葡萄牙",
         "market_value_eur": 880000000,
+        "average_age": 26.8,
         "wc2026": {
             "group": "Group K",
             "fixtures": [
@@ -132,6 +142,7 @@ COUNTRY_METADATA = {
         "en": "DR Congo",
         "cn": "刚果民主共和国",
         "market_value_eur": 110000000,
+        "average_age": 26.5,
         "wc2026": {
             "group": "Group K",
             "fixtures": [
@@ -146,6 +157,7 @@ COUNTRY_METADATA = {
         "en": "Netherlands",
         "cn": "荷兰",
         "market_value_eur": 750000000,
+        "average_age": 26.1,
         "wc2026": {"group": "Group E", "fixtures": []}
     },
     "DE": {
@@ -153,6 +165,7 @@ COUNTRY_METADATA = {
         "en": "Germany",
         "cn": "德国",
         "market_value_eur": 800000000,
+        "average_age": 26.7,
         "wc2026": {"group": "Group F", "fixtures": []}
     },
     "IT": {
@@ -160,6 +173,7 @@ COUNTRY_METADATA = {
         "en": "Italy",
         "cn": "意大利",
         "market_value_eur": 650000000,
+        "average_age": 26.0,
         "wc2026": {"group": "Group G", "fixtures": []}
     },
     "JP": {
@@ -167,6 +181,7 @@ COUNTRY_METADATA = {
         "en": "Japan",
         "cn": "日本",
         "market_value_eur": 280000000,
+        "average_age": 25.9,
         "wc2026": {"group": "Group I", "fixtures": []}
     },
     "US": {
@@ -174,6 +189,7 @@ COUNTRY_METADATA = {
         "en": "United States",
         "cn": "美国",
         "market_value_eur": 350000000,
+        "average_age": 24.8,
         "wc2026": {"group": "Group J", "fixtures": []}
     },
     "MX": {
@@ -181,6 +197,7 @@ COUNTRY_METADATA = {
         "en": "Mexico",
         "cn": "墨西哥",
         "market_value_eur": 220000000,
+        "average_age": 27.2,
         "wc2026": {"group": "Group K", "fixtures": []}
     },
     "CA": {
@@ -188,6 +205,7 @@ COUNTRY_METADATA = {
         "en": "Canada",
         "cn": "加拿大",
         "market_value_eur": 180000000,
+        "average_age": 25.3,
         "wc2026": {"group": "Group M", "fixtures": []}
     },
     "SE": {
@@ -195,6 +213,7 @@ COUNTRY_METADATA = {
         "en": "Sweden",
         "cn": "瑞典",
         "market_value_eur": 300000000,
+        "average_age": 25.6,
         "wc2026": {"group": "Group F", "fixtures": []}
     },
     "CI": {
@@ -202,6 +221,7 @@ COUNTRY_METADATA = {
         "en": "Ivory Coast",
         "cn": "科特迪瓦",
         "market_value_eur": 250000000,
+        "average_age": 26.3,
         "wc2026": {"group": "Group F", "fixtures": []}
     },
     "EC": {
@@ -209,6 +229,7 @@ COUNTRY_METADATA = {
         "en": "Ecuador",
         "cn": "厄瓜多尔",
         "market_value_eur": 200000000,
+        "average_age": 24.5,
         "wc2026": {"group": "Group G", "fixtures": []}
     },
     "CW": {
@@ -216,6 +237,7 @@ COUNTRY_METADATA = {
         "en": "Curaçao",
         "cn": "库拉索",
         "market_value_eur": 15000000,
+        "average_age": 28.2,
         "wc2026": {"group": "Group G", "fixtures": []}
     },
     "TN": {
@@ -223,6 +245,7 @@ COUNTRY_METADATA = {
         "en": "Tunisia",
         "cn": "突尼斯",
         "market_value_eur": 45000000,
+        "average_age": 27.1,
         "wc2026": {"group": "Group I", "fixtures": []}
     },
     "BE": {
@@ -230,6 +253,7 @@ COUNTRY_METADATA = {
         "en": "Belgium",
         "cn": "比利时",
         "market_value_eur": 550000000,
+        "average_age": 26.6,
         "wc2026": {"group": "Group J", "fixtures": []}
     },
     "IR": {
@@ -237,6 +261,7 @@ COUNTRY_METADATA = {
         "en": "Iran",
         "cn": "伊朗",
         "market_value_eur": 50000000,
+        "average_age": 29.1,
         "wc2026": {"group": "Group J", "fixtures": []}
     },
     "NZ": {
@@ -244,6 +269,7 @@ COUNTRY_METADATA = {
         "en": "New Zealand",
         "cn": "新西兰",
         "market_value_eur": 25000000,
+        "average_age": 25.4,
         "wc2026": {"group": "Group K", "fixtures": []}
     },
     "EG": {
@@ -251,6 +277,7 @@ COUNTRY_METADATA = {
         "en": "Egypt",
         "cn": "埃及",
         "market_value_eur": 120000000,
+        "average_age": 27.6,
         "wc2026": {"group": "Group K", "fixtures": []}
     },
     "AT": {
@@ -258,6 +285,7 @@ COUNTRY_METADATA = {
         "en": "Austria",
         "cn": "奥地利",
         "market_value_eur": 280000000,
+        "average_age": 26.3,
         "wc2026": {"group": "Group L", "fixtures": []}
     },
     "IQ": {
@@ -265,6 +293,7 @@ COUNTRY_METADATA = {
         "en": "Iraq",
         "cn": "伊拉克",
         "market_value_eur": 15000000,
+        "average_age": 25.1,
         "wc2026": {"group": "Group L", "fixtures": []}
     },
     "NO": {
@@ -272,6 +301,7 @@ COUNTRY_METADATA = {
         "en": "Norway",
         "cn": "挪威",
         "market_value_eur": 450000000,
+        "average_age": 25.0,
         "wc2026": {"group": "Group M", "fixtures": []}
     },
     "SN": {
@@ -279,6 +309,7 @@ COUNTRY_METADATA = {
         "en": "Senegal",
         "cn": "塞内加尔",
         "market_value_eur": 200000000,
+        "average_age": 27.5,
         "wc2026": {"group": "Group M", "fixtures": []}
     },
     "JO": {
@@ -286,6 +317,7 @@ COUNTRY_METADATA = {
         "en": "Jordan",
         "cn": "约旦",
         "market_value_eur": 15000000,
+        "average_age": 26.8,
         "wc2026": {"group": "Group N", "fixtures": []}
     },
     "DZ": {
@@ -293,7 +325,68 @@ COUNTRY_METADATA = {
         "en": "Algeria",
         "cn": "阿尔及利亚",
         "market_value_eur": 180000000,
+        "average_age": 27.4,
         "wc2026": {"group": "Group N", "fixtures": []}
+    },
+    "CO": {
+        "names": ["colombia", "哥伦比亚", "co", "col"],
+        "en": "Colombia",
+        "cn": "哥伦比亚",
+        "market_value_eur": 302350000,
+        "average_age": 29.6,
+        "wc2026": {
+            "group": "Group K",
+            "fixtures": [
+                {"date": "2026-06-17", "opponent": "UZ", "stadium": "NRG Stadium (Houston)", "altitude_m": 24, "result": "1-0"},
+                {"date": "2026-06-23", "opponent": "CD", "stadium": "Hard Rock Stadium (Miami)", "altitude_m": 2, "result": "Upcoming"},
+                {"date": "2026-06-27", "opponent": "PT", "stadium": "Hard Rock Stadium (Miami)", "altitude_m": 2, "result": "Upcoming"}
+            ]
+        }
+    },
+    "UZ": {
+        "names": ["uzbekistan", "乌兹别克", "乌兹别克斯坦", "uz", "uzb"],
+        "en": "Uzbekistan",
+        "cn": "乌兹别克斯坦",
+        "market_value_eur": 85330000,
+        "average_age": 28.0,
+        "wc2026": {
+            "group": "Group K",
+            "fixtures": [
+                {"date": "2026-06-17", "opponent": "CO", "stadium": "NRG Stadium (Houston)", "altitude_m": 24, "result": "0-1"},
+                {"date": "2026-06-23", "opponent": "PT", "stadium": "Gillette Stadium (Foxborough)", "altitude_m": 90, "result": "Upcoming"},
+                {"date": "2026-06-27", "opponent": "CD", "stadium": "Gillette Stadium (Foxborough)", "altitude_m": 90, "result": "Upcoming"}
+            ]
+        }
+    },
+    "PA": {
+        "names": ["panama", "巴拿马", "pa", "pan"],
+        "en": "Panama",
+        "cn": "巴拿马",
+        "market_value_eur": 34550000,
+        "average_age": 30.0,
+        "wc2026": {
+            "group": "Group L",
+            "fixtures": [
+                {"date": "2026-06-17", "opponent": "GH", "stadium": "MetLife Stadium (East Rutherford)", "altitude_m": 2, "result": "1-1"},
+                {"date": "2026-06-23", "opponent": "HR", "stadium": "BMO Field (Toronto)", "altitude_m": 76, "result": "Upcoming"},
+                {"date": "2026-06-27", "opponent": "EN", "stadium": "MetLife Stadium (East Rutherford)", "altitude_m": 2, "result": "Upcoming"}
+            ]
+        }
+    },
+    "GH": {
+        "names": ["ghana", "加纳", "gh", "gha"],
+        "en": "Ghana",
+        "cn": "加纳",
+        "market_value_eur": 234350000,
+        "average_age": 26.4,
+        "wc2026": {
+            "group": "Group L",
+            "fixtures": [
+                {"date": "2026-06-17", "opponent": "PA", "stadium": "MetLife Stadium (East Rutherford)", "altitude_m": 2, "result": "1-1"},
+                {"date": "2026-06-23", "opponent": "EN", "stadium": "Gillette Stadium (Foxborough)", "altitude_m": 90, "result": "Upcoming"},
+                {"date": "2026-06-27", "opponent": "HR", "stadium": "Lincoln Financial Field (Philadelphia)", "altitude_m": 12, "result": "Upcoming"}
+            ]
+        }
     }
 }
 
@@ -423,6 +516,7 @@ def main():
                 "elo": r1["elo"],
                 "rank": r1["rank"],
                 "market_value_eur": meta1["market_value_eur"],
+                "average_age": meta1.get("average_age", 26.5),
                 "wc2026_info": meta1["wc2026"],
                 "all_time_stats": {
                     "matches": r1["total_matches"],
@@ -438,6 +532,7 @@ def main():
                 "elo": r2["elo"],
                 "rank": r2["rank"],
                 "market_value_eur": meta2["market_value_eur"],
+                "average_age": meta2.get("average_age", 26.5),
                 "wc2026_info": meta2["wc2026"],
                 "all_time_stats": {
                     "matches": r2["total_matches"],
