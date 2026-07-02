@@ -387,6 +387,78 @@ COUNTRY_METADATA = {
                 {"date": "2026-06-27", "opponent": "HR", "stadium": "Lincoln Financial Field (Philadelphia)", "altitude_m": 12, "result": "Upcoming"}
             ]
         }
+    },
+    "CH": {
+        "names": ["switzerland", "瑞士", "ch", "sui"],
+        "en": "Switzerland",
+        "cn": "瑞士",
+        "market_value_eur": 300000000,
+        "average_age": 26.8,
+        "wc2026": {"group": "Group I", "fixtures": []}
+    },
+    "BA": {
+        "names": ["bosnia and herzegovina", "bosnia", "波黑", "ba", "bih"],
+        "en": "Bosnia and Herzegovina",
+        "cn": "波黑",
+        "market_value_eur": 80000000,
+        "average_age": 27.2,
+        "wc2026": {"group": "Group I", "fixtures": []}
+    },
+    "QA": {
+        "names": ["qatar", "卡塔尔", "qa", "qat"],
+        "en": "Qatar",
+        "cn": "卡塔尔",
+        "market_value_eur": 20000000,
+        "average_age": 27.5,
+        "wc2026": {"group": "Group I", "fixtures": []}
+    },
+    "SQ": {
+        "names": ["scotland", "苏格兰", "sq", "sco"],
+        "en": "Scotland",
+        "cn": "苏格兰",
+        "market_value_eur": 250000000,
+        "average_age": 26.5,
+        "wc2026": {"group": "Group J", "fixtures": []}
+    },
+    "MA": {
+        "names": ["morocco", "摩洛哥", "ma", "mar"],
+        "en": "Morocco",
+        "cn": "摩洛哥",
+        "market_value_eur": 350000000,
+        "average_age": 26.2,
+        "wc2026": {"group": "Group J", "fixtures": []}
+    },
+    "HT": {
+        "names": ["haiti", "海地", "ht", "hai"],
+        "en": "Haiti",
+        "cn": "海地",
+        "market_value_eur": 15000000,
+        "average_age": 25.8,
+        "wc2026": {"group": "Group J", "fixtures": []}
+    },
+    "ZA": {
+        "names": ["south africa", "南非", "za", "rsa"],
+        "en": "South Africa",
+        "cn": "南非",
+        "market_value_eur": 25000000,
+        "average_age": 26.9,
+        "wc2026": {"group": "Group K", "fixtures": []}
+    },
+    "KR": {
+        "names": ["south korea", "korea republic", "韩国", "kr", "kor"],
+        "en": "South Korea",
+        "cn": "韩国",
+        "market_value_eur": 160000000,
+        "average_age": 27.1,
+        "wc2026": {"group": "Group K", "fixtures": []}
+    },
+    "CZ": {
+        "names": ["czech republic", "czechia", "捷克", "cz", "cze"],
+        "en": "Czech Republic",
+        "cn": "捷克",
+        "market_value_eur": 150000000,
+        "average_age": 26.4,
+        "wc2026": {"group": "Group L", "fixtures": []}
     }
 }
 
