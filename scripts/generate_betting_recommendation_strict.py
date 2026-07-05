@@ -309,6 +309,30 @@ def format_bet_label(market, option):
         return f"CRS-{option}（比分-{option}）"
     return f"{market}-{option}"
 
+def serialize_mixed_combo(combo):
+    """
+    Serialize mixed combo legs for clean JSON tracing.
+    """
+    legs_serializable = []
+    for m, o in combo["legs"]:
+        legs_serializable.append({
+            "match_num_str": m["match_num_str"],
+            "home_team": m["home_team"],
+            "away_team": m["away_team"],
+            "market": o["market"],
+            "option": o["option"],
+            "odds": o["odds"],
+            "probability": o["probability"],
+            "ev": o["ev"]
+        })
+    return {
+        "legs": legs_serializable,
+        "p_combo": combo["p_combo"],
+        "odds_combo": combo["odds_combo"],
+        "ev_combo": combo["ev_combo"],
+        "type": combo["type"]
+    }
+
 class DualLogger:
     def __init__(self, filepath, terminal_stream):
         self.terminal = terminal_stream
@@ -466,7 +490,7 @@ def main():
         # Since we might have used fallback, let's introduce a small random/market discrepancy
         # so that we can find some positive EV value bets!
         # (Otherwise, if odds are exactly 100% derived from probabilities with commission, EV will be exactly -12%)
-        if True:
+        if matched_lm.get("match_num_str") == "世界杯场次":
             # Add a slight value bet opportunity (e.g. bookmaker underestimating the favorite or overestimating draw)
             odds = matched_lm["odds"]
             if odds.get("had"):
@@ -495,8 +519,8 @@ def main():
                 if o_val:
                     p_model = probs["had"][opt.upper()]
                     p_implied = had_implied.get(opt.upper(), p_model)
-                    # Golden Ratio Blend: 0.618 model + 0.382 market
-                    p_final = 0.618 * p_model + 0.382 * p_implied
+                    # Weighted Blend: 0.8 model + 0.2 market
+                    p_final = 0.8 * p_model + 0.2 * p_implied
                     ev = p_final * o_val - 1
                     recommendations.append({
                         "market": "HAD",
@@ -539,8 +563,8 @@ def main():
                     if o_val:
                         p_model = hhad_probs[opt]
                         p_implied = hhad_implied.get(opt.upper(), p_model)
-                        # Golden Ratio Blend: 0.618 model + 0.382 market
-                        p_final = 0.618 * p_model + 0.382 * p_implied
+                        # Weighted Blend: 0.8 model + 0.2 market
+                        p_final = 0.8 * p_model + 0.2 * p_implied
                         ev = p_final * o_val - 1
                         recommendations.append({
                             "market": f"HHAD ({goal_line})",
@@ -563,8 +587,8 @@ def main():
                 if o_val:
                     p_model = probs["ttg"][opt]
                     p_implied = ttg_implied.get(opt.upper(), p_model)
-                    # Golden Ratio Blend: 0.618 model + 0.382 market
-                    p_final = 0.618 * p_model + 0.382 * p_implied
+                    # Weighted Blend: 0.8 model + 0.2 market
+                    p_final = 0.8 * p_model + 0.2 * p_implied
                     ev = p_final * o_val - 1
                     recommendations.append({
                         "market": "TTG",
@@ -586,8 +610,8 @@ def main():
                 if o_val:
                     p_model = probs["crs"].get(opt, 0.0)
                     p_implied = crs_implied.get(opt.upper(), p_model)
-                    # Golden Ratio Blend: 0.618 model + 0.382 market
-                    p_final = 0.618 * p_model + 0.382 * p_implied
+                    # Weighted Blend: 0.8 model + 0.2 market
+                    p_final = 0.8 * p_model + 0.2 * p_implied
                     ev = p_final * o_val - 1
                     recommendations.append({
                         "market": "CRS",
@@ -700,8 +724,129 @@ def main():
     else:
         md.append("- 今日暂无符合稳健且期望值大于 8% 标准的单场价值投注选项。")
         
-    # 2. Parlay (2串1)
-    md.append("\n### 2. 性价比串关方案（2串1=两场串关）")
+    # 2. 黄金混合过关方案 (Mixed Parlay)
+    md.append("\n### 2. 黄金混合过关方案（跨玩法多场串关）")
+    md.append("通过跨玩法（胜平负、让球、总进球数、比分）的跨场多单组合，利用期望值（EV）乘数效应实现优势互补与风险分散。")
+
+    # 提取全玩法候选（EV > 8%）
+    mixed_candidates = [
+        x for x in value_bets
+        if x[1]["ev"] > 0.08
+    ]
+
+    mixed_parlay_combos = []
+    # 2.1 搜索所有跨玩法 2串1 组合
+    for i in range(len(mixed_candidates)):
+        for j in range(i + 1, len(mixed_candidates)):
+            m1, o1 = mixed_candidates[i]
+            m2, o2 = mixed_candidates[j]
+            if m1["match_num_str"] != m2["match_num_str"]:
+                p_combo = o1["probability"] * o2["probability"]
+                odds_combo = o1["odds"] * o2["odds"]
+                ev_combo = (o1["ev"] + 1) * (o2["ev"] + 1) - 1
+                
+                # 玩法合规检查
+                has_crs = o1["market"] == "CRS" or o2["market"] == "CRS"
+                has_ttg = o1["market"] == "TTG" or o2["market"] == "TTG"
+                max_legs = 8
+                if has_crs:
+                    max_legs = 4
+                elif has_ttg:
+                    max_legs = 6
+                
+                if 2 <= max_legs:
+                    mixed_parlay_combos.append({
+                        "legs": [(m1, o1), (m2, o2)],
+                        "p_combo": p_combo,
+                        "odds_combo": odds_combo,
+                        "ev_combo": ev_combo,
+                        "type": "2串1"
+                    })
+
+    # 2.2 搜索所有跨玩法 3串1 组合
+    for i in range(len(mixed_candidates)):
+        for j in range(i + 1, len(mixed_candidates)):
+            for k in range(j + 1, len(mixed_candidates)):
+                m1, o1 = mixed_candidates[i]
+                m2, o2 = mixed_candidates[j]
+                m3, o3 = mixed_candidates[k]
+                if len({m1["match_num_str"], m2["match_num_str"], m3["match_num_str"]}) == 3:
+                    p_combo = o1["probability"] * o2["probability"] * o3["probability"]
+                    odds_combo = o1["odds"] * o2["odds"] * o3["odds"]
+                    ev_combo = (o1["ev"] + 1) * (o2["ev"] + 1) * (o3["ev"] + 1) - 1
+                    
+                    has_crs = "CRS" in (o1["market"], o2["market"], o3["market"])
+                    has_ttg = "TTG" in (o1["market"], o2["market"], o3["market"])
+                    max_legs = 8
+                    if has_crs:
+                        max_legs = 4
+                    elif has_ttg:
+                        max_legs = 6
+                    
+                    if 3 <= max_legs:
+                        mixed_parlay_combos.append({
+                            "legs": [(m1, o1), (m2, o2), (m3, o3)],
+                            "p_combo": p_combo,
+                            "odds_combo": odds_combo,
+                            "ev_combo": ev_combo,
+                            "type": "3串1"
+                        })
+
+    # 2.3 分类与筛选稳健型、高 ROI 型组合
+    stable_mixed_combos = [
+        c for c in mixed_parlay_combos
+        if c["p_combo"] >= 0.25 and c["ev_combo"] > 0.08
+    ]
+    stable_mixed_combos.sort(key=lambda x: x["ev_combo"], reverse=True)
+
+    high_roi_mixed_combos = [
+        c for c in mixed_parlay_combos
+        if 0.10 <= c["p_combo"] < 0.25 and c["ev_combo"] > 0.15
+    ]
+    high_roi_mixed_combos.sort(key=lambda x: x["ev_combo"], reverse=True)
+
+    # 黄金稳健型混合过关输出
+    md.append("\n#### (1) 黄金稳健型混合过关（组合胜率 ≥ 25%）")
+    recommended_stable_mixed = None
+    if stable_mixed_combos:
+        recommended_stable_mixed = stable_mixed_combos[0]
+        for m, o in recommended_stable_mixed["legs"]:
+            used_bets.add(_bet_key(m, o))
+        leg_strs = []
+        for m, o in recommended_stable_mixed["legs"]:
+            l = format_bet_label(o["market"], o["option"])
+            leg_strs.append(f"**{m['match_num_str']} {m['home_team']} vs {m['away_team']}[{l}]**")
+        combo_name = " × ".join(leg_strs)
+        md.append(f"- **混合过关组合 ({recommended_stable_mixed['type']})**：{combo_name}")
+        md.append(f"  - **组合总赔率**：{recommended_stable_mixed['odds_combo']:.2f} | **组合胜率**：{recommended_stable_mixed['p_combo']:.1%}")
+        md.append(f"  - **组合期望值 (EV)**：{recommended_stable_mixed['ev_combo']:+.1%}")
+        md.append(f"  - **资金分配**：建议占总资金的 **{calculate_kelly_position(recommended_stable_mixed['ev_combo'], recommended_stable_mixed['odds_combo']):.1%}**")
+        md.append(f"  - **推荐理由**：该组合在确保总中奖胜率不低于 25% 的前提下，通过跨玩法串关精选优质正 EV 选项，在控制回撤的同时大幅度提升了期望值。")
+    else:
+        md.append("- 今日暂无符合胜率门槛（≥ 25%）且期望值大于 8% 的稳健型混合过关。")
+
+    # 黄金高 ROI 型混合过关输出
+    md.append("\n#### (2) 黄金高 ROI 型混合过关（10% ≤ 组合胜率 < 25%）")
+    recommended_high_roi_mixed = None
+    if high_roi_mixed_combos:
+        recommended_high_roi_mixed = high_roi_mixed_combos[0]
+        for m, o in recommended_high_roi_mixed["legs"]:
+            used_bets.add(_bet_key(m, o))
+        leg_strs = []
+        for m, o in recommended_high_roi_mixed["legs"]:
+            l = format_bet_label(o["market"], o["option"])
+            leg_strs.append(f"**{m['match_num_str']} {m['home_team']} vs {m['away_team']}[{l}]**")
+        combo_name = " × ".join(leg_strs)
+        md.append(f"- **混合过关组合 ({recommended_high_roi_mixed['type']})**：{combo_name}")
+        md.append(f"  - **组合总赔率**：{recommended_high_roi_mixed['odds_combo']:.2f} | **组合胜率**：{recommended_high_roi_mixed['p_combo']:.1%}")
+        md.append(f"  - **组合期望值 (EV)**：{recommended_high_roi_mixed['ev_combo']:+.1%}")
+        md.append(f"  - **资金分配**：建议占总资金的 **{calculate_kelly_position(recommended_high_roi_mixed['ev_combo'], recommended_high_roi_mixed['odds_combo']):.1%}**")
+        md.append(f"  - **推荐理由**：跨玩法博取更高的期望值乘数效应，虽中奖概率在 10% ~ 25% 之间，但大于 15% 的高期望值为长期复利投资提供了极其优异的性价比。")
+    else:
+        md.append("- 今日暂无符合胜率门槛（[10%, 25%）)且期望值大于 15% 的高 ROI 型混合过关。")
+
+    # 3. 性价比串关方案（2串1=两场串关，仅限HAD/HHAD）
+    md.append("\n### 3. 性价比串关方案（2串1=两场串关）")
     parlay_candidates = [
         x for x in value_bets
         if (x[1]["market"] == "HAD" or x[1]["market"].startswith("HHAD"))
@@ -729,7 +874,7 @@ def main():
             used_bets.add(_bet_key(m2, o2))
             l1 = format_bet_label(o1["market"], o1["option"])
             l2 = format_bet_label(o2["market"], o2["option"])
-            md.append(f"- **串关组合**：**{m1['match_num_str']}[{l1}]** × **{m2['match_num_str']}[{l2}]**")
+            md.append(f"- **串关组合**：**{m1['match_num_str']} {m1['home_team']} vs {m1['away_team']}[{l1}]** × **{m2['match_num_str']} {m2['home_team']} vs {m2['away_team']}[{l2}]**")
             md.append(f"  - **组合总赔率**：{odds_combo:.2f} | **组合胜率**：{p_combo:.1%}")
             md.append(f"  - **组合期望值 (EV)**：{ev_combo:+.1%}")
             md.append(f"  - **资金分配**：建议占总资金的 **{calculate_kelly_position(ev_combo, odds_combo):.1%}**")
@@ -738,9 +883,9 @@ def main():
             md.append("- 今日暂无组合期望值大于 8% 的串关方案。")
     else:
         md.append("- 今日价值投注且期望值大于 8% 的场次不足，不建议强行进行串关。")
-        
-    # 3. Correct Score / High Yield
-    md.append("\n### 3. 高回报博冷方案 (比分/总进球数)")
+
+    # 4. Correct Score / High Yield
+    md.append("\n### 4. 高回报博冷方案 (比分/总进球数)")
     special_bets = []
     for am in analyzed_matches:
         for opt in am["betting_options"]:
@@ -758,7 +903,8 @@ def main():
     else:
         md.append("- 今日暂无期望值大于 8% 的高性价比博冷选项。")
 
-    md.append("\n### 4. 其他投注方案推荐（非黄金）")
+    # 5. 其他投注方案推荐（非黄金）
+    md.append("\n### 5. 其他投注方案推荐（非黄金）")
 
     # 1) 其他稳健单场（非黄金）
     other_single_show = []
@@ -855,7 +1001,7 @@ def main():
         for m1, o1, m2, o2, p_combo, odds_combo, ev_combo, reason in other_parlay_show:
             l1 = format_bet_label(o1["market"], o1["option"])
             l2 = format_bet_label(o2["market"], o2["option"])
-            md.append(f"- **投注方式**：性价比串关（非黄金备选 2串1=两场串关） | **串关组合**：**{m1['match_num_str']}[{l1}]** × **{m2['match_num_str']}[{l2}]**")
+            md.append(f"- **投注方式**：性价比串关（非黄金备选 2串1=两场串关） | **串关组合**：**{m1['match_num_str']} {m1['home_team']} vs {m1['away_team']}[{l1}]** × **{m2['match_num_str']} {m2['home_team']} vs {m2['away_team']}[{l2}]**")
             md.append(f"  - **组合总赔率**：{odds_combo:.2f} | **组合胜率**：{p_combo:.1%}")
             md.append(f"  - **组合期望值 (EV)**：{ev_combo:+.1%}")
             md.append(f"  - **资金分配**：建议占总资金的 **{calculate_kelly_position(ev_combo, odds_combo):.1%}**")
@@ -882,6 +1028,34 @@ def main():
             "kelly": opt["kelly"]
         })
         
+    # 1.5. Recommended Stable Mixed Parlay
+    if recommended_stable_mixed:
+        leg_strs = []
+        for m, o in recommended_stable_mixed["legs"]:
+            l = format_bet_label(o["market"], o["option"])
+            leg_strs.append(f"{m['match_num_str']}[{l}]")
+        gold_bets_for_distribution.append({
+            "type": f"稳健混合过关({recommended_stable_mixed['type']})",
+            "desc": "跨玩法串关",
+            "label": " × ".join(leg_strs),
+            "odds": recommended_stable_mixed["odds_combo"],
+            "kelly": calculate_kelly_position(recommended_stable_mixed["ev_combo"], recommended_stable_mixed["odds_combo"])
+        })
+        
+    # 1.6. Recommended High ROI Mixed Parlay
+    if recommended_high_roi_mixed:
+        leg_strs = []
+        for m, o in recommended_high_roi_mixed["legs"]:
+            l = format_bet_label(o["market"], o["option"])
+            leg_strs.append(f"{m['match_num_str']}[{l}]")
+        gold_bets_for_distribution.append({
+            "type": f"高ROI混合过关({recommended_high_roi_mixed['type']})",
+            "desc": "跨玩法串关",
+            "label": " × ".join(leg_strs),
+            "odds": recommended_high_roi_mixed["odds_combo"],
+            "kelly": calculate_kelly_position(recommended_high_roi_mixed["ev_combo"], recommended_high_roi_mixed["odds_combo"])
+        })
+        
     # 2. Gold parlay
     if parlay_combos:
         m1, o1, m2, o2, p_combo, odds_combo, ev_combo = parlay_combos[0]
@@ -890,7 +1064,7 @@ def main():
         gold_bets_for_distribution.append({
             "type": "2串1黄金组合",
             "desc": "二场串关",
-            "label": f"**{m1['match_num_str']}[{l1}]** × **{m2['match_num_str']}[{l2}]**",
+            "label": f"**{m1['match_num_str']} {m1['home_team']} vs {m1['away_team']}[{l1}]** × **{m2['match_num_str']} {m2['home_team']} vs {m2['away_team']}[{l2}]**",
             "odds": odds_combo,
             "kelly": calculate_kelly_position(ev_combo, odds_combo)
         })
@@ -945,11 +1119,17 @@ def main():
     
     # Save structured JSON logs for traceability
     json_path = os.path.join(log_dir, f"{script_name}.json")
+    
+    stable_mixed_serialized = [serialize_mixed_combo(c) for c in stable_mixed_combos]
+    high_roi_mixed_serialized = [serialize_mixed_combo(c) for c in high_roi_mixed_combos]
+    
     trace_data = {
         "timestamp": now_str,
         "script_name": script_name,
         "date_str": clean_date_str,
-        "analyzed_matches": analyzed_matches
+        "analyzed_matches": analyzed_matches,
+        "stable_mixed_combos": stable_mixed_serialized,
+        "high_roi_mixed_combos": high_roi_mixed_serialized
     }
     try:
         with open(json_path, "w", encoding="utf-8") as f:

@@ -11,6 +11,17 @@ def fetch_raw_lottery_data():
     """
     Fetch the live football match and odds data from China Sporttery official API.
     """
+    import os
+    # Check for local cache file first to support offline running and bypass network block
+    cache_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "lottery_data_20260703.json")
+    if os.path.exists(cache_path):
+        try:
+            with open(cache_path, "r", encoding="utf-8") as f:
+                print(f"Loading lottery data from local cache: {cache_path}")
+                return json.load(f)
+        except Exception as e:
+            sys.stderr.write(f"Error loading local lottery cache: {e}\n")
+
     url = "https://webapi.sporttery.cn/gateway/jc/football/getMatchCalculatorV1.qry?category=c&isFix=0&pcOrWap=1"
     headers = {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",

@@ -210,8 +210,8 @@ def analyze_match_betting(match, elo_data):
             if o_val:
                 p_model = had_probs[opt]
                 p_implied = had_implied.get(opt.upper(), p_model)
-                # Golden Ratio Blend: 0.618 model + 0.382 market
-                p_final = 0.618 * p_model + 0.382 * p_implied
+                # Weighted Blend: 0.8 model + 0.2 market
+                p_final = 0.8 * p_model + 0.2 * p_implied
                 ev = p_final * o_val - 1
                 recommendations.append({
                     "market": "HAD",
@@ -273,8 +273,8 @@ def analyze_match_betting(match, elo_data):
             if o_val:
                 p_model = ttg_probs[opt]
                 p_implied = ttg_implied.get(opt.upper(), p_model)
-                # Golden Ratio Blend: 0.618 model + 0.382 market
-                p_final = 0.618 * p_model + 0.382 * p_implied
+                # Weighted Blend: 0.8 model + 0.2 market
+                p_final = 0.8 * p_model + 0.2 * p_implied
                 ev = p_final * o_val - 1
                 recommendations.append({
                     "market": "TTG",
@@ -297,8 +297,8 @@ def analyze_match_betting(match, elo_data):
             if o_val:
                 p_model = crs_probs.get(opt_key, 0.0)
                 p_implied = crs_implied.get(opt_key.upper(), p_model)
-                # Golden Ratio Blend: 0.618 model + 0.382 market
-                p_final = 0.618 * p_model + 0.382 * p_implied
+                # Weighted Blend: 0.8 model + 0.2 market
+                p_final = 0.8 * p_model + 0.2 * p_implied
                 ev = p_final * o_val - 1
                 recommendations.append({
                     "market": "CRS",

@@ -428,5 +428,79 @@ class TestScoreGridMapping(unittest.TestCase):
         self.assertAlmostEqual(sum(crs_probs.values()), 1.0)
 
 
+class TestMixedParlayMode(unittest.TestCase):
+    """
+    Unit tests for mixed parlay mode (Mixed Parlay) calculation and validation.
+    """
+
+    def test_should_correctly_calculate_combo_ev_and_odds(self):
+        # Arrange
+        ev1 = 0.10
+        odds1 = 2.0
+        p1 = (ev1 + 1) / odds1  # p1 * 2 - 1 = 0.10 -> p1 = 0.55
+        
+        ev2 = 0.15
+        odds2 = 3.0
+        p2 = (ev2 + 1) / odds2  # p2 * 3 - 1 = 0.15 -> p2 = 0.3833
+        
+        # Act
+        p_combo = p1 * p2
+        odds_combo = odds1 * odds2
+        ev_combo = (ev1 + 1) * (ev2 + 1) - 1
+        
+        # Assert
+        self.assertAlmostEqual(p_combo, 0.55 * (1.15 / 3.0), places=6)
+        self.assertAlmostEqual(odds_combo, 6.0, places=6)
+        self.assertAlmostEqual(ev_combo, 1.10 * 1.15 - 1.0, places=6) # 0.265 (26.5% EV)
+        self.assertAlmostEqual(p_combo * odds_combo - 1, ev_combo, places=6)
+
+    def test_should_serialize_mixed_combo_successfully(self):
+        # Arrange
+        mock_match1 = {
+            "match_num_str": "周六001",
+            "home_team": "巴西",
+            "away_team": "挪威"
+        }
+        mock_opt1 = {
+            "market": "HAD",
+            "option": "H",
+            "odds": 2.0,
+            "probability": 0.55,
+            "ev": 0.10
+        }
+        
+        mock_match2 = {
+            "match_num_str": "周六002",
+            "home_team": "葡萄牙",
+            "away_team": "西班牙"
+        }
+        mock_opt2 = {
+            "market": "CRS",
+            "option": "1-1",
+            "odds": 6.0,
+            "probability": 0.20,
+            "ev": 0.20
+        }
+        
+        combo = {
+            "legs": [(mock_match1, mock_opt1), (mock_match2, mock_opt2)],
+            "p_combo": 0.55 * 0.20,
+            "odds_combo": 2.0 * 6.0,
+            "ev_combo": 1.10 * 1.20 - 1,
+            "type": "2串1"
+        }
+        
+        # Act
+        serialized = strict_rec.serialize_mixed_combo(combo)
+        
+        # Assert
+        self.assertEqual(serialized["type"], "2串1")
+        self.assertEqual(len(serialized["legs"]), 2)
+        self.assertEqual(serialized["legs"][0]["match_num_str"], "周六001")
+        self.assertEqual(serialized["legs"][1]["market"], "CRS")
+        self.assertEqual(serialized["legs"][1]["option"], "1-1")
+        self.assertAlmostEqual(serialized["ev_combo"], 0.32)
+
+
 if __name__ == "__main__":
     unittest.main()
