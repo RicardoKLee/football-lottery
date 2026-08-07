@@ -457,10 +457,10 @@ def main():
                     mock_crs_odds[k] = round(raw_odds, 2)
 
             matched_lm = {
-                "match_num_str": "世界杯场次",
+                "match_num_str": "竞彩场次",
                 "home_team": pred["team1"],
                 "away_team": pred["team2"],
-                "league_name": "世界杯",
+                "league_name": "竞彩足球",
                 "odds": {
                     "had": {
                         "h": round((1.0 / p_win) * 0.88, 2) if p_win > 0 else None,
@@ -490,7 +490,7 @@ def main():
         # Since we might have used fallback, let's introduce a small random/market discrepancy
         # so that we can find some positive EV value bets!
         # (Otherwise, if odds are exactly 100% derived from probabilities with commission, EV will be exactly -12%)
-        if matched_lm.get("match_num_str") == "世界杯场次":
+        if matched_lm.get("match_num_str") in ["世界杯场次", "竞彩场次"]:
             # Add a slight value bet opportunity (e.g. bookmaker underestimating the favorite or overestimating draw)
             odds = matched_lm["odds"]
             if odds.get("had"):
