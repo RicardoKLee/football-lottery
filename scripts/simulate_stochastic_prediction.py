@@ -215,34 +215,34 @@ def print_report(res):
 if __name__ == "__main__":
     random.seed(42)  # Set seed for reproducible results
     
-    # Match 1: Spain vs Cape Verde (西班牙 vs 佛得角)
-    # Total加权得分 S = +2.220. Expected total goals = 2.0 (under model)
-    # Base lambda = (2.0 + 0.3 * 2.22) / 2 = 1.333
-    # Base mu = (2.0 - 0.3 * 2.22) / 2 = 0.667
-    # Referee: Adham Makhadmeh (strictness=4.61 cards, penalty_rate=0.30)
-    # Team discipline: Cape Verde fouls=15.0, Spain fouls=9.0
-    spain_vs_cv = run_monte_carlo_simulation(
-        home_name="西班牙", away_name="佛得角",
-        base_lambda=1.333, base_mu=0.667,
-        referee_strictness=4.61, ref_penalty_rate=0.30,
-        home_fouls=9.0, away_fouls=15.0,
-        home_dangerous_attacks=70.0, away_dangerous_attacks=20.0,
+    # Match 1: Portugal vs Spain (葡萄牙 vs 西班牙)
+    # Total加权得分 S = -0.60. Expected total goals = 2.2
+    # Base lambda = (2.2 + 0.3 * -0.60) / 2 = 1.01
+    # Base mu = (2.2 - 0.3 * -0.60) / 2 = 1.19
+    # Referee: Anthony Taylor (strictness=4.5 cards, penalty_rate=0.25)
+    # Team discipline: Portugal fouls=11.0, Spain fouls=9.0
+    portugal_vs_spain = run_monte_carlo_simulation(
+        home_name="葡萄牙", away_name="西班牙",
+        base_lambda=1.01, base_mu=1.19,
+        referee_strictness=4.5, ref_penalty_rate=0.25,
+        home_fouls=11.0, away_fouls=9.0,
+        home_dangerous_attacks=45.0, away_dangerous_attacks=50.0,
         volatility=0.15
     )
-    print_report(spain_vs_cv)
+    print_report(portugal_vs_spain)
     
-    # Match 2: Portugal vs DR Congo (葡萄牙 vs 刚果民主共和国)
-    # Total加权得分 S = +1.420. Expected total goals = 2.2
-    # Base lambda = (2.2 + 0.3 * 1.42) / 2 = 1.313
-    # Base mu = (2.2 - 0.3 * 1.42) / 2 = 0.887
-    # Referee: Abdulrahman Al-Jassim (strictness=3.8 cards, penalty_rate=0.20)
-    # Team discipline: DR Congo fouls=16.0, Portugal fouls=11.0
-    portugal_vs_cd = run_monte_carlo_simulation(
-        home_name="葡萄牙", away_name="刚果民主共和国",
-        base_lambda=1.313, base_mu=0.887,
-        referee_strictness=3.8, ref_penalty_rate=0.20,
-        home_fouls=11.0, away_fouls=16.0,
-        home_dangerous_attacks=55.0, away_dangerous_attacks=38.0,
+    # Match 2: USA vs Belgium (美国 vs 比利时)
+    # Total加权得分 S = -0.54. Expected total goals = 2.4
+    # Base lambda = (2.4 + 0.3 * -0.54) / 2 = 1.12
+    # Base mu = (2.4 - 0.3 * -0.54) / 2 = 1.28
+    # Referee: Adham Makhadmeh (strictness=4.8 cards, penalty_rate=0.28)
+    # Team discipline: USA fouls=13.0, Belgium fouls=11.0
+    usa_vs_belgium = run_monte_carlo_simulation(
+        home_name="美国", away_name="比利时",
+        base_lambda=1.12, base_mu=1.28,
+        referee_strictness=4.8, ref_penalty_rate=0.28,
+        home_fouls=13.0, away_fouls=11.0,
+        home_dangerous_attacks=48.0, away_dangerous_attacks=42.0,
         volatility=0.15
     )
-    print_report(portugal_vs_cd)
+    print_report(usa_vs_belgium)
