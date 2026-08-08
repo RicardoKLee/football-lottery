@@ -35,8 +35,13 @@ python3 scripts/fetch_match_data.py "<主队名称>" "<客队名称>"
 
 
 
-### 足球预测十大影响因子专业分析参考手册
-- 足球预测十大影响因子专业分析参考手册，请参阅 [reference.md](reference.md)。
+### 足球预测专业分析参考手册与模块化指南
+- 详细的数据抓取规范与权威机构来源，请参阅 [data_sources_and_sources.md](data_sources_and_sources.md)。
+- 详细的十因子定量打分与指标穿透规则，请参阅 [ten_factor_scoring_guide.md](ten_factor_scoring_guide.md)。
+- 详细的双泊松与蒙特卡洛随机扰动精算模型，请参阅 [actuarial_math_and_simulation.md](actuarial_math_and_simulation.md)。
+- 详细的 MLA 第九版学术引用规范，请参阅 [mla_citation_guide.md](mla_citation_guide.md)。
+- 详细的共识指标、球队稳定度、ETG/CI 与信心判定框架，请参阅 [consensus_metrics.md](consensus_metrics.md)。
+
 
 ## 核心分析框架：十因子定量加权系统
 
