@@ -1,0 +1,7189 @@
+{
+  "provider": "football-data.co.uk",
+  "source_url": "https://football-data.co.uk/",
+  "fetched_at": "2026-09-20T16:34:26.884883+00:00",
+  "matches": [
+    {
+      "match_id": "fl1-2025-0",
+      "kickoff_utc": "2025-08-15T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-1",
+      "kickoff_utc": "2025-08-16T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-2",
+      "kickoff_utc": "2025-08-16T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "away_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-3",
+      "kickoff_utc": "2025-08-16T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "away_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-4",
+      "kickoff_utc": "2025-08-17T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2025-5",
+      "kickoff_utc": "2025-08-17T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-6",
+      "kickoff_utc": "2025-08-17T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-7",
+      "kickoff_utc": "2025-08-17T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "away_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-8",
+      "kickoff_utc": "2025-08-17T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-9",
+      "kickoff_utc": "2025-08-22T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "away_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-10",
+      "kickoff_utc": "2025-08-23T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "home_score": 5,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-11",
+      "kickoff_utc": "2025-08-23T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "away_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-12",
+      "kickoff_utc": "2025-08-23T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "away_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-13",
+      "kickoff_utc": "2025-08-24T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "away_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "home_score": 4,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-14",
+      "kickoff_utc": "2025-08-24T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-15",
+      "kickoff_utc": "2025-08-24T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-16",
+      "kickoff_utc": "2025-08-24T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "away_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-17",
+      "kickoff_utc": "2025-08-24T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-18",
+      "kickoff_utc": "2025-08-29T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "away_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-19",
+      "kickoff_utc": "2025-08-30T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 7
+    },
+    {
+      "match_id": "fl1-2025-20",
+      "kickoff_utc": "2025-08-30T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-21",
+      "kickoff_utc": "2025-08-30T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 6
+    },
+    {
+      "match_id": "fl1-2025-22",
+      "kickoff_utc": "2025-08-31T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "away_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-23",
+      "kickoff_utc": "2025-08-31T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-24",
+      "kickoff_utc": "2025-08-31T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "away_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-25",
+      "kickoff_utc": "2025-08-31T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "away_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-26",
+      "kickoff_utc": "2025-08-31T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "away_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-27",
+      "kickoff_utc": "2025-09-12T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "home_score": 4,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-28",
+      "kickoff_utc": "2025-09-13T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-29",
+      "kickoff_utc": "2025-09-13T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-30",
+      "kickoff_utc": "2025-09-14T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-31",
+      "kickoff_utc": "2025-09-14T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-32",
+      "kickoff_utc": "2025-09-14T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "away_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-33",
+      "kickoff_utc": "2025-09-14T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-34",
+      "kickoff_utc": "2025-09-14T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "away_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-35",
+      "kickoff_utc": "2025-09-14T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-36",
+      "kickoff_utc": "2025-09-19T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "away_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-37",
+      "kickoff_utc": "2025-09-20T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-38",
+      "kickoff_utc": "2025-09-20T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "home_score": 4,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-39",
+      "kickoff_utc": "2025-09-20T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-40",
+      "kickoff_utc": "2025-09-21T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "away_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2025-41",
+      "kickoff_utc": "2025-09-21T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-42",
+      "kickoff_utc": "2025-09-21T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-43",
+      "kickoff_utc": "2025-09-21T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "away_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "home_score": 5,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-44",
+      "kickoff_utc": "2025-09-22T22:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-45",
+      "kickoff_utc": "2025-09-26T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "away_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-46",
+      "kickoff_utc": "2025-09-27T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "away_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-47",
+      "kickoff_utc": "2025-09-27T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-48",
+      "kickoff_utc": "2025-09-27T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "away_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-49",
+      "kickoff_utc": "2025-09-28T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-50",
+      "kickoff_utc": "2025-09-28T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "away_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-51",
+      "kickoff_utc": "2025-09-28T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-52",
+      "kickoff_utc": "2025-09-28T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "away_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-53",
+      "kickoff_utc": "2025-09-28T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-54",
+      "kickoff_utc": "2025-10-03T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-55",
+      "kickoff_utc": "2025-10-04T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "away_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2025-56",
+      "kickoff_utc": "2025-10-04T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-57",
+      "kickoff_utc": "2025-10-04T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-58",
+      "kickoff_utc": "2025-10-05T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "away_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-59",
+      "kickoff_utc": "2025-10-05T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-60",
+      "kickoff_utc": "2025-10-05T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-61",
+      "kickoff_utc": "2025-10-05T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "away_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "home_score": 5,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-62",
+      "kickoff_utc": "2025-10-05T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-63",
+      "kickoff_utc": "2025-10-17T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "away_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2025-64",
+      "kickoff_utc": "2025-10-18T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-65",
+      "kickoff_utc": "2025-10-18T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "away_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-66",
+      "kickoff_utc": "2025-10-18T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "home_score": 6,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-67",
+      "kickoff_utc": "2025-10-19T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-68",
+      "kickoff_utc": "2025-10-19T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "away_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2025-69",
+      "kickoff_utc": "2025-10-19T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-70",
+      "kickoff_utc": "2025-10-19T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "away_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "home_score": 4,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-71",
+      "kickoff_utc": "2025-10-19T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-72",
+      "kickoff_utc": "2025-10-24T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-73",
+      "kickoff_utc": "2025-10-25T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2025-74",
+      "kickoff_utc": "2025-10-25T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "away_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-75",
+      "kickoff_utc": "2025-10-25T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "away_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-76",
+      "kickoff_utc": "2025-10-26T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "home_score": 6,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-77",
+      "kickoff_utc": "2025-10-26T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-78",
+      "kickoff_utc": "2025-10-26T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-79",
+      "kickoff_utc": "2025-10-26T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-80",
+      "kickoff_utc": "2025-10-26T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "away_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-81",
+      "kickoff_utc": "2025-10-29T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-82",
+      "kickoff_utc": "2025-10-29T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-83",
+      "kickoff_utc": "2025-10-29T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-84",
+      "kickoff_utc": "2025-10-29T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-85",
+      "kickoff_utc": "2025-10-29T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-86",
+      "kickoff_utc": "2025-10-29T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 5
+    },
+    {
+      "match_id": "fl1-2025-87",
+      "kickoff_utc": "2025-10-29T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2025-88",
+      "kickoff_utc": "2025-10-29T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "away_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-89",
+      "kickoff_utc": "2025-10-29T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "away_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-90",
+      "kickoff_utc": "2025-11-01T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-91",
+      "kickoff_utc": "2025-11-01T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-92",
+      "kickoff_utc": "2025-11-01T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-93",
+      "kickoff_utc": "2025-11-02T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "home_score": 4,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-94",
+      "kickoff_utc": "2025-11-02T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-95",
+      "kickoff_utc": "2025-11-02T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-96",
+      "kickoff_utc": "2025-11-02T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-97",
+      "kickoff_utc": "2025-11-02T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "away_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-98",
+      "kickoff_utc": "2025-11-02T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-99",
+      "kickoff_utc": "2025-11-07T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "away_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-100",
+      "kickoff_utc": "2025-11-08T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-101",
+      "kickoff_utc": "2025-11-08T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-102",
+      "kickoff_utc": "2025-11-08T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 4
+    },
+    {
+      "match_id": "fl1-2025-103",
+      "kickoff_utc": "2025-11-09T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "away_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-104",
+      "kickoff_utc": "2025-11-09T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "away_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-105",
+      "kickoff_utc": "2025-11-09T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-106",
+      "kickoff_utc": "2025-11-09T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-107",
+      "kickoff_utc": "2025-11-09T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2025-108",
+      "kickoff_utc": "2025-11-21T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "away_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 5
+    },
+    {
+      "match_id": "fl1-2025-109",
+      "kickoff_utc": "2025-11-22T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "away_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-110",
+      "kickoff_utc": "2025-11-22T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "home_score": 4,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-111",
+      "kickoff_utc": "2025-11-22T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "away_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-112",
+      "kickoff_utc": "2025-11-23T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-113",
+      "kickoff_utc": "2025-11-23T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "away_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-114",
+      "kickoff_utc": "2025-11-23T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-115",
+      "kickoff_utc": "2025-11-23T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "away_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-116",
+      "kickoff_utc": "2025-11-23T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "home_score": 4,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-117",
+      "kickoff_utc": "2025-11-28T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "away_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-118",
+      "kickoff_utc": "2025-11-29T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-119",
+      "kickoff_utc": "2025-11-29T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "away_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-120",
+      "kickoff_utc": "2025-11-29T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-121",
+      "kickoff_utc": "2025-11-30T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "away_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-122",
+      "kickoff_utc": "2025-11-30T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-123",
+      "kickoff_utc": "2025-11-30T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-124",
+      "kickoff_utc": "2025-11-30T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-125",
+      "kickoff_utc": "2025-11-30T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-126",
+      "kickoff_utc": "2025-12-05T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "away_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-127",
+      "kickoff_utc": "2025-12-05T20:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-128",
+      "kickoff_utc": "2025-12-06T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2025-129",
+      "kickoff_utc": "2025-12-06T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "away_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-130",
+      "kickoff_utc": "2025-12-06T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "away_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "home_score": 5,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-131",
+      "kickoff_utc": "2025-12-07T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "away_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-132",
+      "kickoff_utc": "2025-12-07T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-133",
+      "kickoff_utc": "2025-12-07T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-134",
+      "kickoff_utc": "2025-12-07T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-135",
+      "kickoff_utc": "2025-12-12T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "home_score": 4,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-136",
+      "kickoff_utc": "2025-12-13T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2025-137",
+      "kickoff_utc": "2025-12-13T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2025-138",
+      "kickoff_utc": "2025-12-13T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "away_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2025-139",
+      "kickoff_utc": "2025-12-14T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "away_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-140",
+      "kickoff_utc": "2025-12-14T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 4
+    },
+    {
+      "match_id": "fl1-2025-141",
+      "kickoff_utc": "2025-12-14T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-142",
+      "kickoff_utc": "2025-12-14T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2025-143",
+      "kickoff_utc": "2025-12-14T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-144",
+      "kickoff_utc": "2026-01-02T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2026-145",
+      "kickoff_utc": "2026-01-03T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2026-146",
+      "kickoff_utc": "2026-01-03T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "away_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-147",
+      "kickoff_utc": "2026-01-03T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-148",
+      "kickoff_utc": "2026-01-04T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-149",
+      "kickoff_utc": "2026-01-04T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "away_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-150",
+      "kickoff_utc": "2026-01-04T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-151",
+      "kickoff_utc": "2026-01-04T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "away_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-152",
+      "kickoff_utc": "2026-01-04T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-153",
+      "kickoff_utc": "2026-01-16T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2026-154",
+      "kickoff_utc": "2026-01-16T20:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-155",
+      "kickoff_utc": "2026-01-17T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "away_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-156",
+      "kickoff_utc": "2026-01-17T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "home_score": 5,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-157",
+      "kickoff_utc": "2026-01-17T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "away_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 5
+    },
+    {
+      "match_id": "fl1-2026-158",
+      "kickoff_utc": "2026-01-18T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "away_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-159",
+      "kickoff_utc": "2026-01-18T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-160",
+      "kickoff_utc": "2026-01-18T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-161",
+      "kickoff_utc": "2026-01-18T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "away_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-162",
+      "kickoff_utc": "2026-01-23T19:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-163",
+      "kickoff_utc": "2026-01-24T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-164",
+      "kickoff_utc": "2026-01-24T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-165",
+      "kickoff_utc": "2026-01-24T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-166",
+      "kickoff_utc": "2026-01-25T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 4
+    },
+    {
+      "match_id": "fl1-2026-167",
+      "kickoff_utc": "2026-01-25T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "away_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-168",
+      "kickoff_utc": "2026-01-25T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 5
+    },
+    {
+      "match_id": "fl1-2026-169",
+      "kickoff_utc": "2026-01-25T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "away_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-170",
+      "kickoff_utc": "2026-01-25T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 4
+    },
+    {
+      "match_id": "fl1-2026-171",
+      "kickoff_utc": "2026-01-30T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "away_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-172",
+      "kickoff_utc": "2026-01-31T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "away_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-173",
+      "kickoff_utc": "2026-01-31T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-174",
+      "kickoff_utc": "2026-01-31T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "away_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "home_score": 4,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-175",
+      "kickoff_utc": "2026-02-01T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-176",
+      "kickoff_utc": "2026-02-01T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "away_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-177",
+      "kickoff_utc": "2026-02-01T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "away_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-178",
+      "kickoff_utc": "2026-02-01T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "away_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-179",
+      "kickoff_utc": "2026-02-01T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-180",
+      "kickoff_utc": "2026-02-06T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-181",
+      "kickoff_utc": "2026-02-07T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "away_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-182",
+      "kickoff_utc": "2026-02-07T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-183",
+      "kickoff_utc": "2026-02-07T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-184",
+      "kickoff_utc": "2026-02-08T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "away_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-185",
+      "kickoff_utc": "2026-02-08T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "away_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-186",
+      "kickoff_utc": "2026-02-08T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-187",
+      "kickoff_utc": "2026-02-08T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-188",
+      "kickoff_utc": "2026-02-08T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "away_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "home_score": 5,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-189",
+      "kickoff_utc": "2026-02-13T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-190",
+      "kickoff_utc": "2026-02-13T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-191",
+      "kickoff_utc": "2026-02-14T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-192",
+      "kickoff_utc": "2026-02-14T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-193",
+      "kickoff_utc": "2026-02-14T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 5
+    },
+    {
+      "match_id": "fl1-2026-194",
+      "kickoff_utc": "2026-02-15T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-195",
+      "kickoff_utc": "2026-02-15T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "away_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-196",
+      "kickoff_utc": "2026-02-15T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "away_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2026-197",
+      "kickoff_utc": "2026-02-15T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-198",
+      "kickoff_utc": "2026-02-20T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "away_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-199",
+      "kickoff_utc": "2026-02-21T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "away_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2026-200",
+      "kickoff_utc": "2026-02-21T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-201",
+      "kickoff_utc": "2026-02-21T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "away_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-202",
+      "kickoff_utc": "2026-02-22T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2026-203",
+      "kickoff_utc": "2026-02-22T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-204",
+      "kickoff_utc": "2026-02-22T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-205",
+      "kickoff_utc": "2026-02-22T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2026-206",
+      "kickoff_utc": "2026-02-22T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-207",
+      "kickoff_utc": "2026-02-27T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-208",
+      "kickoff_utc": "2026-02-28T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-209",
+      "kickoff_utc": "2026-02-28T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "away_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-210",
+      "kickoff_utc": "2026-02-28T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-211",
+      "kickoff_utc": "2026-03-01T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-212",
+      "kickoff_utc": "2026-03-01T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-213",
+      "kickoff_utc": "2026-03-01T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "away_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-214",
+      "kickoff_utc": "2026-03-01T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "away_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-215",
+      "kickoff_utc": "2026-03-01T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-216",
+      "kickoff_utc": "2026-03-06T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "away_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2026-217",
+      "kickoff_utc": "2026-03-07T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-218",
+      "kickoff_utc": "2026-03-07T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-219",
+      "kickoff_utc": "2026-03-07T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "away_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-220",
+      "kickoff_utc": "2026-03-08T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "away_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-221",
+      "kickoff_utc": "2026-03-08T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "away_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-222",
+      "kickoff_utc": "2026-03-08T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-223",
+      "kickoff_utc": "2026-03-08T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "away_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 4
+    },
+    {
+      "match_id": "fl1-2026-224",
+      "kickoff_utc": "2026-03-08T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-225",
+      "kickoff_utc": "2026-03-13T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-226",
+      "kickoff_utc": "2026-03-14T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-227",
+      "kickoff_utc": "2026-03-14T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-228",
+      "kickoff_utc": "2026-03-14T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "away_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-229",
+      "kickoff_utc": "2026-03-15T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-230",
+      "kickoff_utc": "2026-03-15T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-231",
+      "kickoff_utc": "2026-03-15T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "away_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 4
+    },
+    {
+      "match_id": "fl1-2026-232",
+      "kickoff_utc": "2026-03-15T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-233",
+      "kickoff_utc": "2026-03-20T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "away_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "home_score": 5,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-234",
+      "kickoff_utc": "2026-03-21T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-235",
+      "kickoff_utc": "2026-03-21T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-236",
+      "kickoff_utc": "2026-03-21T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 4
+    },
+    {
+      "match_id": "fl1-2026-237",
+      "kickoff_utc": "2026-03-22T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "away_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-238",
+      "kickoff_utc": "2026-03-22T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-239",
+      "kickoff_utc": "2026-03-22T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "away_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-240",
+      "kickoff_utc": "2026-03-22T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-241",
+      "kickoff_utc": "2026-03-22T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2026-242",
+      "kickoff_utc": "2026-04-03T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "away_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-243",
+      "kickoff_utc": "2026-04-04T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-244",
+      "kickoff_utc": "2026-04-04T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "away_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 4
+    },
+    {
+      "match_id": "fl1-2026-245",
+      "kickoff_utc": "2026-04-04T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-246",
+      "kickoff_utc": "2026-04-05T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-247",
+      "kickoff_utc": "2026-04-05T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-248",
+      "kickoff_utc": "2026-04-05T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-249",
+      "kickoff_utc": "2026-04-05T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-250",
+      "kickoff_utc": "2026-04-05T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "away_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-251",
+      "kickoff_utc": "2026-04-10T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "away_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "home_score": 4,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-252",
+      "kickoff_utc": "2026-04-10T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-253",
+      "kickoff_utc": "2026-04-11T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-254",
+      "kickoff_utc": "2026-04-11T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-255",
+      "kickoff_utc": "2026-04-12T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "away_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-256",
+      "kickoff_utc": "2026-04-12T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 4
+    },
+    {
+      "match_id": "fl1-2026-257",
+      "kickoff_utc": "2026-04-12T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-258",
+      "kickoff_utc": "2026-04-17T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "away_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-259",
+      "kickoff_utc": "2026-04-18T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "away_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-260",
+      "kickoff_utc": "2026-04-18T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "away_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-261",
+      "kickoff_utc": "2026-04-18T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-262",
+      "kickoff_utc": "2026-04-19T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "away_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-263",
+      "kickoff_utc": "2026-04-19T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2026-264",
+      "kickoff_utc": "2026-04-19T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-265",
+      "kickoff_utc": "2026-04-19T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "away_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2026-266",
+      "kickoff_utc": "2026-04-19T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-267",
+      "kickoff_utc": "2026-04-22T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-268",
+      "kickoff_utc": "2026-04-24T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2026-269",
+      "kickoff_utc": "2026-04-25T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "away_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-270",
+      "kickoff_utc": "2026-04-25T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2026-271",
+      "kickoff_utc": "2026-04-25T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "away_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-272",
+      "kickoff_utc": "2026-04-26T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "away_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2026-273",
+      "kickoff_utc": "2026-04-26T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "home_score": 4,
+      "away_score": 4
+    },
+    {
+      "match_id": "fl1-2026-274",
+      "kickoff_utc": "2026-04-26T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-275",
+      "kickoff_utc": "2026-04-26T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-276",
+      "kickoff_utc": "2026-04-26T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-277",
+      "kickoff_utc": "2026-05-02T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-278",
+      "kickoff_utc": "2026-05-02T16:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-279",
+      "kickoff_utc": "2026-05-02T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "away_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-280",
+      "kickoff_utc": "2026-05-02T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-281",
+      "kickoff_utc": "2026-05-03T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-282",
+      "kickoff_utc": "2026-05-03T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-283",
+      "kickoff_utc": "2026-05-03T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "away_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "home_score": 4,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-284",
+      "kickoff_utc": "2026-05-03T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "away_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-285",
+      "kickoff_utc": "2026-05-03T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "away_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "home_score": 4,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-286",
+      "kickoff_utc": "2026-05-08T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-287",
+      "kickoff_utc": "2026-05-10T20:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "away_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-288",
+      "kickoff_utc": "2026-05-10T20:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-289",
+      "kickoff_utc": "2026-05-10T20:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-290",
+      "kickoff_utc": "2026-05-10T20:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 4
+    },
+    {
+      "match_id": "fl1-2026-291",
+      "kickoff_utc": "2026-05-10T20:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-292",
+      "kickoff_utc": "2026-05-10T20:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "away_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-293",
+      "kickoff_utc": "2026-05-10T20:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-294",
+      "kickoff_utc": "2026-05-10T20:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-295",
+      "kickoff_utc": "2026-05-13T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "away_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-296",
+      "kickoff_utc": "2026-05-13T20:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-297",
+      "kickoff_utc": "2026-05-17T20:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "away_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-298",
+      "kickoff_utc": "2026-05-17T20:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-299",
+      "kickoff_utc": "2026-05-17T20:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "away_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-300",
+      "kickoff_utc": "2026-05-17T20:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 4
+    },
+    {
+      "match_id": "fl1-2026-301",
+      "kickoff_utc": "2026-05-17T20:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-302",
+      "kickoff_utc": "2026-05-17T20:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nantes",
+        "name": "Nantes",
+        "aliases": [
+          "Nantes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-303",
+      "kickoff_utc": "2026-05-17T20:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "away_team": {
+        "team_id": "Metz",
+        "name": "Metz",
+        "aliases": [
+          "Metz"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-304",
+      "kickoff_utc": "2026-05-17T20:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-305",
+      "kickoff_utc": "2026-05-17T20:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "away_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "home_score": 5,
+      "away_score": 4
+    },
+    {
+      "match_id": "fl1-2026-0",
+      "kickoff_utc": "2026-08-21T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "home_score": 4,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-1",
+      "kickoff_utc": "2026-08-22T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "away_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "home_score": 5,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-2",
+      "kickoff_utc": "2026-08-22T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Le Mans",
+        "name": "Le Mans",
+        "aliases": [
+          "Le Mans"
+        ]
+      },
+      "away_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-3",
+      "kickoff_utc": "2026-08-22T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-4",
+      "kickoff_utc": "2026-08-22T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-5",
+      "kickoff_utc": "2026-08-22T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Troyes",
+        "name": "Troyes",
+        "aliases": [
+          "Troyes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-6",
+      "kickoff_utc": "2026-08-23T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-7",
+      "kickoff_utc": "2026-08-23T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-8",
+      "kickoff_utc": "2026-08-23T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-9",
+      "kickoff_utc": "2026-08-28T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-10",
+      "kickoff_utc": "2026-08-29T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-11",
+      "kickoff_utc": "2026-08-29T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2026-12",
+      "kickoff_utc": "2026-08-29T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "away_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-13",
+      "kickoff_utc": "2026-08-29T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "away_team": {
+        "team_id": "Troyes",
+        "name": "Troyes",
+        "aliases": [
+          "Troyes"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-14",
+      "kickoff_utc": "2026-08-29T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "away_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-15",
+      "kickoff_utc": "2026-08-30T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-16",
+      "kickoff_utc": "2026-08-30T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Le Mans",
+        "name": "Le Mans",
+        "aliases": [
+          "Le Mans"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-17",
+      "kickoff_utc": "2026-08-30T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "away_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-18",
+      "kickoff_utc": "2026-09-03T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-19",
+      "kickoff_utc": "2026-09-04T18:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "away_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "home_score": 3,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-20",
+      "kickoff_utc": "2026-09-04T20:05:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "away_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-21",
+      "kickoff_utc": "2026-09-05T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-22",
+      "kickoff_utc": "2026-09-05T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-23",
+      "kickoff_utc": "2026-09-05T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "away_team": {
+        "team_id": "Le Mans",
+        "name": "Le Mans",
+        "aliases": [
+          "Le Mans"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-24",
+      "kickoff_utc": "2026-09-06T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Troyes",
+        "name": "Troyes",
+        "aliases": [
+          "Troyes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 6
+    },
+    {
+      "match_id": "fl1-2026-25",
+      "kickoff_utc": "2026-09-06T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "away_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-26",
+      "kickoff_utc": "2026-09-06T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 3
+    },
+    {
+      "match_id": "fl1-2026-27",
+      "kickoff_utc": "2026-09-11T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Rennes",
+        "name": "Rennes",
+        "aliases": [
+          "Rennes"
+        ]
+      },
+      "away_team": {
+        "team_id": "Marseille",
+        "name": "Marseille",
+        "aliases": [
+          "Marseille"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-28",
+      "kickoff_utc": "2026-09-12T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Strasbourg",
+        "name": "Strasbourg",
+        "aliases": [
+          "Strasbourg"
+        ]
+      },
+      "away_team": {
+        "team_id": "Monaco",
+        "name": "Monaco",
+        "aliases": [
+          "Monaco"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "match_id": "fl1-2026-29",
+      "kickoff_utc": "2026-09-12T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Auxerre",
+        "name": "Auxerre",
+        "aliases": [
+          "Auxerre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Nice",
+        "name": "Nice",
+        "aliases": [
+          "Nice"
+        ]
+      },
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-30",
+      "kickoff_utc": "2026-09-12T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Le Havre",
+        "name": "Le Havre",
+        "aliases": [
+          "Le Havre"
+        ]
+      },
+      "away_team": {
+        "team_id": "Angers",
+        "name": "Angers",
+        "aliases": [
+          "Angers"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-31",
+      "kickoff_utc": "2026-09-12T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lorient",
+        "name": "Lorient",
+        "aliases": [
+          "Lorient"
+        ]
+      },
+      "away_team": {
+        "team_id": "Toulouse",
+        "name": "Toulouse",
+        "aliases": [
+          "Toulouse"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-32",
+      "kickoff_utc": "2026-09-12T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Paris FC",
+        "name": "Paris FC",
+        "aliases": [
+          "Paris FC"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lyon",
+        "name": "Lyon",
+        "aliases": [
+          "Lyon"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-33",
+      "kickoff_utc": "2026-09-13T14:00:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Lille",
+        "name": "Lille",
+        "aliases": [
+          "Lille"
+        ]
+      },
+      "away_team": {
+        "team_id": "Troyes",
+        "name": "Troyes",
+        "aliases": [
+          "Troyes"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "match_id": "fl1-2026-34",
+      "kickoff_utc": "2026-09-13T16:15:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Le Mans",
+        "name": "Le Mans",
+        "aliases": [
+          "Le Mans"
+        ]
+      },
+      "away_team": {
+        "team_id": "Lens",
+        "name": "Lens",
+        "aliases": [
+          "Lens"
+        ]
+      },
+      "home_score": 2,
+      "away_score": 2
+    },
+    {
+      "match_id": "fl1-2026-35",
+      "kickoff_utc": "2026-09-13T19:45:00Z",
+      "status": "FINISHED",
+      "home_team": {
+        "team_id": "Brest",
+        "name": "Brest",
+        "aliases": [
+          "Brest"
+        ]
+      },
+      "away_team": {
+        "team_id": "Paris SG",
+        "name": "Paris SG",
+        "aliases": [
+          "Paris SG"
+        ]
+      },
+      "home_score": 0,
+      "away_score": 1
+    }
+  ]
+}

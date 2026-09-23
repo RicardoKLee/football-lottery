@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://football-lottery.local/schemas/model-prediction.schema.json",
+  "title": "Club league model prediction",
+  "type": "object",
+  "required": ["schema_version", "kind", "model", "match", "data_snapshot", "probabilities", "quality"],
+  "properties": {
+    "schema_version": {"const": "2.0"},
+    "kind": {"const": "model_prediction"},
+    "model": {
+      "type": "object",
+      "required": ["name", "version", "parameters"],
+      "properties": {
+        "name": {"type": "string"},
+        "version": {"type": "string"},
+        "parameters": {"type": "object"}
+      }
+    },
+    "match": {
+      "type": "object",
+      "required": ["match_id", "competition_code", "kickoff_utc", "home_team", "away_team"],
+      "properties": {
+        "match_id": {"type": "string", "minLength": 1},
+        "competition_code": {"enum": ["PL", "PD", "BL1", "SA", "FL1"]},
+        "kickoff_utc": {"type": "string", "format": "date-time"},
+        "home_team": {"$ref": "#/$defs/team"},
+        "away_team": {"$ref": "#/$defs/team"}
+      }
+    },
+    "data_snapshot": {
+      "type": "object",
+      "required": ["provider", "source_url", "fetched_at"],
+      "properties": {
+        "provider": {"type": "string"},
+        "source_url": {"type": "string"},
+        "fetched_at": {"type": "string", "format": "date-time"}
+      }
+    },
+    "probabilities": {
+      "type": "object",
+      "required": ["had", "score", "ttg"],
+      "properties": {
+        "had": {"$ref": "#/$defs/probabilityMap"},
+        "score": {"$ref": "#/$defs/probabilityMap"},
+        "ttg": {"$ref": "#/$defs/probabilityMap"}
+      }
+    },
+    "quality": {
+      "type": "object",
+      "required": ["status", "missing_data"],
+      "properties": {
+        "status": {"enum": ["sufficient", "insufficient"]},
+        "missing_data": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  },
+  "$defs": {
+    "team": {
+      "type": "object",
+      "required": ["team_id", "name", "aliases"],
+      "properties": {
+        "team_id": {"type": "string", "minLength": 1},
+        "name": {"type": "string", "minLength": 1},
+        "aliases": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "probabilityMap": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"type": "number", "minimum": 0, "maximum": 1}
+    }
+  }
+}
+

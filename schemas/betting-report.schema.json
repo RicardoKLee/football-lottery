@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://football-lottery.local/schemas/betting-report.schema.json",
+  "title": "Conservative betting report",
+  "type": "object",
+  "required": ["schema_version", "kind", "generated_at", "policy", "recommendations", "rejections", "bankroll"],
+  "properties": {
+    "schema_version": {"const": "2.0"},
+    "kind": {"const": "betting_report"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "policy": {"type": "object"},
+    "recommendations": {"type": "array", "items": {"type": "object"}},
+    "rejections": {"type": "array", "items": {"type": "object"}},
+    "bankroll": {
+      "type": "object",
+      "required": ["total", "staked", "cash_reserved"],
+      "properties": {
+        "total": {"type": "number", "minimum": 0},
+        "staked": {"type": "number", "minimum": 0},
+        "cash_reserved": {"type": "number", "minimum": 0}
+      }
+    }
+  }
+}

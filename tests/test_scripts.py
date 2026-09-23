@@ -1,505 +1,489 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
-import sys
+import json
 import os
+import sys
+import tempfile
 import unittest
-import math
+from datetime import datetime, timedelta, timezone
 
-# Add scripts directory to sys.path to allow absolute imports of helper scripts
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../scripts')))
+SCRIPTS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "scripts")
+if SCRIPTS_DIR not in sys.path:
+    sys.path.insert(0, SCRIPTS_DIR)
 
-import fetch_match_data
+import backtest_model
+import contracts
 import fetch_lottery_data
-import generate_betting_recommendation_strict as strict_rec
-import generate_betting_recommendation as standard_rec
+import fetch_match_data
+import generate_betting_recommendation as betting
+import generate_betting_recommendation_strict as strict_betting
+import model_core
 import simulate_stochastic_prediction as stochastic
 
-
-class TestFetchMatchData(unittest.TestCase):
-    """
-    Unit tests for fetch_match_data.py helper functions.
-    """
-
-    def test_should_match_DZ_when_searching_algeria(self):
-        # Arrange
-        name_en = "Algeria"
-        name_cn = "阿尔及利亚"
-        name_alias = "dz"
-
-        # Act
-        code_en = fetch_match_data.find_country_code(name_en)
-        code_cn = fetch_match_data.find_country_code(name_cn)
-        code_alias = fetch_match_data.find_country_code(name_alias)
-
-        # Assert
-        self.assertEqual(code_en, "DZ")
-        self.assertEqual(code_cn, "DZ")
-        self.assertEqual(code_alias, "DZ")
-
-    def test_should_return_None_when_searching_unknown_country(self):
-        # Arrange
-        unknown_name = "Atlantis"
-
-        # Act
-        code = fetch_match_data.find_country_code(unknown_name)
-
-        # Assert
-        self.assertIsNone(code)
-
-    def test_should_sum_to_one_when_calculating_probabilities(self):
-        # Arrange
-        elo1 = 1800
-        elo2 = 1600
-
-        # Act
-        p_win, p_draw, p_loss = fetch_match_data.calculate_probabilities(elo1, elo2)
-
-        # Assert
-        self.assertAlmostEqual(p_win + p_draw + p_loss, 1.0, places=9)
-        self.assertTrue(0.01 <= p_win <= 0.98)
-        self.assertTrue(0.01 <= p_draw <= 0.50)
-        self.assertTrue(0.01 <= p_loss <= 0.98)
-
-    def test_should_increase_win_probability_when_elo_difference_is_positive(self):
-        # Arrange
-        high_elo = 1800
-        low_elo = 1500
-
-        # Act
-        p_win_fav, _, _ = fetch_match_data.calculate_probabilities(high_elo, low_elo)
-        p_win_underdog, _, _ = fetch_match_data.calculate_probabilities(low_elo, high_elo)
-
-        # Assert
-        self.assertTrue(p_win_fav > p_win_underdog)
+NOW = datetime(2026, 8, 25, 8, 0, tzinfo=timezone.utc)
 
 
-class TestFetchLotteryData(unittest.TestCase):
-    """
-    Unit tests for fetch_lottery_data.py helper functions.
-    """
+def iso(value):
+    return value.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
 
-    def test_should_filter_matches_when_date_or_team_matches(self):
-        # Arrange
-        mock_matches = [
+
+def make_history():
+    matches = []
+    results = [
+        ("1", "2", 2, 0),
+        ("3", "1", 1, 1),
+        ("2", "3", 1, 0),
+        ("1", "3", 3, 1),
+        ("2", "1", 1, 2),
+        ("3", "2", 0, 0),
+        ("1", "2", 1, 0),
+        ("2", "3", 2, 1),
+        ("3", "1", 0, 2),
+    ]
+    names = {"1": "Alpha FC", "2": "Beta FC", "3": "Gamma FC"}
+    for index, (home_id, away_id, home_goals, away_goals) in enumerate(results):
+        matches.append(
             {
-                "match_date": "2026-06-21",
-                "business_date": "2026-06-21",
-                "home_team": "新西兰",
-                "away_team": "埃及",
-                "match_id": "1001"
-            },
-            {
-                "match_date": "2026-06-22",
-                "business_date": "2026-06-22",
-                "home_team": "乌拉圭",
-                "away_team": "佛得角",
-                "match_id": "1002"
+                "id": f"history-{index}",
+                "utcDate": iso(NOW - timedelta(days=90 - index * 7)),
+                "status": "FINISHED",
+                "homeTeam": {"id": int(home_id), "name": names[home_id]},
+                "awayTeam": {"id": int(away_id), "name": names[away_id]},
+                "score": {"fullTime": {"home": home_goals, "away": away_goals}},
             }
+        )
+    return matches
+
+
+def make_prediction(match_id="sporttery:1001", quality="sufficient", home_probability=0.60):
+    away_probability = 0.16
+    draw_probability = 1.0 - home_probability - away_probability
+    score = {
+        "0-0": 0.08,
+        "1-0": 0.22,
+        "1-1": 0.18,
+        "2-0": 0.16,
+        "2-1": 0.16,
+        "0-1": 0.08,
+        "1-2": 0.07,
+        "0-2": 0.05,
+    }
+    ttg = {"s0": 0.08, "s1": 0.30, "s2": 0.39, "s3": 0.16, "s4": 0.05, "s5": 0.01, "s6": 0.005, "s7": 0.005}
+    return {
+        "schema_version": "2.0",
+        "kind": "model_prediction",
+        "model": {"name": "club-league-elo-poisson", "version": "2.0.0", "parameters": {}},
+        "match": {
+            "match_id": match_id,
+            "lottery_match_id": match_id,
+            "competition_code": "PL",
+            "competition_name": "Premier League",
+            "kickoff_utc": iso(NOW + timedelta(hours=8)),
+            "home_team": {"team_id": "65", "name": "Manchester City FC", "aliases": ["曼城"]},
+            "away_team": {"team_id": "66", "name": "Manchester United FC", "aliases": ["曼联"]},
+        },
+        "data_snapshot": {
+            "provider": "football-data.org",
+            "source_url": "https://api.football-data.org/v4/competitions/PL/matches",
+            "fetched_at": iso(NOW - timedelta(minutes=10)),
+        },
+        "expected_goals": {"home": 1.8, "away": 0.9},
+        "probabilities": {
+            "had": {"H": home_probability, "D": draw_probability, "A": away_probability},
+            "score": score,
+            "ttg": ttg,
+        },
+        "quality": {
+            "status": quality,
+            "missing_data": [] if quality == "sufficient" else ["insufficient_home_history"],
+        },
+    }
+
+
+def make_odds_snapshot(fetched_at=None, available=True):
+    fetched_at = fetched_at or NOW - timedelta(seconds=30)
+    return {
+        "schema_version": "2.0",
+        "kind": "odds_snapshot",
+        "provider": "china-sporttery",
+        "source_url": fetch_lottery_data.SPORTTERY_API_URL,
+        "source_mode": "live",
+        "fetched_at": iso(fetched_at),
+        "requested_date": "2026-08-25",
+        "matches": [
+            {
+                "match_id": "sporttery:1001",
+                "provider_match_id": "1001",
+                "match_num": "周二001",
+                "competition": "英超",
+                "match_date": "2026-08-25",
+                "kickoff_utc": iso(NOW + timedelta(hours=8)),
+                "cutoff_utc": iso(NOW + timedelta(hours=7, minutes=55)),
+                "cutoff_is_estimated": True,
+                "sale_status": "listed_by_official_api" if available else "closed",
+                "is_available": available,
+                "availability_reasons": [] if available else ["sale_closed"],
+                "odds_observed_at": iso(fetched_at),
+                "home_team": {"name": "曼城", "provider_id": None},
+                "away_team": {"name": "曼联", "provider_id": None},
+                "odds": {
+                    "had": {"h": 2.00, "d": 3.60, "a": 5.50},
+                    "hhad": None,
+                    "ttg": None,
+                    "hafu": None,
+                    "crs": None,
+                },
+            }
+        ],
+    }
+
+
+class TestContracts(unittest.TestCase):
+    def test_should_accept_complete_model_prediction(self):
+        prediction = make_prediction()
+
+        result = contracts.validate_model_prediction(prediction)
+
+        self.assertIs(result, prediction)
+
+    def test_should_reject_prediction_when_probability_distribution_is_invalid(self):
+        prediction = make_prediction()
+        prediction["probabilities"]["had"]["H"] = 0.9
+
+        with self.assertRaises(contracts.ContractError):
+            contracts.validate_model_prediction(prediction)
+
+    def test_should_reject_odds_snapshot_when_required_time_is_missing(self):
+        snapshot = make_odds_snapshot()
+        del snapshot["fetched_at"]
+
+        with self.assertRaises(contracts.ContractError):
+            contracts.validate_odds_snapshot(snapshot)
+
+
+class TestClubModel(unittest.TestCase):
+    def test_should_apply_home_advantage_to_equal_ratings(self):
+        home_expectation = model_core.expected_home_result(1500.0, 1500.0, home_advantage_elo=60.0)
+
+        self.assertGreater(home_expectation, 0.5)
+
+    def test_should_build_club_elo_from_finished_matches(self):
+        ratings, counts = model_core.build_elo_ratings(make_history(), home_advantage_elo=60.0)
+
+        self.assertEqual(set(ratings), {"1", "2", "3"})
+        self.assertGreater(counts["1"], 0)
+        self.assertGreater(ratings["1"], ratings["3"])
+
+    def test_should_resolve_team_by_stable_id_or_exact_alias_only(self):
+        teams = model_core.collect_teams(make_history())
+
+        by_id = model_core.resolve_team("1", teams)
+        by_name = model_core.resolve_team("Alpha FC", teams)
+
+        self.assertEqual(by_id["team_id"], "1")
+        self.assertEqual(by_name["team_id"], "1")
+        with self.assertRaises(model_core.TeamResolutionError):
+            model_core.resolve_team("Alpha", teams)
+
+    def test_should_reject_malformed_finished_history_instead_of_silently_dropping_it(self):
+        malformed = make_history()
+        malformed[0]["score"]["fullTime"]["home"] = None
+
+        with self.assertRaises(model_core.ModelDataError):
+            model_core.finished_matches_before(malformed)
+
+    def test_should_merge_current_registry_for_team_without_league_history(self):
+        history_teams = model_core.collect_teams(make_history())
+        registry = [{"team_id": "4", "name": "Promoted FC", "aliases": ["升班马"]}]
+
+        teams = fetch_match_data.merge_team_registry(history_teams, registry)
+
+        self.assertEqual(model_core.resolve_team("4", teams)["name"], "Promoted FC")
+
+    def test_should_create_structured_club_prediction_without_world_cup_fields(self):
+        prediction = model_core.create_prediction(
+            history_matches=make_history(),
+            match={
+                "match_id": "future-1",
+                "competition_code": "PL",
+                "competition_name": "Premier League",
+                "season": "2026",
+                "kickoff_utc": iso(NOW + timedelta(hours=8)),
+                "home_team": {"team_id": "1", "name": "Alpha FC", "aliases": ["阿尔法"]},
+                "away_team": {"team_id": "2", "name": "Beta FC", "aliases": ["贝塔"]},
+            },
+            data_snapshot={
+                "provider": "fixture",
+                "source_url": "tests",
+                "fetched_at": iso(NOW),
+            },
+            parameters=model_core.ModelParameters(min_team_matches=2),
+        )
+
+        contracts.validate_model_prediction(prediction)
+        serialized = json.dumps(prediction, ensure_ascii=False).lower()
+        self.assertNotIn("world cup", serialized)
+        self.assertNotIn("wc2026", serialized)
+        self.assertNotIn("average_age", serialized)
+        self.assertAlmostEqual(sum(prediction["probabilities"]["had"].values()), 1.0, places=9)
+        self.assertAlmostEqual(sum(prediction["probabilities"]["score"].values()), 1.0, places=9)
+        self.assertAlmostEqual(sum(prediction["probabilities"]["ttg"].values()), 1.0, places=9)
+
+
+class TestLotteryData(unittest.TestCase):
+    def raw_match(self, sale_status=None):
+        match = {
+            "matchId": "1001",
+            "matchNumStr": "周三001",
+            "matchDate": "2026-08-26",
+            "matchTime": "20:00:00",
+            "homeTeamAbbName": "曼城",
+            "awayTeamAbbName": "曼联",
+            "leagueAbbName": "英超",
+            "had": {"h": "2.00", "d": "3.60", "a": "5.50"},
+        }
+        if sale_status is not None:
+            match["sellStatus"] = sale_status
+        return {"success": True, "value": {"matchInfoList": [{"businessDate": "2026-08-26", "subMatchList": [match]}]}}
+
+    def test_should_treat_future_match_listed_by_live_official_api_as_available(self):
+        snapshot = fetch_lottery_data.parse_odds_data(
+            self.raw_match(), fetched_at=NOW, source_mode="live", now=NOW
+        )
+
+        self.assertEqual(snapshot["matches"][0]["sale_status"], "listed_by_official_api")
+        self.assertTrue(snapshot["matches"][0]["is_available"])
+
+    def test_should_fail_closed_when_file_snapshot_has_no_sale_status(self):
+        snapshot = fetch_lottery_data.parse_odds_data(
+            self.raw_match(), fetched_at=NOW, source_mode="file", now=NOW
+        )
+
+        self.assertFalse(snapshot["matches"][0]["is_available"])
+        self.assertIn("sale_status_unknown", snapshot["matches"][0]["availability_reasons"])
+
+    def test_should_reject_explicitly_closed_match(self):
+        snapshot = fetch_lottery_data.parse_odds_data(
+            self.raw_match("0"), fetched_at=NOW, source_mode="live", now=NOW
+        )
+
+        self.assertFalse(snapshot["matches"][0]["is_available"])
+        self.assertIn("sale_closed", snapshot["matches"][0]["availability_reasons"])
+
+    def test_should_filter_available_matches_by_date(self):
+        snapshot = fetch_lottery_data.parse_odds_data(
+            self.raw_match(), fetched_at=NOW, source_mode="live", now=NOW
+        )
+
+        matches = fetch_lottery_data.filter_matches(
+            snapshot["matches"], date="2026-08-26", available_only=True
+        )
+
+        self.assertEqual(len(matches), 1)
+
+    def test_should_record_invalid_provider_match_without_crashing(self):
+        raw = {"success": True, "value": {"matchInfoList": [{"businessDate": "2026-08-26", "subMatchList": [None]}]}}
+
+        snapshot = fetch_lottery_data.parse_odds_data(raw, fetched_at=NOW, now=NOW)
+
+        self.assertEqual(snapshot["matches"], [])
+        self.assertEqual(len(snapshot["parse_errors"]), 1)
+
+
+class TestBettingAnalysis(unittest.TestCase):
+    def test_should_calculate_normalized_market_probabilities(self):
+        margin, payout, implied = betting.calculate_market_margin_and_implied_probs(
+            {"h": 2.0, "d": 3.5, "a": 4.5}
+        )
+
+        self.assertGreater(margin, 0)
+        self.assertLess(payout, 1)
+        self.assertAlmostEqual(sum(implied.values()), 1.0, places=9)
+
+    def test_should_return_no_recommendation_when_odds_snapshot_is_stale(self):
+        snapshot = make_odds_snapshot(fetched_at=NOW - timedelta(hours=1))
+
+        report = betting.analyze_daily(
+            snapshot, [make_prediction()], now=NOW, max_odds_age_seconds=900
+        )
+
+        self.assertEqual(report["recommendations"], [])
+        self.assertTrue(any(item["reason"] == "odds_snapshot_stale" for item in report["rejections"]))
+
+    def test_should_return_no_recommendation_when_prediction_is_insufficient(self):
+        report = betting.analyze_daily(
+            make_odds_snapshot(), [make_prediction(quality="insufficient")], now=NOW
+        )
+
+        self.assertEqual(report["recommendations"], [])
+        self.assertTrue(any(item["reason"] == "prediction_quality_insufficient" for item in report["rejections"]))
+
+    def test_should_use_real_odds_and_keep_unallocated_cash(self):
+        report = betting.analyze_daily(
+            make_odds_snapshot(),
+            [make_prediction()],
+            now=NOW,
+            bankroll=200.0,
+            probability_haircut=0.02,
+            min_ev_low=0.05,
+        )
+
+        self.assertEqual(len(report["recommendations"]), 1)
+        recommendation = report["recommendations"][0]
+        self.assertEqual(recommendation["odds"], 2.0)
+        self.assertGreater(recommendation["ev_low"], 0.05)
+        self.assertGreater(report["bankroll"]["cash_reserved"], 0.0)
+        self.assertLess(report["bankroll"]["staked"], 200.0)
+
+    def test_should_not_create_odds_when_match_cannot_be_mapped(self):
+        prediction = make_prediction(match_id="different-id")
+        prediction["match"]["lottery_match_id"] = "different-id"
+        prediction["match"]["home_team"]["aliases"] = []
+        prediction["match"]["away_team"]["aliases"] = []
+
+        report = betting.analyze_daily(make_odds_snapshot(), [prediction], now=NOW)
+
+        self.assertEqual(report["recommendations"], [])
+        self.assertTrue(any(item["reason"] == "prediction_not_found" for item in report["rejections"]))
+
+    def test_should_not_trust_available_flag_when_sale_status_is_closed(self):
+        snapshot = make_odds_snapshot()
+        snapshot["matches"][0]["sale_status"] = "closed"
+        snapshot["matches"][0]["is_available"] = True
+
+        report = betting.analyze_daily(snapshot, [make_prediction()], now=NOW)
+
+        self.assertEqual(report["recommendations"], [])
+        self.assertTrue(any(item["reason"] == "match_not_available" for item in report["rejections"]))
+
+    def test_should_not_evaluate_incomplete_market(self):
+        snapshot = make_odds_snapshot()
+        snapshot["matches"][0]["odds"]["had"] = {"h": 2.0, "d": 3.6}
+
+        report = betting.analyze_daily(snapshot, [make_prediction()], now=NOW)
+
+        self.assertEqual(report["recommendations"], [])
+        self.assertTrue(any(item["reason"] == "no_selection_above_ev_threshold" for item in report["rejections"]))
+
+    def test_should_cap_total_exposure_without_forcing_full_bankroll(self):
+        bets = [
+            {"bet_id": str(index), "kelly_fraction": 0.10, "odds": 2.0}
+            for index in range(10)
         ]
 
-        # Act & Assert
-        # Case 1: Filter by exact date
-        filtered_date = fetch_lottery_data.filter_matches(mock_matches, date="2026-06-21")
-        self.assertEqual(len(filtered_date), 1)
-        self.assertEqual(filtered_date[0]["match_id"], "1001")
-
-        # Case 2: Filter by team name (fuzzy match)
-        filtered_team = fetch_lottery_data.filter_matches(mock_matches, team="乌拉圭")
-        self.assertEqual(len(filtered_team), 1)
-        self.assertEqual(filtered_team[0]["match_id"], "1002")
-
-        # Case 3: Filter by match ID
-        filtered_id = fetch_lottery_data.filter_matches(mock_matches, match_id="1001")
-        self.assertEqual(len(filtered_id), 1)
-        self.assertEqual(filtered_id[0]["match_id"], "1001")
-
-
-class TestBettingRecommendationStrict(unittest.TestCase):
-    """
-    Unit tests for generate_betting_recommendation_strict.py helper functions.
-    """
-
-    def test_should_return_correct_margin_and_probs_when_odds_are_valid(self):
-        # Arrange
-        valid_odds = {"h": 1.53, "d": 3.83, "a": 4.65}
-
-        # Act
-        margin, payout, implied_probs = strict_rec.calculate_market_margin_and_implied_probs(valid_odds)
-
-        # Assert
-        # Overround sum = 1/1.53 + 1/3.83 + 1/4.65 = 0.65359 + 0.26110 + 0.21505 = 1.12974
-        # Margin = 1.12974 - 1.0 = 0.12974 (12.97%)
-        # Payout = 1.0 / 1.12974 = 0.88516 (88.51%)
-        self.assertAlmostEqual(margin, 0.12974, delta=0.001)
-        self.assertAlmostEqual(payout, 0.88516, delta=0.001)
-        self.assertEqual(list(implied_probs.keys()), ["H", "D", "A"])
-        self.assertAlmostEqual(sum(implied_probs.values()), 1.0, places=9)
-
-    def test_should_handle_gracefully_when_odds_are_invalid_or_missing(self):
-        # Arrange
-        invalid_odds = {"h": None, "d": 0.0, "a": -2.0}
-
-        # Act
-        margin, payout, implied_probs = strict_rec.calculate_market_margin_and_implied_probs(invalid_odds)
-
-        # Assert
-        self.assertEqual(margin, 0.0)
-        self.assertEqual(payout, 1.0)
-        self.assertEqual(implied_probs, {})
-
-    def test_should_return_zero_stake_when_ev_is_non_positive(self):
-        # Arrange
-        ev_neg = -0.05
-        ev_zero = 0.0
-        odds = 2.0
-
-        # Act
-        stake_neg = strict_rec.calculate_kelly_position(ev_neg, odds)
-        stake_zero = strict_rec.calculate_kelly_position(ev_zero, odds)
-
-        # Assert
-        self.assertEqual(stake_neg, 0.0)
-        self.assertEqual(stake_zero, 0.0)
-
-    def test_should_calculate_capped_half_kelly_when_ev_is_positive(self):
-        # Arrange
-        ev_pos = 0.10
-        odds_even = 2.0  # (odds - 1) = 1.0 -> kelly = 0.10 -> half_kelly = 0.05
-        odds_high = 11.0 # (odds - 1) = 10.0 -> kelly = 0.01 -> half_kelly = 0.005
-        odds_low = 1.2   # (odds - 1) = 0.2 -> kelly = 0.50 -> half_kelly = 0.25 (should cap at 0.10)
-
-        # Act
-        stake_even = strict_rec.calculate_kelly_position(ev_pos, odds_even)
-        stake_high = strict_rec.calculate_kelly_position(ev_pos, odds_high)
-        stake_low = strict_rec.calculate_kelly_position(ev_pos, odds_low)
-
-        # Assert
-        self.assertAlmostEqual(stake_even, 0.05, places=9)
-        self.assertAlmostEqual(stake_high, 0.005, places=9)
-        self.assertAlmostEqual(stake_low, 0.10, places=9)  # capped at 10%
-
-    def test_should_return_correct_bet_label_when_market_is_valid(self):
-        # Arrange & Act & Assert
-        self.assertEqual(strict_rec.format_bet_label("HAD", "H"), "HAD-H（胜平负-主胜）")
-        self.assertEqual(strict_rec.format_bet_label("HHAD (-1)", "D"), "HHAD (-1)-D（让球胜平负-让平）")
-        self.assertEqual(strict_rec.format_bet_label("TTG", "1球"), "TTG-1球（总进球数-1球）")
-
-    def test_should_map_predictions_to_valid_probability_distributions(self):
-        # Arrange
-        pred_data = {
-            "s_score": 2.125,
-            "elo_probs": {"win": 0.45, "draw": 0.25, "loss": 0.30},
-            "had_pred": "主胜",
-            "crs_first": "2-0",
-            "crs_second": "1-0",
-            "crs_third": "2-1"
-        }
-
-        # Act
-        result = strict_rec.map_predictions_to_probabilities(pred_data)
-
-        # Assert
-        self.assertIn("had", result)
-        self.assertIn("crs", result)
-        self.assertIn("ttg", result)
-        self.assertAlmostEqual(sum(result["had"].values()), 1.0, places=9)
-        self.assertAlmostEqual(sum(result["crs"].values()), 1.0, places=9)
-        self.assertAlmostEqual(sum(result["ttg"].values()), 1.0, places=9)
-
-    def test_should_return_correct_fallback_odds_for_home_let_or_receive_goals(self):
-        # Arrange
-        # Case A: Home is favorite (p_win > p_loss) -> goal_line = -1, lets 1 goal
-        # Case B: Away is favorite (p_win < p_loss) -> goal_line = 1, receives 1 goal (Regression bug check)
-        pred_fav_home = {
-            "team1": "主队",
-            "team2": "客队",
-            "s_score": 1.0,
-            "elo_probs": {"win": 0.50, "draw": 0.30, "loss": 0.20},
-            "had_pred": "主胜",
-            "crs_first": "1-0",
-            "crs_second": "2-1",
-            "crs_third": "2-0"
-        }
-        pred_fav_away = {
-            "team1": "主队",
-            "team2": "客队",
-            "s_score": -1.0,
-            "elo_probs": {"win": 0.15, "draw": 0.30, "loss": 0.55},
-            "had_pred": "客胜",
-            "crs_first": "0-1",
-            "crs_second": "1-2",
-            "crs_third": "0-2"
-        }
-
-        # Act
-        # Set up a parsing framework mock to match generate_betting_recommendation_strict line 348 logic
-        probs_home = strict_rec.map_predictions_to_probabilities(pred_fav_home)
-        probs_away = strict_rec.map_predictions_to_probabilities(pred_fav_away)
-
-        # Simulated regression logic to verify that our fix produces reasonable, capped payouts
-        goal_line_home = -1
-        p_hhad_h_home = probs_home["had"]["H"] * 0.55
-        h_odds_home = round((1.0 / p_hhad_h_home) * 0.88, 2)
-
-        goal_line_away = 1
-        p_hhad_h_away = probs_away["had"]["H"] + probs_away["had"]["D"]
-        h_odds_away = round((1.0 / p_hhad_h_away) * 0.88, 2)
-
-        # Assert
-        # Case A: home is lets 1 goal -> odds should be higher as probability is smaller (p_win * 0.55)
-        # Case B: home receives 1 goal -> odds should be lower as probability is higher (p_win + p_draw)
-        # This prevents the extreme odds bug (like 38.14) when receiving goals!
-        self.assertEqual(goal_line_home, -1)
-        self.assertEqual(goal_line_away, 1)
-        self.assertTrue(h_odds_home > h_odds_away)
-        self.assertTrue(h_odds_away < 5.0)  # Should be within reasonable bounds since p_win+p_draw > 0.3
-
-
-class TestBettingRecommendationStandard(unittest.TestCase):
-    """
-    Unit tests for generate_betting_recommendation.py helper functions.
-    """
-
-    def test_should_return_correct_poisson_probability(self):
-        # Arrange & Act
-        p0 = standard_rec.poisson_probability(0, 1.5)  # e^-1.5 * 1.5^0 / 0! = e^-1.5
-        p1 = standard_rec.poisson_probability(1, 1.5)  # e^-1.5 * 1.5^1 / 1! = 1.5 * e^-1.5
-        p_neg = standard_rec.poisson_probability(0, -1.0)
-
-        # Assert
-        self.assertAlmostEqual(p0, math.exp(-1.5), places=9)
-        self.assertAlmostEqual(p1, 1.5 * math.exp(-1.5), places=9)
-        self.assertEqual(p_neg, 1.0)
-
-    def test_should_generate_score_grid_summing_to_one(self):
-        # Arrange
-        xg1, xg2 = 1.2, 0.8
-
-        # Act
-        grid = standard_rec.generate_score_grid(xg1, xg2)
-
-        # Assert
-        self.assertAlmostEqual(sum(grid.values()), 1.0, places=9)
-
-    def test_should_estimate_reasonable_xg_from_probabilities(self):
-        # Arrange
-        p_win, p_draw, p_loss = 0.50, 0.30, 0.20
-
-        # Act
-        xg1, xg2 = standard_rec.estimate_xg_from_probabilities(p_win, p_draw, p_loss)
-
-        # Assert
-        self.assertTrue(0.2 <= xg1 <= 4.0)
-        self.assertTrue(0.2 <= xg2 <= 4.0)
-        self.assertTrue(xg1 > xg2)  # because p_win > p_loss
-
-
-class TestSimulateStochasticPrediction(unittest.TestCase):
-    """
-    Unit tests for simulate_stochastic_prediction.py helper functions.
-    """
-
-    def test_should_return_zero_when_poisson_lambda_is_zero_or_less(self):
-        # Arrange & Act
-        val_zero = stochastic.sample_poisson(0.0)
-        val_neg = stochastic.sample_poisson(-1.5)
-
-        # Assert
-        self.assertEqual(val_zero, 0)
-        self.assertEqual(val_neg, 0)
-
-    def test_should_return_integer_greater_or_equal_to_zero_when_lambda_is_positive(self):
-        # Arrange
-        lam = 2.5
-
-        # Act
-        samples = [stochastic.sample_poisson(lam) for _ in range(50)]
-
-        # Assert
-        for s in samples:
-            self.assertIsInstance(s, int)
-            self.assertTrue(s >= 0)
-
-    def test_should_return_float_when_sampling_normal_distribution(self):
-        # Arrange
-        mu, sigma = 10.0, 2.0
-
-        # Act
-        sample = stochastic.sample_normal(mu, sigma)
-
-        # Assert
-        self.assertIsInstance(sample, float)
-
-    def test_should_run_monte_carlo_simulation_successfully_and_output_valid_ranges(self):
-        # Arrange
-        home, away = "新西兰", "埃及"
-        base_lambda, base_mu = 1.1, 1.4
-
-        # Act
-        res = stochastic.run_monte_carlo_simulation(
-            home_name=home,
-            away_name=away,
-            base_lambda=base_lambda,
-            base_mu=base_mu,
-            num_samples=100
+        allocated, summary = betting.allocate_bankroll(
+            bets, bankroll=200.0, unit=2.0, max_total_exposure=0.20
         )
 
-        # Assert
-        self.assertEqual(res["home"], home)
-        self.assertEqual(res["away"], away)
-        self.assertTrue(0.0 <= res["probabilities"]["win"] <= 1.0)
-        self.assertTrue(0.0 <= res["probabilities"]["draw"] <= 1.0)
-        self.assertTrue(0.0 <= res["probabilities"]["loss"] <= 1.0)
-        self.assertAlmostEqual(
-            res["probabilities"]["win"] + res["probabilities"]["draw"] + res["probabilities"]["loss"],
-            1.0,
-            places=9
+        self.assertLessEqual(summary["staked"], 40.0)
+        self.assertGreaterEqual(summary["cash_reserved"], 160.0)
+        self.assertTrue(all(item["stake"] % 2 == 0 for item in allocated))
+
+    def test_should_reject_negative_conservative_ev_threshold(self):
+        with self.assertRaises(ValueError):
+            betting.analyze_daily(
+                make_odds_snapshot(), [make_prediction()], now=NOW, min_ev_low=-0.01
+            )
+
+    def test_should_build_parlays_from_different_matches_only(self):
+        bets = [
+            {"bet_id": "a", "match_id": "m1", "probability": 0.6, "conservative_probability": 0.57, "odds": 2.0},
+            {"bet_id": "b", "match_id": "m1", "probability": 0.4, "conservative_probability": 0.37, "odds": 3.0},
+            {"bet_id": "c", "match_id": "m2", "probability": 0.55, "conservative_probability": 0.52, "odds": 2.1},
+        ]
+
+        parlays = betting.build_two_leg_parlays(bets, min_ev_low=0.0)
+
+        self.assertTrue(parlays)
+        for parlay in parlays:
+            self.assertEqual(len(set(parlay["match_ids"])), 2)
+
+
+class TestStochasticPrediction(unittest.TestCase):
+    def test_should_be_reproducible_when_seed_is_supplied(self):
+        first = stochastic.run_monte_carlo_simulation(
+            "Alpha FC", "Beta FC", 1.6, 1.0, num_samples=500, seed=42
+        )
+        second = stochastic.run_monte_carlo_simulation(
+            "Alpha FC", "Beta FC", 1.6, 1.0, num_samples=500, seed=42
         )
 
-
-class TestAgeFactorAndMetadata(unittest.TestCase):
-    def test_should_have_average_age_for_all_countries(self):
-        # Arrange & Act & Assert
-        for code, data in fetch_match_data.COUNTRY_METADATA.items():
-            self.assertIn("average_age", data, f"Country {code} is missing 'average_age'")
-            self.assertIsInstance(data["average_age"], (int, float))
-            self.assertTrue(15.0 < data["average_age"] < 45.0, f"Country {code} has unrealistic age: {data['average_age']}")
-
-    def test_should_apply_peak_age_adjustment_correctly(self):
-        # Spain (ES: 25.2, very close to peak 26.0) vs Iran (IR: 29.1, far from peak 26.0)
-        # Spain should receive a positive age_adj (win probability bump)
-        pred_data = {
-            "team1": "西班牙",
-            "team2": "伊朗",
-            "s_score": 0.0,
-            "elo_probs": {"win": 0.50, "draw": 0.30, "loss": 0.20},
-            "had_pred": "主胜",
-            "crs_first": "2-0",
-            "crs_second": "1-0",
-            "crs_third": "2-1"
-        }
-        
-        # Act
-        result = strict_rec.map_predictions_to_probabilities(pred_data)
-        
-        # Spain age: 25.2 -> eff: exp(-((25.2-26.0)**2)/(2*1.8**2)) = exp(-0.64/6.48) = 0.906
-        # Iran age: 29.1 -> eff: exp(-((29.1-26.0)**2)/(2*1.8**2)) = exp(-9.61/6.48) = 0.227
-        # age_bonus_diff = 0.906 - 0.227 = 0.679
-        # age_adj = 0.679 * 0.03 = +0.0203 (+2.03%)
-        # Without age adjustment, win probability is 0.50 - 0.075 = 0.425.
-        # Draw is 0.30 + 0.15 = 0.45, loss is 0.20 - 0.075 = 0.125.
-        # Total = 0.425 + 0.45 + 0.125 = 1.0
-        # With age_adj, we have win_adj = 0.425 + 0.0203 = 0.4453, loss_adj = 0.125 - 0.0203 = 0.1047, draw = 0.45
-        # Total = 0.4453 + 0.45 + 0.1047 = 1.0. No-vig win prob: 0.4453 / 1.0 = 44.53%.
-        # Spain's win probability with age_adj (0.4453) is strictly greater than 0.425 (no age adjustment).
-        self.assertGreater(result["had"]["H"], 0.425)
+        self.assertEqual(first, second)
+        self.assertEqual(first["parameters"]["seed"], 42)
+        self.assertAlmostEqual(sum(first["probabilities"].values()), 1.0, places=9)
 
 
-class TestScoreGridMapping(unittest.TestCase):
-    def test_should_map_score_grid_to_crs_probabilities_correctly(self):
-        # Arrange
-        score_grid = {
-            (1, 0): 0.20,
-            (2, 0): 0.15,
-            (0, 0): 0.10,
-            (1, 1): 0.15,
-            (0, 1): 0.10,
-            (0, 2): 0.10,
-            # High scores mapped to "Others"
-            (6, 0): 0.05,  # g1 > g2 -> "胜其他"
-            (4, 4): 0.05,  # g1 == g2 -> "平其他"
-            (0, 6): 0.10   # g1 < g2 -> "负其他"
-        }
-        
-        # Act
-        crs_probs = standard_rec.map_score_grid_to_crs_probs(score_grid)
-        
-        # Assert
-        self.assertAlmostEqual(crs_probs["1-0"], 0.20)
-        self.assertAlmostEqual(crs_probs["2-0"], 0.15)
-        self.assertAlmostEqual(crs_probs["0-0"], 0.10)
-        self.assertAlmostEqual(crs_probs["1-1"], 0.15)
-        self.assertAlmostEqual(crs_probs["0-1"], 0.10)
-        self.assertAlmostEqual(crs_probs["0-2"], 0.10)
-        self.assertAlmostEqual(crs_probs["胜其他"], 0.05)
-        self.assertAlmostEqual(crs_probs["平其他"], 0.05)
-        self.assertAlmostEqual(crs_probs["负其他"], 0.10)
-        self.assertAlmostEqual(sum(crs_probs.values()), 1.0)
+class TestWalkForwardBacktest(unittest.TestCase):
+    def test_should_evaluate_only_with_matches_before_target_kickoff(self):
+        report = backtest_model.run_walk_forward(
+            make_history(),
+            competition_code="PL",
+            min_training_matches=3,
+            parameters=model_core.ModelParameters(min_team_matches=1),
+        )
+
+        self.assertGreater(report["evaluated_matches"], 0)
+        self.assertEqual(report["method"], "walk_forward")
+        self.assertTrue(
+            all(
+                item["latest_training_kickoff_utc"] < item["target_kickoff_utc"]
+                for item in report["audit"]
+            )
+        )
+
+    def test_should_exclude_other_match_with_same_kickoff_from_training(self):
+        history = make_history()
+        history[4]["utcDate"] = history[3]["utcDate"]
+
+        report = backtest_model.run_walk_forward(
+            history,
+            competition_code="PL",
+            min_training_matches=3,
+            parameters=model_core.ModelParameters(min_team_matches=1),
+        )
+
+        self.assertTrue(
+            all(
+                item["latest_training_kickoff_utc"] < item["target_kickoff_utc"]
+                for item in report["audit"]
+            )
+        )
+
+    def test_should_report_model_and_simple_elo_metrics(self):
+        report = backtest_model.run_walk_forward(
+            make_history(),
+            competition_code="PL",
+            min_training_matches=3,
+            parameters=model_core.ModelParameters(min_team_matches=1),
+        )
+
+        for model_name in ("club_league_elo_poisson", "simple_home_elo"):
+            metrics = report["metrics"][model_name]
+            self.assertGreaterEqual(metrics["log_loss"], 0.0)
+            self.assertGreaterEqual(metrics["brier_score"], 0.0)
+            self.assertGreaterEqual(metrics["ranked_probability_score"], 0.0)
+            self.assertTrue(0.0 <= metrics["expected_calibration_error"] <= 1.0)
 
 
-class TestMixedParlayMode(unittest.TestCase):
-    """
-    Unit tests for mixed parlay mode (Mixed Parlay) calculation and validation.
-    """
+class TestPredictionFileIO(unittest.TestCase):
+    def test_should_write_json_atomically(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            path = os.path.join(tmpdir, "prediction.json")
 
-    def test_should_correctly_calculate_combo_ev_and_odds(self):
-        # Arrange
-        ev1 = 0.10
-        odds1 = 2.0
-        p1 = (ev1 + 1) / odds1  # p1 * 2 - 1 = 0.10 -> p1 = 0.55
-        
-        ev2 = 0.15
-        odds2 = 3.0
-        p2 = (ev2 + 1) / odds2  # p2 * 3 - 1 = 0.15 -> p2 = 0.3833
-        
-        # Act
-        p_combo = p1 * p2
-        odds_combo = odds1 * odds2
-        ev_combo = (ev1 + 1) * (ev2 + 1) - 1
-        
-        # Assert
-        self.assertAlmostEqual(p_combo, 0.55 * (1.15 / 3.0), places=6)
-        self.assertAlmostEqual(odds_combo, 6.0, places=6)
-        self.assertAlmostEqual(ev_combo, 1.10 * 1.15 - 1.0, places=6) # 0.265 (26.5% EV)
-        self.assertAlmostEqual(p_combo * odds_combo - 1, ev_combo, places=6)
+            contracts.write_json(path, make_prediction())
 
-    def test_should_serialize_mixed_combo_successfully(self):
-        # Arrange
-        mock_match1 = {
-            "match_num_str": "周六001",
-            "home_team": "巴西",
-            "away_team": "挪威"
-        }
-        mock_opt1 = {
-            "market": "HAD",
-            "option": "H",
-            "odds": 2.0,
-            "probability": 0.55,
-            "ev": 0.10
-        }
-        
-        mock_match2 = {
-            "match_num_str": "周六002",
-            "home_team": "葡萄牙",
-            "away_team": "西班牙"
-        }
-        mock_opt2 = {
-            "market": "CRS",
-            "option": "1-1",
-            "odds": 6.0,
-            "probability": 0.20,
-            "ev": 0.20
-        }
-        
-        combo = {
-            "legs": [(mock_match1, mock_opt1), (mock_match2, mock_opt2)],
-            "p_combo": 0.55 * 0.20,
-            "odds_combo": 2.0 * 6.0,
-            "ev_combo": 1.10 * 1.20 - 1,
-            "type": "2串1"
-        }
-        
-        # Act
-        serialized = strict_rec.serialize_mixed_combo(combo)
-        
-        # Assert
-        self.assertEqual(serialized["type"], "2串1")
-        self.assertEqual(len(serialized["legs"]), 2)
-        self.assertEqual(serialized["legs"][0]["match_num_str"], "周六001")
-        self.assertEqual(serialized["legs"][1]["market"], "CRS")
-        self.assertEqual(serialized["legs"][1]["option"], "1-1")
-        self.assertAlmostEqual(serialized["ev_combo"], 0.32)
+            with open(path, "r", encoding="utf-8") as handle:
+                loaded = json.load(handle)
+            self.assertEqual(loaded["kind"], "model_prediction")
+
+    def test_should_reject_markdown_as_prediction_input(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            path = os.path.join(tmpdir, "prediction.md")
+            with open(path, "w", encoding="utf-8") as handle:
+                handle.write("# prediction")
+
+            with self.assertRaises(contracts.ContractError):
+                strict_betting.load_predictions([path])
 
 
 if __name__ == "__main__":

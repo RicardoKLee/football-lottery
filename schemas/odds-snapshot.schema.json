@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://football-lottery.local/schemas/odds-snapshot.schema.json",
+  "title": "Sporttery odds snapshot",
+  "type": "object",
+  "required": ["schema_version", "kind", "provider", "source_url", "source_mode", "fetched_at", "matches"],
+  "properties": {
+    "schema_version": {"const": "2.0"},
+    "kind": {"const": "odds_snapshot"},
+    "provider": {"type": "string"},
+    "source_url": {"type": "string"},
+    "source_mode": {"enum": ["live", "file"]},
+    "fetched_at": {"type": "string", "format": "date-time"},
+    "matches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["match_id", "kickoff_utc", "cutoff_utc", "sale_status", "is_available", "odds_observed_at", "availability_reasons", "home_team", "away_team", "odds"],
+        "properties": {
+          "match_id": {"type": "string", "minLength": 1},
+          "kickoff_utc": {"type": "string", "format": "date-time"},
+          "cutoff_utc": {"type": "string", "format": "date-time"},
+          "sale_status": {"type": "string"},
+          "is_available": {"type": "boolean"},
+          "odds_observed_at": {"type": "string", "format": "date-time"},
+          "availability_reasons": {"type": "array", "items": {"type": "string"}},
+          "home_team": {"$ref": "#/$defs/team"},
+          "away_team": {"$ref": "#/$defs/team"},
+          "odds": {"type": "object"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "team": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "provider_id": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

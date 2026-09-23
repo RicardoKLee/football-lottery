@@ -1,207 +1,398 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
-import sys
-import urllib.request
-import json
 import argparse
-from datetime import datetime
+import json
+import os
+import socket
+import subprocess
+import sys
+import urllib.error
+import urllib.request
+from datetime import datetime, timedelta, timezone
 
-def fetch_raw_lottery_data():
-    """
-    Fetch the live football match and odds data from China Sporttery official API.
-    """
-    import os
-    # Check for local cache file first to support offline running and bypass network block
-    cache_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "lottery_data_20260703.json")
-    if os.path.exists(cache_path):
-        try:
-            with open(cache_path, "r", encoding="utf-8") as f:
-                print(f"Loading lottery data from local cache: {cache_path}")
-                return json.load(f)
-        except Exception as e:
-            sys.stderr.write(f"Error loading local lottery cache: {e}\n")
+from contracts import (
+    BUSINESS_TIMEZONE,
+    SCHEMA_VERSION,
+    ContractError,
+    load_json,
+    normalize_name,
+    parse_datetime,
+    utc_iso,
+    utc_now,
+    validate_odds_snapshot,
+    write_json,
+)
 
-    url = "https://webapi.sporttery.cn/gateway/jc/football/getMatchCalculatorV1.qry?category=c&isFix=0&pcOrWap=1"
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "Referer": "https://m.sporttery.cn/"
-    }
+SPORTTERY_API_URL = (
+    "https://webapi.sporttery.cn/gateway/jc/football/"
+    "getMatchCalculatorV1.qry?category=c&isFix=0&pcOrWap=1"
+)
+DEFAULT_CUTOFF_BUFFER_MINUTES = 5
+OPEN_SALE_STATUSES = {
+    "1",
+    "2",
+    "true",
+    "open",
+    "selling",
+    "on_sale",
+    "available",
+    "在售",
+    "销售中",
+}
+CLOSED_SALE_STATUSES = {
+    "0",
+    "false",
+    "closed",
+    "stopped",
+    "stop",
+    "off_sale",
+    "停售",
+    "已停售",
+}
+
+
+class LotteryProviderError(RuntimeError):
+    pass
+
+
+def _get_physical_source_ip():
     try:
-        req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req, timeout=15) as response:
-            content = response.read().decode('utf-8')
-            return json.loads(content)
-    except Exception as e:
-        sys.stderr.write(f"Error fetching lottery data: {e}\n")
+        out = subprocess.check_output(["route", "-n", "get", "default"], text=True, timeout=2)
+        for line in out.splitlines():
+            if "interface:" in line:
+                iface = line.split(":")[1].strip()
+                addr = subprocess.check_output(["ipconfig", "getifaddr", iface], text=True, timeout=2).strip()
+                if addr:
+                    return addr
+    except Exception:
+        pass
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("192.168.0.1", 80))
+        addr = s.getsockname()[0]
+        s.close()
+        return addr
+    except Exception:
+        pass
+    return None
+
+
+def fetch_raw_lottery_data(timeout=20):
+    request = urllib.request.Request(
+        SPORTTERY_API_URL,
+        headers={
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+            "Referer": "https://m.sporttery.cn/",
+            "Accept": "application/json, text/plain, */*",
+        },
+    )
+
+    def _do_fetch(source_ip=None):
+        if source_ip:
+            orig_create_connection = socket.create_connection
+
+            def custom_create_connection(address, timeout=socket._GLOBAL_DEFAULT_TIMEOUT, source_address=None):
+                return orig_create_connection(address, timeout=timeout, source_address=(source_ip, 0))
+
+            socket.create_connection = custom_create_connection
+            try:
+                with urllib.request.urlopen(request, timeout=timeout) as response:
+                    return json.loads(response.read().decode("utf-8"))
+            finally:
+                socket.create_connection = orig_create_connection
+        else:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
+                return json.loads(response.read().decode("utf-8"))
+
+    try:
+        payload = _do_fetch()
+    except (urllib.error.URLError, urllib.error.HTTPError, json.JSONDecodeError) as exc:
+        source_ip = _get_physical_source_ip()
+        if source_ip:
+            try:
+                payload = _do_fetch(source_ip=source_ip)
+            except Exception as retry_exc:
+                raise LotteryProviderError(f"Sporttery request failed: {retry_exc}") from retry_exc
+        else:
+            raise LotteryProviderError(f"Sporttery request failed: {exc}") from exc
+    return payload, utc_now()
+
+
+def _positive_float(value):
+    if value in (None, "") or isinstance(value, bool):
+        return None
+    try:
+        parsed = float(value)
+    except (TypeError, ValueError):
+        return None
+    return parsed if parsed > 1.0 else None
+
+
+def _goal_line(value):
+    if value in (None, "") or isinstance(value, bool):
+        return None
+    try:
+        return int(float(value))
+    except (TypeError, ValueError):
         return None
 
-def parse_odds_data(raw_data):
-    """
-    Parse raw sporttery JSON into a cleaner, structured format.
-    """
-    if not raw_data or not raw_data.get("success") or "value" not in raw_data:
-        return []
-    
-    match_info_list = raw_data["value"].get("matchInfoList", [])
-    parsed_matches = []
-    
-    for day_info in match_info_list:
-        business_date = day_info.get("businessDate") # YYYY-MM-DD
-        sub_matches = day_info.get("subMatchList", [])
-        
-        for match in sub_matches:
-            match_id = match.get("matchId")
-            match_num_str = match.get("matchNumStr") # e.g., "周六001"
-            match_date = match.get("matchDate") # YYYY-MM-DD
-            match_time = match.get("matchTime") # HH:MM:SS
-            
-            home_team = match.get("homeTeamAbbName") or match.get("homeTeamAllName")
-            away_team = match.get("awayTeamAbbName") or match.get("awayTeamAllName")
-            league_name = match.get("leagueAbbName") or match.get("leagueAllName")
-            
-            # 1. HAD (胜平负)
-            had_raw = match.get("had") or {}
-            had = {
-                "h": float(had_raw.get("h")) if had_raw.get("h") else None,
-                "d": float(had_raw.get("d")) if had_raw.get("d") else None,
-                "a": float(had_raw.get("a")) if had_raw.get("a") else None,
-            } if had_raw.get("h") else None
-            
-            # 2. HHAD (让球胜平负)
-            hhad_raw = match.get("hhad") or {}
-            hhad = {
-                "goal_line": int(float(hhad_raw.get("goalLine"))) if hhad_raw.get("goalLine") else None,
-                "h": float(hhad_raw.get("h")) if hhad_raw.get("h") else None,
-                "d": float(hhad_raw.get("d")) if hhad_raw.get("d") else None,
-                "a": float(hhad_raw.get("a")) if hhad_raw.get("a") else None,
-            } if hhad_raw.get("h") else None
-            
-            # 3. TTG (总进球数)
-            ttg_raw = match.get("ttg") or {}
-            ttg = {
-                "s0": float(ttg_raw.get("s0")) if ttg_raw.get("s0") else None,
-                "s1": float(ttg_raw.get("s1")) if ttg_raw.get("s1") else None,
-                "s2": float(ttg_raw.get("s2")) if ttg_raw.get("s2") else None,
-                "s3": float(ttg_raw.get("s3")) if ttg_raw.get("s3") else None,
-                "s4": float(ttg_raw.get("s4")) if ttg_raw.get("s4") else None,
-                "s5": float(ttg_raw.get("s5")) if ttg_raw.get("s5") else None,
-                "s6": float(ttg_raw.get("s6")) if ttg_raw.get("s6") else None,
-                "s7": float(ttg_raw.get("s7")) if ttg_raw.get("s7") else None,
-            } if ttg_raw.get("s0") else None
-            
-            # 4. HAFU (半全场)
-            hafu_raw = match.get("hafu") or {}
-            hafu = {
-                "hh": float(hafu_raw.get("hh")) if hafu_raw.get("hh") else None,
-                "hd": float(hafu_raw.get("hd")) if hafu_raw.get("hd") else None,
-                "ha": float(hafu_raw.get("ha")) if hafu_raw.get("ha") else None,
-                "dh": float(hafu_raw.get("dh")) if hafu_raw.get("dh") else None,
-                "dd": float(hafu_raw.get("dd")) if hafu_raw.get("dd") else None,
-                "da": float(hafu_raw.get("da")) if hafu_raw.get("da") else None,
-                "ah": float(hafu_raw.get("ah")) if hafu_raw.get("ah") else None,
-                "ad": float(hafu_raw.get("ad")) if hafu_raw.get("ad") else None,
-                "aa": float(hafu_raw.get("aa")) if hafu_raw.get("aa") else None,
-            } if hafu_raw.get("hh") else None
-            
-            # 5. CRS (比分)
-            crs_raw = match.get("crs") or {}
-            crs = {}
-            if crs_raw.get("s00s00"):
-                # Map specific score odds
-                for k, v in crs_raw.items():
-                    if k.startswith("s") and len(k) == 6 and k[3].isdigit():
-                        # Format: s01s00 -> "1-0" or s00s00 -> "0-0"
-                        h_score = int(k[1:3])
-                        a_score = int(k[4:6])
-                        crs[f"{h_score}-{a_score}"] = float(v)
-                # Map others
-                if crs_raw.get("s1sh"): crs["胜其他"] = float(crs_raw["s1sh"])
-                if crs_raw.get("s1sd"): crs["平其他"] = float(crs_raw["s1sd"])
-                if crs_raw.get("s1sa"): crs["负其他"] = float(crs_raw["s1sa"])
-            
-            parsed_matches.append({
-                "match_id": match_id,
-                "match_num_str": match_num_str,
-                "business_date": business_date,
-                "match_date": match_date,
-                "match_time": match_time,
-                "home_team": home_team,
-                "away_team": away_team,
-                "league_name": league_name,
-                "odds": {
-                    "had": had,
-                    "hhad": hhad,
-                    "ttg": ttg,
-                    "hafu": hafu,
-                    "crs": crs if crs else None
-                }
-            })
-            
-    return parsed_matches
 
-def filter_matches(matches, date=None, team=None, match_id=None):
-    """
-    Filter parsed matches based on date, team, or match_id.
-    """
-    filtered = []
-    for m in matches:
-        # Filter by match_id
-        if match_id and str(m["match_id"]) != str(match_id):
+def _market(raw, keys):
+    if not isinstance(raw, dict):
+        return None
+    parsed = {key: _positive_float(raw.get(key)) for key in keys}
+    return parsed if all(value is not None for value in parsed.values()) else None
+
+
+def _parse_crs(raw):
+    if not isinstance(raw, dict):
+        return None
+    parsed = {}
+    for key, value in raw.items():
+        odds = _positive_float(value)
+        if odds is None:
             continue
-            
-        # Filter by date (supports YYYY-MM-DD or YYYYMMDD)
-        if date:
-            clean_date = date.replace("-", "")
-            m_date_clean = m["match_date"].replace("-", "")
-            m_bdate_clean = m["business_date"].replace("-", "")
-            if clean_date != m_date_clean and clean_date != m_bdate_clean:
+        if key.startswith("s") and len(key) == 6 and key[1:3].isdigit() and key[4:6].isdigit():
+            parsed[f"{int(key[1:3])}-{int(key[4:6])}"] = odds
+    aliases = {"s1sh": "胜其他", "s1sd": "平其他", "s1sa": "负其他"}
+    for source_key, target_key in aliases.items():
+        odds = _positive_float(raw.get(source_key))
+        if odds is not None:
+            parsed[target_key] = odds
+    return parsed or None
+
+
+def _combine_local(match_date, match_time):
+    if not match_date or not match_time:
+        raise ContractError("Lottery match is missing matchDate or matchTime")
+    text = f"{match_date}T{match_time}"
+    parsed = datetime.fromisoformat(text)
+    return parsed.replace(tzinfo=BUSINESS_TIMEZONE).astimezone(timezone.utc)
+
+
+def _provider_time(value, date_hint):
+    if not value:
+        return None
+    text = str(value).strip()
+    try:
+        if "T" in text or (len(text) >= 10 and text[4:5] == "-"):
+            return parse_datetime(text)
+        return _combine_local(date_hint, text)
+    except (ValueError, ContractError):
+        return None
+
+
+def _sale_state(match, source_mode):
+    raw_status = None
+    for key in ("sellStatus", "saleStatus", "matchStatus", "status"):
+        if match.get(key) not in (None, ""):
+            raw_status = str(match[key]).strip()
+            break
+    if raw_status is None:
+        if source_mode == "live":
+            return "listed_by_official_api", True, []
+        return "unknown", False, ["sale_status_unknown"]
+    normalized = raw_status.casefold()
+    if normalized in OPEN_SALE_STATUSES:
+        return raw_status, True, []
+    if normalized in CLOSED_SALE_STATUSES:
+        return raw_status, False, ["sale_closed"]
+    return raw_status, False, ["sale_status_unknown"]
+
+
+def _parse_match(match, business_date, fetched_at, source_mode, now):
+    if not isinstance(match, dict):
+        raise ContractError("Lottery match must be an object")
+    provider_match_id = match.get("matchId")
+    home_name = match.get("homeTeamAbbName") or match.get("homeTeamAllName")
+    away_name = match.get("awayTeamAbbName") or match.get("awayTeamAllName")
+    match_date = match.get("matchDate") or business_date
+    if provider_match_id is None or not home_name or not away_name:
+        raise ContractError("Lottery match is missing ID or team name")
+    kickoff = _combine_local(match_date, match.get("matchTime"))
+    exact_cutoff = None
+    for key in ("sellEndTime", "saleEndTime", "stopTime", "endTime"):
+        exact_cutoff = _provider_time(match.get(key), match_date)
+        if exact_cutoff:
+            break
+    cutoff = exact_cutoff or kickoff - timedelta(minutes=DEFAULT_CUTOFF_BUFFER_MINUTES)
+    sale_status, sale_open, reasons = _sale_state(match, source_mode)
+
+    had = _market(match.get("had"), ("h", "d", "a"))
+    hhad_raw = match.get("hhad") or {}
+    hhad_values = _market(hhad_raw, ("h", "d", "a"))
+    hhad = None
+    if hhad_values:
+        hhad = {"goal_line": _goal_line(hhad_raw.get("goalLine")), **hhad_values}
+        if hhad["goal_line"] is None:
+            hhad = None
+    ttg = _market(match.get("ttg"), tuple(f"s{index}" for index in range(8)))
+    hafu = _market(match.get("hafu"), ("hh", "hd", "ha", "dh", "dd", "da", "ah", "ad", "aa"))
+    crs = _parse_crs(match.get("crs"))
+    if not any((had, hhad, ttg, hafu, crs)):
+        reasons.append("odds_missing")
+    if cutoff <= now:
+        reasons.append("cutoff_passed")
+    is_available = sale_open and not reasons
+
+    observed_at = None
+    for key in ("oddsUpdateTime", "updateTime", "lastUpdateTime"):
+        observed_at = _provider_time(match.get(key), match_date)
+        if observed_at:
+            break
+    observed_at = observed_at or fetched_at
+    return {
+        "match_id": f"sporttery:{provider_match_id}",
+        "provider_match_id": str(provider_match_id),
+        "match_num": str(match.get("matchNumStr") or ""),
+        "competition": str(match.get("leagueAbbName") or match.get("leagueAllName") or "unknown"),
+        "business_date": str(business_date or match_date),
+        "match_date": str(match_date),
+        "kickoff_utc": utc_iso(kickoff),
+        "cutoff_utc": utc_iso(cutoff),
+        "cutoff_is_estimated": exact_cutoff is None,
+        "sale_status": sale_status,
+        "is_available": is_available,
+        "availability_reasons": list(dict.fromkeys(reasons)),
+        "odds_observed_at": utc_iso(observed_at),
+        "home_team": {
+            "name": str(home_name),
+            "provider_id": str(match.get("homeTeamId")) if match.get("homeTeamId") is not None else None,
+        },
+        "away_team": {
+            "name": str(away_name),
+            "provider_id": str(match.get("awayTeamId")) if match.get("awayTeamId") is not None else None,
+        },
+        "odds": {"had": had, "hhad": hhad, "ttg": ttg, "hafu": hafu, "crs": crs},
+    }
+
+
+def parse_odds_data(raw_data, fetched_at=None, source_mode="live", now=None, requested_date=None):
+    fetched_at = parse_datetime(fetched_at or utc_now())
+    now = parse_datetime(now or utc_now())
+    if source_mode not in {"live", "file"}:
+        raise ContractError("source_mode must be live or file")
+    if not isinstance(raw_data, dict) or raw_data.get("success") is not True:
+        raise ContractError("Sporttery payload does not report success")
+    value = raw_data.get("value")
+    if not isinstance(value, dict) or not isinstance(value.get("matchInfoList"), list):
+        raise ContractError("Sporttery payload has no matchInfoList")
+
+    matches = []
+    errors = []
+    for day in value["matchInfoList"]:
+        if not isinstance(day, dict):
+            raise ContractError("Each matchInfoList item must be an object")
+        business_date = day.get("businessDate")
+        sub_matches = day.get("subMatchList") or []
+        if not isinstance(sub_matches, list):
+            raise ContractError("subMatchList must be an array")
+        for raw_match in sub_matches:
+            try:
+                matches.append(
+                    _parse_match(raw_match, business_date, fetched_at, source_mode, now)
+                )
+            except ContractError as exc:
+                match_id = raw_match.get("matchId") if isinstance(raw_match, dict) else None
+                errors.append({"match_id": match_id, "reason": str(exc)})
+    snapshot = {
+        "schema_version": SCHEMA_VERSION,
+        "kind": "odds_snapshot",
+        "provider": "china-sporttery",
+        "source_url": SPORTTERY_API_URL,
+        "source_mode": source_mode,
+        "fetched_at": utc_iso(fetched_at),
+        "requested_date": requested_date,
+        "parse_errors": errors,
+        "matches": matches,
+    }
+    return validate_odds_snapshot(snapshot)
+
+
+def filter_matches(matches, date=None, team=None, match_id=None, available_only=False):
+    filtered = []
+    target_date = date.replace("-", "") if date else None
+    target_team = normalize_name(team) if team else None
+    target_match_id = str(match_id) if match_id is not None else None
+    for match in matches:
+        if target_match_id and target_match_id not in {
+            str(match.get("match_id")),
+            str(match.get("provider_match_id")),
+        }:
+            continue
+        if target_date:
+            dates = {
+                str(match.get("match_date", "")).replace("-", ""),
+                str(match.get("business_date", "")).replace("-", ""),
+            }
+            if target_date not in dates:
                 continue
-                
-        # Filter by team (fuzzy matching)
-        if team:
-            team_lower = team.lower()
-            h_lower = m["home_team"].lower()
-            a_lower = m["away_team"].lower()
-            if team_lower not in h_lower and team_lower not in a_lower:
+        if target_team:
+            names = {
+                normalize_name(match.get("home_team", {}).get("name")),
+                normalize_name(match.get("away_team", {}).get("name")),
+            }
+            if target_team not in names:
                 continue
-                
-        filtered.append(m)
+        if available_only and not match.get("is_available"):
+            continue
+        filtered.append(match)
     return filtered
 
-def main():
-    parser = argparse.ArgumentParser(description="Fetch and parse China Sporttery football odds.")
-    parser.add_argument("--date", type=str, help="Filter by match date (YYYY-MM-DD or YYYYMMDD)")
-    parser.add_argument("--team", type=str, help="Filter by team name (fuzzy match)")
-    parser.add_argument("--match-id", type=str, help="Filter by specific match ID")
-    parser.add_argument("--output", type=str, help="Save output JSON to a file")
-    
-    args = parser.parse_args()
-    
-    raw_data = fetch_raw_lottery_data()
-    if not raw_data:
-        print(json.dumps({"status": "error", "message": "Failed to fetch data from Sporttery API"}, ensure_ascii=False))
-        sys.exit(1)
-        
-    matches = parse_odds_data(raw_data)
-    filtered_matches = filter_matches(matches, date=args.date, team=args.team, match_id=args.match_id)
-    
-    result = {
-        "status": "success",
-        "count": len(filtered_matches),
-        "matches": filtered_matches
-    }
-    
-    if args.output:
-        try:
-            with open(args.output, "w", encoding="utf-8") as f:
-                json.dump(result, f, ensure_ascii=False, indent=2)
-            print(f"Successfully saved {len(filtered_matches)} matches to {args.output}")
-        except Exception as e:
-            print(json.dumps({"status": "error", "message": f"Failed to save output file: {e}"}, ensure_ascii=False))
-            sys.exit(1)
+
+def parse_args(argv=None):
+    parser = argparse.ArgumentParser(description="Fetch current China Sporttery football odds.")
+    parser.add_argument("--date", help="Match or business date, YYYY-MM-DD or YYYYMMDD")
+    parser.add_argument("--team", help="Exact normalized team name")
+    parser.add_argument("--match-id", help="Sporttery match ID")
+    parser.add_argument("--available-only", action="store_true")
+    parser.add_argument("--input", help="Explicit raw or normalized JSON snapshot; never auto-loaded")
+    parser.add_argument("--output", help="Write normalized odds snapshot to this path")
+    return parser.parse_args(argv)
+
+
+def run(args):
+    if args.input:
+        payload = load_json(args.input)
+        if payload.get("kind") == "odds_snapshot":
+            snapshot = validate_odds_snapshot(payload)
+            snapshot = {**snapshot, "source_mode": "file"}
+        else:
+            fetched_at = payload.get("fetched_at") or datetime.fromtimestamp(
+                os.path.getmtime(args.input), tz=timezone.utc
+            )
+            snapshot = parse_odds_data(
+                payload, fetched_at=fetched_at, source_mode="file", requested_date=args.date
+            )
     else:
-        print(json.dumps(result, ensure_ascii=False, indent=2))
+        payload, fetched_at = fetch_raw_lottery_data()
+        snapshot = parse_odds_data(
+            payload, fetched_at=fetched_at, source_mode="live", requested_date=args.date
+        )
+    filtered = filter_matches(
+        snapshot["matches"],
+        date=args.date,
+        team=args.team,
+        match_id=args.match_id,
+        available_only=args.available_only,
+    )
+    return {**snapshot, "matches": filtered, "count": len(filtered)}
+
+
+def main(argv=None):
+    args = parse_args(argv)
+    try:
+        result = run(args)
+        if args.output:
+            write_json(args.output, result)
+            print(json.dumps({"status": "success", "output": args.output, "count": result["count"]}, ensure_ascii=False))
+        else:
+            print(json.dumps(result, ensure_ascii=False, indent=2))
+    except (ContractError, LotteryProviderError) as exc:
+        print(json.dumps({"status": "error", "message": str(exc)}, ensure_ascii=False))
+        return 1
+    return 0
+
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

@@ -1,97 +1,84 @@
-# 通用足球体彩比赛预测精算流程与计算图
+# 五大联赛预测与投注计算流程
 
-本文件详细记录了根据 `@.cursor/skills/match-prediction/SKILL.md` 实现的足球比赛结果定量加权预测与随机扰动蒙特卡洛（Monte Carlo）模拟精算流程。
+- 受众：模型维护者、数据 connector 维护者和审核人员
+- 前置条件：理解十进制赔率、ELO 和泊松分布；接口字段以 `schemas/` 为准
 
----
-
-## 一、 精算预测总体计算流程图 (Mermaid)
+## 数据流
 
 ```mermaid
-graph TD
-    %% 1. Data Fetching & Preparation
-    subgraph A [准备阶段：数据抓取与检索]
-        A1[python3 scripts/fetch_match_data.py] -->|获取数据| A2[两队基础 ELO 积分 / 世界排名 / 历史总战绩 / ELO 理论概率]
-        A3[WebSearch 多维度补充数据] -->|获取数据| A4[伤停名单 / 首发门将 PSxG +/- / 定位球攻防数据 / 身价 / 天气与海拔 / 裁判尺度]
-    end
-
-    %% 2. 10-Factor Quantitative Scoring
-    subgraph B [第一阶段：十因子定量加权系统]
-        A2 & A4 --> B1[评估十个维度优势分 A_i 范围 -10 到 +10]
-        B1 --> B2[计算总加权优势分 S = Σ A_i * W_i]
-        B2 --> B3{依据 S 确定走向分类}
-        B3 -->|S > +2.5| B3a[主队独赢 T1 Win]
-        B3 -->|-1.5 <= S <= +1.5| B3b[双方战平 Draw]
-        B3 -->|S < -2.5| B3c[客队独赢 T2 Win]
-        B3 -->|其他过渡带| B3d[首选双平/不败过渡预测]
-    end
-
-    %% 3. Poisson Base Expected Goals
-    subgraph C [第二阶段：双泊松分布期望值计算]
-        B2 -->|总加权优势分 S| C1[设定总基准期望进球 txG_proj 默认 2.4]
-        C1 --> C2[计算主队基准期望 λ = max 0.1, txG_proj + k*S / 2]
-        C1 --> C3[计算客队基准期望 μ = max 0.1, txG_proj - k*S / 2]
-        note1[系数 k = 0.30]
-    end
-
-    %% 4. ELO Att/Def Correction
-    subgraph D [第三阶段：ELO 攻防评级参数修正]
-        C2 & C3 --> D1[根据 np-xG、射正率、前场创造力修正 Elo_att]
-        C2 & C3 --> D2[根据防守深度、争顶率、门将 PSxG +/- 修正 Elo_def]
-        D1 & D2 --> D3[主队期望修正：λ' = λ * 10^ Elo_att_1 - Elo_def_2 / 800]
-        D1 & D2 --> D4[客队期望修正：μ' = μ * 10^ Elo_att_2 - Elo_def_1 / 800]
-    end
-
-    %% 5. Monte Carlo Simulation
-    subgraph E [第四阶段：蒙特卡洛随机扰动模拟 10,000 次]
-        D3 & D4 --> E1[模拟循环：执行 10,000 次独立采样]
-        
-        %% White Noise
-        E1 --> E2[5.1 物理运气白噪声扰动]
-        E2 --> E2a[对 λ' 与 μ' 注入 Log-Normal 白噪声: ε ~ N 0, σ^2, σ = 15%]
-        E2a --> E2b[λ_j = λ' * e^ε_h,j,  μ_j = μ' * e^ε_a,j]
-        
-        %% Red Card
-        E2b --> E3[5.2 主裁判红黄牌惩罚减员扰动]
-        E3 --> E3a[根据 Y_ref 与队均犯规 F 计算两队红牌概率 P_red]
-        E3a --> E3b[Bernoulli 试验判定减员]
-        E3b -->|主队触发红牌| E3c[客队期望进球 μ_j 飙升 30%, 主队期望 λ_j 萎缩 10%]
-        E3b -->|客队触发红牌| E3d[主队期望进球 λ_j 飙升 30%, 客队期望 μ_j 萎缩 10%]
-        
-        %% Penalty
-        E3c & E3d & E3b --> E4[5.3 禁区点球判罚扰动]
-        E4 --> E4a[根据 P_pen_ref 与联合危险进攻 DA 计算点球概率 P_penalty]
-        E4a --> E4b[Bernoulli 试验判定点球发生与归属 76% 罚入率]
-        E4b -->|罚入| E4c[对应球队模拟进球数直接 +1]
-    end
-
-    %% 6. Decision & Output
-    subgraph F [第五阶段：决策推荐与结果输出]
-        E4c --> F1[统计 10,000 次模拟精确比分频数, 得到最终模拟概率 P_sim X,Y]
-        F1 --> F2[第一手推荐：P_sim 概率最高比分 argmax P_sim X,Y]
-        F1 --> F3[第二手推荐：P_sim 概率次高比分]
-        F1 --> F4[第三手推荐：高概率/高发生率对冲比分]
-        F2 & F3 & F4 --> F5[生成 Markdown 预测报告并保存至 output/ 目录]
-    end
+flowchart TD
+    A[football-data.org 赛果与球队 ID] --> B[历史赛果标准化]
+    B --> C[按时间更新主场 ELO]
+    B --> D[动态联赛主客场进球均值]
+    B --> E[近期攻防指数衰减与均值收缩]
+    C --> F[主客队期望进球]
+    D --> F
+    E --> F
+    F --> G[双泊松比分网格]
+    G --> H[ModelPrediction JSON]
+    I[中国体彩实时列表] --> J[销售状态/截止时间/新鲜度]
+    J --> K[OddsSnapshot JSON]
+    H --> L{数据契约与质量通过?}
+    K --> L
+    L -->|否| M[拒绝记录/无推荐]
+    L -->|是| N[市场去抽水概率与模型概率对照]
+    N --> O[保守 EV 与分数凯利]
+    O --> P[BettingReport JSON]
+    P --> Q[Markdown 展示]
 ```
 
----
+## 俱乐部 ELO
 
-## 二、 核心精算公式数学描述
+比赛按开球时间排序。主队赛前期望为：
 
-### 1. 优势分转换进球期望
-$$\lambda_{base} = \max\left(0.1, \frac{txG_{proj} + k \cdot S}{2}\right)$$
-$$\mu_{base} = \max\left(0.1, \frac{txG_{proj} - k \cdot S}{2}\right)$$
-*参数设定*：总期望进球 $txG_{proj} = 2.4$，转换系数 $k = 0.30$，优势分 $S \in [-10, 10]$。
+$$E_h=\frac{1}{1+10^{-((R_h+H)-R_a)/400}}$$
 
-### 2. ELO 攻防战力修正
-$$\lambda' = \lambda_{base} \times 10^{\frac{Elo_{att, 1} - Elo_{def, 2}}{800}}$$
-$$\mu' = \mu_{base} \times 10^{\frac{Elo_{att, 2} - Elo_{def, 1}}{800}}$$
+赛果 $S_h$ 分别取 1、0.5、0，并按 $K(S_h-E_h)$ 更新两队评级。`H`、`K` 和初始评级全部记录在预测 JSON 中。
 
-### 3. 随机扰动机制（蒙特卡洛单次采样）
-- **物理运气白噪声**：
-  $$\lambda_j = \lambda' \cdot e^{\epsilon_{h, j}}, \quad \mu_j = \mu' \cdot e^{\epsilon_{a, j}}, \quad \epsilon \sim N(0, \sigma^2), \quad \sigma = 0.15$$
-- **红牌减员因子**：
-  $$P_{red, h} = \min\left(0.15, \frac{Y_{ref}}{4.5} \times \frac{F_{home}}{12.0} \times 0.06\right), \quad P_{red, a} = \min\left(0.15, \frac{Y_{ref}}{4.5} \times \frac{F_{away}}{12.0} \times 0.06\right)$$
-- **点球判罚因子**：
-  $$P_{penalty} = \min\left(0.40, P_{pen, ref} \times \frac{DA_{home} + DA_{away}}{75.0} \times 0.8\right)$$
-  点球归属概率为：$P_{pen\_to\_home} = \frac{DA_{home}}{DA_{home} + DA_{away}}$，罚入率 $76\%$。
+## 进球参数
+
+系统从输入历史现场计算联赛主客场平均进球。球队最近比赛使用指数衰减，并向联赛球队均值收缩：
+
+$$\bar g_{shrunk}=\frac{w\bar g+n_0\bar g_{league}}{w+n_0}$$
+
+主队期望进球由联赛主场均值、主队进攻比率、客队防守比率和中立 ELO 强度因子计算；客队使用对应客场参数。实现设置正数上下限以防止异常输入放大。
+
+## 比分与玩法概率
+
+给定主客队期望进球 $\lambda$、$\mu$：
+
+$$P(X=x,Y=y)=\frac{e^{-\lambda}\lambda^x}{x!}\frac{e^{-\mu}\mu^y}{y!}$$
+
+归一化比分网格派生：
+
+- HAD：主胜、平、客胜；
+- HHAD：把让球数加入主队实际进球后重新聚合；
+- TTG：0 至 6 球以及 7+；
+- CRS：中国竞彩明确比分和胜/平/负其他。
+
+## 赔率与资金
+
+同一完整玩法的去抽水市场概率：
+
+$$P_{market,i}=\frac{1/O_i}{\sum_j 1/O_j}$$
+
+市场概率只用于对照。模型概率 $p$ 先减去显式风险缓冲 $h$：
+
+$$p_c=\max(0,p-h),\quad EV_{low}=p_cO-1$$
+
+通过门槛后使用分数凯利：
+
+$$f=\alpha\frac{p_cO-1}{O-1}$$
+
+实际金额为 `bankroll × f`，再按投注单位向下取整。单项和总敞口分别受限，未使用的本金保留为现金。
+
+## 错误关闭状态
+
+以下条件不会降级生成建议：赔率合同无效、快照过期、停售、截止时间已过、球队映射不唯一、比赛时间不一致、预测历史不足、模型快照过期或保守 EV 未过线。
+
+## 当前限制
+
+- 默认参数尚未完成逐联赛 walk-forward 校准，JSON 会明确记录 `baseline_pending_walk_forward`。
+- 伤停、预计首发、天气和裁判目前没有结构化且经过校准的 connector，不直接修改概率。
+- 固定概率折减是风险缓冲，不是统计置信区间。
+- 串关启用时暂按跨场独立计算，仍可能存在未建模相关性。
