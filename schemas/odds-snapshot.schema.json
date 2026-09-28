@@ -3,24 +3,25 @@
   "$id": "https://football-lottery.local/schemas/odds-snapshot.schema.json",
   "title": "Sporttery odds snapshot",
   "type": "object",
-  "required": ["schema_version", "kind", "provider", "source_url", "source_mode", "fetched_at", "matches"],
+  "required": ["kind", "provider", "source_url", "source_mode", "fetched_at", "matches"],
   "properties": {
-    "schema_version": {"const": "2.0"},
     "kind": {"const": "odds_snapshot"},
-    "provider": {"type": "string"},
-    "source_url": {"type": "string"},
+    "provider": {"type": "string", "pattern": "\\S"},
+    "source_url": {"type": "string", "pattern": "\\S"},
     "source_mode": {"enum": ["live", "file"]},
     "fetched_at": {"type": "string", "format": "date-time"},
     "matches": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["match_id", "kickoff_utc", "cutoff_utc", "sale_status", "is_available", "odds_observed_at", "availability_reasons", "home_team", "away_team", "odds"],
+        "required": ["match_id", "kickoff_utc", "cutoff_utc", "sale_status", "is_available", "odds_observed_at", "availability_reasons", "home_team", "away_team", "odds", "official_listing", "market_status"],
         "properties": {
-          "match_id": {"type": "string", "minLength": 1},
+          "match_id": {"type": "string", "pattern": "^[^\\s:]+:\\S+(?![\\s\\S])"},
+          "official_listing": {"$ref": "#/$defs/officialListing"},
+          "market_status": {"$ref": "#/$defs/marketStatus"},
           "kickoff_utc": {"type": "string", "format": "date-time"},
           "cutoff_utc": {"type": "string", "format": "date-time"},
-          "sale_status": {"type": "string"},
+          "sale_status": {"type": "string", "pattern": "\\S"},
           "is_available": {"type": "boolean"},
           "odds_observed_at": {"type": "string", "format": "date-time"},
           "availability_reasons": {"type": "array", "items": {"type": "string"}},
@@ -32,11 +33,31 @@
     }
   },
   "$defs": {
+    "officialListing": {
+      "type": "object",
+      "required": ["status", "source_url", "observed_at", "provider_match_id"],
+      "properties": {
+        "status": {"enum": ["confirmed", "unknown"]},
+        "source_url": {"type": "string", "pattern": "\\S"},
+        "observed_at": {"type": "string", "format": "date-time"},
+        "provider_match_id": {"type": "string", "pattern": "\\S"}
+      }
+    },
+    "marketStatus": {
+      "type": "object",
+      "required": ["had", "hhad", "ttg", "crs"],
+      "properties": {
+        "had": {"enum": ["open", "closed", "unknown"]},
+        "hhad": {"enum": ["open", "closed", "unknown"]},
+        "ttg": {"enum": ["open", "closed", "unknown"]},
+        "crs": {"enum": ["open", "closed", "unknown"]}
+      }
+    },
     "team": {
       "type": "object",
       "required": ["name"],
       "properties": {
-        "name": {"type": "string", "minLength": 1},
+        "name": {"type": "string", "pattern": "\\S"},
         "provider_id": {"type": ["string", "null"]}
       }
     }

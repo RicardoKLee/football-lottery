@@ -12,7 +12,6 @@ from datetime import datetime, timedelta, timezone
 
 from contracts import (
     BUSINESS_TIMEZONE,
-    SCHEMA_VERSION,
     ContractError,
     load_json,
     normalize_name,
@@ -189,8 +188,6 @@ def _sale_state(match, source_mode):
             raw_status = str(match[key]).strip()
             break
     if raw_status is None:
-        if source_mode == "live":
-            return "listed_by_official_api", True, []
         return "unknown", False, ["sale_status_unknown"]
     normalized = raw_status.casefold()
     if normalized in OPEN_SALE_STATUSES:
@@ -241,6 +238,22 @@ def _parse_match(match, business_date, fetched_at, source_mode, now):
         if observed_at:
             break
     observed_at = observed_at or fetched_at
+    official_listing = match.get("official_listing")
+    if not isinstance(official_listing, dict):
+        official_listing = {
+            "status": "unknown",
+            "source_url": SPORTTERY_API_URL,
+            "provider_match_id": str(provider_match_id),
+            "observed_at": utc_iso(fetched_at),
+        }
+    market_status = match.get("market_status")
+    if not isinstance(market_status, dict):
+        market_status = {
+            "had": "unknown",
+            "hhad": "unknown",
+            "ttg": "unknown",
+            "crs": "unknown",
+        }
     return {
         "match_id": f"sporttery:{provider_match_id}",
         "provider_match_id": str(provider_match_id),
@@ -248,6 +261,8 @@ def _parse_match(match, business_date, fetched_at, source_mode, now):
         "competition": str(match.get("leagueAbbName") or match.get("leagueAllName") or "unknown"),
         "business_date": str(business_date or match_date),
         "match_date": str(match_date),
+        "official_listing": official_listing,
+        "market_status": market_status,
         "kickoff_utc": utc_iso(kickoff),
         "cutoff_utc": utc_iso(cutoff),
         "cutoff_is_estimated": exact_cutoff is None,
@@ -296,7 +311,6 @@ def parse_odds_data(raw_data, fetched_at=None, source_mode="live", now=None, req
                 match_id = raw_match.get("matchId") if isinstance(raw_match, dict) else None
                 errors.append({"match_id": match_id, "reason": str(exc)})
     snapshot = {
-        "schema_version": SCHEMA_VERSION,
         "kind": "odds_snapshot",
         "provider": "china-sporttery",
         "source_url": SPORTTERY_API_URL,

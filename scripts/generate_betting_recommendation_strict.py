@@ -97,7 +97,7 @@ def _write_text(path, content):
 
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(
-        description="Generate fail-closed five-league Sporttery recommendations from JSON predictions."
+        description="Generate fail-closed Sporttery football recommendations from JSON predictions."
     )
     parser.add_argument(
         "--predictions",

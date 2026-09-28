@@ -3,12 +3,14 @@
 import json
 import math
 import os
+import re
 import tempfile
 import unicodedata
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 
-SCHEMA_VERSION = "2.0"
+from match_context import ID_PATTERN, validate_context
+
 BUSINESS_TIMEZONE = ZoneInfo("Asia/Shanghai")
 
 
@@ -32,6 +34,21 @@ def parse_datetime(value, default_timezone=BUSINESS_TIMEZONE):
     if parsed.tzinfo is None:
         parsed = parsed.replace(tzinfo=default_timezone)
     return parsed.astimezone(timezone.utc)
+
+
+def require_datetime(mapping, key, path):
+    """Validate JSON date-time without the boundary parser's timezone defaults."""
+    value = require_string(mapping, key, path)
+    # RFC 3339 syntax: explicit seconds and timezone, ASCII digits, no trimming.
+    pattern = (r"[0-9]{4}-[0-9]{2}-[0-9]{2}[Tt]"
+               r"[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\.[0-9]+)?"
+               r"(?:[Zz]|[+-](?:[01][0-9]|2[0-3]):[0-5][0-9])")
+    if not re.fullmatch(pattern, value):
+        raise ContractError(f"{path}.{key} must be a date-time with explicit timezone")
+    try:
+        return datetime.fromisoformat(value.upper().replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise ContractError(f"{path}.{key} is an invalid date-time: {value}") from exc
 
 
 def utc_iso(value):
@@ -78,9 +95,35 @@ def validate_probability_distribution(distribution, path, tolerance=1e-6):
     return distribution
 
 
+def require_enum(mapping, key, allowed, path):
+    value = mapping.get(key)
+    if value not in allowed:
+        raise ContractError(f"{path}.{key} must be one of {', '.join(allowed)}")
+    return value
+
+
+def require_stable_id(mapping, key, path):
+    value = require_string(mapping, key, path)
+    if not re.fullmatch(ID_PATTERN, value):
+        raise ContractError(f"{path}.{key} must be a provider-qualified ID")
+    return value
+
+
+def validate_sample_pool(pool, path):
+    require_mapping(pool, path)
+    require_string(pool, "pool_id", path)
+    require_enum(pool, "team_type", ("club", "national", "unknown"), path)
+    codes = pool.get("competition_codes")
+    if not isinstance(codes, list) or not codes or any(
+        not isinstance(code, str) or not code.strip() for code in codes
+    ):
+        raise ContractError(f"{path}.competition_codes must be a non-empty array of non-empty strings")
+    return pool
+
+
 def validate_team(team, path):
     require_mapping(team, path)
-    require_string(team, "team_id", path)
+    require_stable_id(team, "team_id", path)
     require_string(team, "name", path)
     aliases = team.get("aliases")
     if not isinstance(aliases, list) or any(not isinstance(alias, str) for alias in aliases):
@@ -90,29 +133,32 @@ def validate_team(team, path):
 
 def validate_model_prediction(prediction):
     require_mapping(prediction, "prediction")
-    if prediction.get("schema_version") != SCHEMA_VERSION:
-        raise ContractError("prediction.schema_version must be 2.0")
     if prediction.get("kind") != "model_prediction":
         raise ContractError("prediction.kind must be model_prediction")
 
     model = require_mapping(prediction.get("model"), "prediction.model")
     require_string(model, "name", "prediction.model")
-    require_string(model, "version", "prediction.model")
     require_mapping(model.get("parameters"), "prediction.model.parameters")
 
     match = require_mapping(prediction.get("match"), "prediction.match")
-    require_string(match, "match_id", "prediction.match")
-    competition_code = require_string(match, "competition_code", "prediction.match")
-    if competition_code not in {"PL", "PD", "BL1", "SA", "FL1"}:
-        raise ContractError(f"Unsupported competition_code: {competition_code}")
-    parse_datetime(require_string(match, "kickoff_utc", "prediction.match"))
+    require_stable_id(match, "match_id", "prediction.match")
+    require_string(match, "competition_code", "prediction.match")
+    context = require_mapping(match.get("context"), "prediction.match.context")
+    try:
+        validate_context(context)
+    except ValueError as exc:
+        raise ContractError(f"prediction.match.{exc}") from exc
+    require_datetime(match, "kickoff_utc", "prediction.match")
     validate_team(match.get("home_team"), "prediction.match.home_team")
     validate_team(match.get("away_team"), "prediction.match.away_team")
 
     snapshot = require_mapping(prediction.get("data_snapshot"), "prediction.data_snapshot")
     require_string(snapshot, "provider", "prediction.data_snapshot")
     require_string(snapshot, "source_url", "prediction.data_snapshot")
-    parse_datetime(require_string(snapshot, "fetched_at", "prediction.data_snapshot"))
+    require_datetime(snapshot, "fetched_at", "prediction.data_snapshot")
+    # Structural validation only: source evidence must be checked by the adapter.
+    require_enum(snapshot, "provenance_status", ("verified", "unverified"), "prediction.data_snapshot")
+    validate_sample_pool(snapshot.get("sample_pool"), "prediction.data_snapshot.sample_pool")
 
     probabilities = require_mapping(prediction.get("probabilities"), "prediction.probabilities")
     had = validate_probability_distribution(probabilities.get("had"), "prediction.probabilities.had")
@@ -124,32 +170,41 @@ def validate_model_prediction(prediction):
     quality = require_mapping(prediction.get("quality"), "prediction.quality")
     if quality.get("status") not in {"sufficient", "insufficient"}:
         raise ContractError("prediction.quality.status must be sufficient or insufficient")
-    if not isinstance(quality.get("missing_data"), list):
+    if not isinstance(quality.get("missing_data"), list) or any(
+        not isinstance(reason, str) for reason in quality["missing_data"]
+    ):
         raise ContractError("prediction.quality.missing_data must be an array")
     return prediction
 
 
 def validate_odds_snapshot(snapshot):
     require_mapping(snapshot, "snapshot")
-    if snapshot.get("schema_version") != SCHEMA_VERSION:
-        raise ContractError("snapshot.schema_version must be 2.0")
     if snapshot.get("kind") != "odds_snapshot":
         raise ContractError("snapshot.kind must be odds_snapshot")
     require_string(snapshot, "provider", "snapshot")
     require_string(snapshot, "source_url", "snapshot")
     if snapshot.get("source_mode") not in {"live", "file"}:
         raise ContractError("snapshot.source_mode must be live or file")
-    parse_datetime(require_string(snapshot, "fetched_at", "snapshot"))
+    require_datetime(snapshot, "fetched_at", "snapshot")
     matches = snapshot.get("matches")
     if not isinstance(matches, list):
         raise ContractError("snapshot.matches must be an array")
     for index, match in enumerate(matches):
         path = f"snapshot.matches[{index}]"
         require_mapping(match, path)
-        require_string(match, "match_id", path)
-        parse_datetime(require_string(match, "kickoff_utc", path))
-        parse_datetime(require_string(match, "cutoff_utc", path))
-        parse_datetime(require_string(match, "odds_observed_at", path))
+        require_stable_id(match, "match_id", path)
+        listing_path = f"{path}.official_listing"
+        listing = require_mapping(match.get("official_listing"), listing_path)
+        require_enum(listing, "status", ("confirmed", "unknown"), listing_path)
+        require_string(listing, "source_url", listing_path)
+        require_string(listing, "provider_match_id", listing_path)
+        require_datetime(listing, "observed_at", listing_path)
+        markets = require_mapping(match.get("market_status"), f"{path}.market_status")
+        for market in ("had", "hhad", "ttg", "crs"):
+            require_enum(markets, market, ("open", "closed", "unknown"), f"{path}.market_status")
+        require_datetime(match, "kickoff_utc", path)
+        require_datetime(match, "cutoff_utc", path)
+        require_datetime(match, "odds_observed_at", path)
         require_string(match, "sale_status", path)
         if not isinstance(match.get("is_available"), bool):
             raise ContractError(f"{path}.is_available must be boolean")

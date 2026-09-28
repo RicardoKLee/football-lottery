@@ -4,22 +4,21 @@ import math
 from dataclasses import asdict, dataclass
 
 from contracts import (
-    SCHEMA_VERSION,
     normalize_name,
     parse_datetime,
     utc_iso,
     validate_model_prediction,
 )
 
-MODEL_NAME = "club-league-elo-poisson"
-MODEL_VERSION = "2.0.0"
-SUPPORTED_COMPETITIONS = {
+MODEL_NAME = "football-elo-poisson"
+COMPETITION_NAMES = {
     "PL": "Premier League",
     "PD": "Primera Division",
     "BL1": "Bundesliga",
     "SA": "Serie A",
     "FL1": "Ligue 1",
 }
+SUPPORTED_COMPETITIONS = COMPETITION_NAMES
 
 
 class ModelDataError(ValueError):
@@ -32,6 +31,7 @@ class TeamResolutionError(ModelDataError):
 
 @dataclass(frozen=True)
 class ModelParameters:
+    profile: str = "club-baseline"
     initial_elo: float = 1500.0
     elo_k_factor: float = 20.0
     home_advantage_elo: float = 60.0
@@ -52,64 +52,15 @@ class ModelParameters:
             raise ValueError("Match counts cannot be negative")
 
 
-def _team_from_raw(raw, side):
-    provider = raw.get(f"{side}Team") or raw.get(f"{side}_team")
-    if not isinstance(provider, dict):
-        raise ModelDataError(f"History match is missing {side} team")
-    team_id = provider.get("id", provider.get("team_id"))
-    name = provider.get("name") or provider.get("shortName")
-    if team_id is None or not name:
-        raise ModelDataError(f"History match has incomplete {side} team")
-    aliases = []
-    for key in ("name", "shortName", "tla"):
-        value = provider.get(key)
-        if isinstance(value, str) and value and value not in aliases:
-            aliases.append(value)
-    for value in provider.get("aliases", []):
-        if isinstance(value, str) and value and value not in aliases:
-            aliases.append(value)
-    return {"team_id": str(team_id), "name": str(name), "aliases": aliases}
-
-
-def _score_from_raw(raw):
-    if "home_score" in raw or "away_score" in raw:
-        home_score = raw.get("home_score")
-        away_score = raw.get("away_score")
-    else:
-        score = raw.get("score") or {}
-        full_time = score.get("fullTime") or score.get("full_time") or {}
-        home_score = full_time.get("home")
-        away_score = full_time.get("away")
-    if isinstance(home_score, bool) or isinstance(away_score, bool):
-        raise ModelDataError("Boolean score is invalid")
-    if not isinstance(home_score, (int, float)) or not isinstance(away_score, (int, float)):
-        raise ModelDataError("Finished match is missing full-time score")
-    if home_score < 0 or away_score < 0:
-        raise ModelDataError("Score cannot be negative")
-    return int(home_score), int(away_score)
-
-
 def normalize_history_match(raw):
-    status = str(raw.get("status", "FINISHED")).upper()
-    if status != "FINISHED":
-        raise ModelDataError("Only finished matches can be used as history")
-    match_id = raw.get("id", raw.get("match_id"))
-    kickoff = raw.get("utcDate", raw.get("kickoff_utc"))
-    if match_id is None or not kickoff:
-        raise ModelDataError("History match requires id and kickoff time")
-    home_team = _team_from_raw(raw, "home")
-    away_team = _team_from_raw(raw, "away")
-    if home_team["team_id"] == away_team["team_id"]:
-        raise ModelDataError("A team cannot play itself")
-    home_score, away_score = _score_from_raw(raw)
-    return {
-        "match_id": str(match_id),
-        "kickoff_utc": utc_iso(kickoff),
-        "home_team": home_team,
-        "away_team": away_team,
-        "home_score": home_score,
-        "away_score": away_score,
-    }
+    from history_adapter import normalize_history_record
+
+    try:
+        return normalize_history_record(
+            raw, "normalized-input", raw.get("context", {}) if isinstance(raw, dict) else {}
+        )
+    except ValueError as exc:
+        raise ModelDataError(str(exc)) from exc
 
 
 def finished_matches_before(history_matches, kickoff=None):
@@ -118,12 +69,12 @@ def finished_matches_before(history_matches, kickoff=None):
     for raw in history_matches:
         if not isinstance(raw, dict):
             raise ModelDataError("Every history item must be an object")
-        if str(raw.get("status", "FINISHED")).upper() != "FINISHED":
-            continue
         match = normalize_history_match(raw)
         if cutoff and parse_datetime(match["kickoff_utc"]) >= cutoff:
             continue
         normalized.append(match)
+    if not normalized:
+        raise ModelDataError("no_usable_history")
     return sorted(normalized, key=lambda item: parse_datetime(item["kickoff_utc"]))
 
 
@@ -191,7 +142,9 @@ def build_elo_ratings(
             actual_home = 0.5
         else:
             actual_home = 0.0
-        expected_home = expected_home_result(home_elo, away_elo, home_advantage_elo)
+        match_context = match.get("context") if isinstance(match.get("context"), dict) else {}
+        advantage = 0.0 if match_context.get("venue") == "neutral" else home_advantage_elo
+        expected_home = expected_home_result(home_elo, away_elo, advantage)
         change = float(k_factor) * (actual_home - expected_home)
         ratings[home_id] = home_elo + change
         ratings[away_id] = away_elo - change
@@ -280,10 +233,22 @@ def _shrunk_ratio(value, weight, baseline, shrinkage_matches):
 
 
 def create_prediction(history_matches, match, data_snapshot, parameters=None):
-    parameters = parameters or ModelParameters()
-    competition_code = str(match.get("competition_code", ""))
-    if competition_code not in SUPPORTED_COMPETITIONS:
-        raise ModelDataError(f"Unsupported competition: {competition_code}")
+    from dataclasses import replace
+    from match_context import context_reasons, sample_pool_reasons
+
+    target_context = match.get("context") if isinstance(match.get("context"), dict) else {}
+    team_type = target_context.get("team_type")
+    default_profile = "national-baseline" if team_type == "national" else "club-baseline"
+    if parameters is None:
+        parameters = ModelParameters(profile=default_profile)
+    elif parameters.profile == "club-baseline" and default_profile == "national-baseline":
+        parameters = replace(parameters, profile=default_profile)
+
+    competition_code = str(match.get("competition_code", "")).strip()
+    if not competition_code:
+        raise ModelDataError("competition_code is required")
+    competition_name = str(match.get("competition_name") or COMPETITION_NAMES.get(competition_code, competition_code))
+
     kickoff = parse_datetime(match.get("kickoff_utc"))
     finished = finished_matches_before(history_matches, kickoff=kickoff)
     if not finished:
@@ -298,11 +263,17 @@ def create_prediction(history_matches, match, data_snapshot, parameters=None):
 
     total_home_goals = sum(item["home_score"] for item in finished)
     total_away_goals = sum(item["away_score"] for item in finished)
-    league_home_average = total_home_goals / len(finished)
-    league_away_average = total_away_goals / len(finished)
     league_team_average = (total_home_goals + total_away_goals) / (2.0 * len(finished))
     if league_team_average <= 0:
         raise ModelDataError("Historical league goal average is zero")
+
+    if target_context.get("venue") == "neutral":
+        league_home_average = league_away_average = league_team_average
+        target_advantage = 0.0
+    else:
+        league_home_average = total_home_goals / len(finished)
+        league_away_average = total_away_goals / len(finished)
+        target_advantage = parameters.home_advantage_elo
 
     ratings, counts = build_elo_ratings(
         finished,
@@ -337,27 +308,47 @@ def create_prediction(history_matches, match, data_snapshot, parameters=None):
 
     grid = generate_score_grid(home_expected_goals, away_expected_goals, parameters.max_goals)
     had, score, ttg = _summarize_grid(grid)
+
     missing_data = []
     if counts.get(home_id, 0) < parameters.min_team_matches:
         missing_data.append("insufficient_home_history")
     if counts.get(away_id, 0) < parameters.min_team_matches:
         missing_data.append("insufficient_away_history")
 
+    if isinstance(target_context, dict) and target_context:
+        try:
+            missing_data.extend(context_reasons(target_context))
+        except ValueError:
+            missing_data.append("context_unknown")
+    else:
+        missing_data.append("context_unknown")
+
+    provenance_status = data_snapshot.get("provenance_status")
+    if provenance_status != "verified":
+        missing_data.append("provenance_unverified")
+
+    sample_pool = data_snapshot.get("sample_pool")
+    if isinstance(sample_pool, dict) and sample_pool:
+        missing_data.extend(sample_pool_reasons(finished, match, sample_pool))
+    else:
+        missing_data.append("sample_pool_invalid")
+
+    missing_data = list(dict.fromkeys(missing_data))
+
     prediction = {
-        "schema_version": SCHEMA_VERSION,
         "kind": "model_prediction",
         "model": {
             "name": MODEL_NAME,
-            "version": MODEL_VERSION,
             "parameters": asdict(parameters),
         },
         "match": {
             "match_id": str(match.get("match_id") or f"{competition_code}:{home_id}:{away_id}:{kickoff.date()}"),
             "lottery_match_id": match.get("lottery_match_id"),
             "competition_code": competition_code,
-            "competition_name": match.get("competition_name") or SUPPORTED_COMPETITIONS[competition_code],
+            "competition_name": competition_name,
             "season": str(match.get("season", "unknown")),
             "kickoff_utc": utc_iso(kickoff),
+            "context": target_context,
             "home_team": {
                 "team_id": home_id,
                 "name": str(home_team.get("name") or home_id),
@@ -373,6 +364,8 @@ def create_prediction(history_matches, match, data_snapshot, parameters=None):
             "provider": str(data_snapshot.get("provider", "unknown")),
             "source_url": str(data_snapshot.get("source_url", "unknown")),
             "fetched_at": utc_iso(data_snapshot.get("fetched_at")),
+            "provenance_status": str(data_snapshot.get("provenance_status", "unverified")),
+            "sample_pool": sample_pool if isinstance(sample_pool, dict) else {},
         },
         "inputs": {
             "history_match_count": len(finished),
@@ -381,7 +374,7 @@ def create_prediction(history_matches, match, data_snapshot, parameters=None):
             "home_elo": home_elo,
             "away_elo": away_elo,
             "elo_home_expectation": expected_home_result(
-                home_elo, away_elo, parameters.home_advantage_elo
+                home_elo, away_elo, target_advantage
             ),
             "home_form": home_form,
             "away_form": away_form,
@@ -389,6 +382,8 @@ def create_prediction(history_matches, match, data_snapshot, parameters=None):
             "home_defence_ratio": home_defence,
             "away_attack_ratio": away_attack,
             "away_defence_ratio": away_defence,
+            "sample_pool_composition": sample_pool.get("competition_codes", []) if isinstance(sample_pool, dict) else [],
+            "baseline_limitation": "baseline_pending_walk_forward",
         },
         "expected_goals": {"home": home_expected_goals, "away": away_expected_goals},
         "probabilities": {"had": had, "score": score, "ttg": ttg},

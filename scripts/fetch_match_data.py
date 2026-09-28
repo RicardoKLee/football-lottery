@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 
 from contracts import ContractError, load_json, utc_iso, utc_now, write_json
 from model_core import (
-    SUPPORTED_COMPETITIONS,
+    COMPETITION_NAMES,
     ModelDataError,
     ModelParameters,
     TeamResolutionError,
@@ -22,6 +22,7 @@ from model_core import (
 
 FOOTBALL_DATA_API_BASE = "https://api.football-data.org/v4"
 FOOTBALL_DATA_TOKEN_ENV = "FOOTBALL_DATA_API_TOKEN"
+VERIFIED_JULY_SEASON_COMPETITIONS = set()
 
 
 class ProviderError(RuntimeError):
@@ -88,38 +89,71 @@ def load_history_file(path):
     payload = load_json(path)
     if isinstance(payload, list):
         matches = payload
-        fetched_at = datetime.fromtimestamp(os.path.getmtime(path), tz=timezone.utc)
         source_url = os.path.abspath(path)
+        snapshot = {
+            "provider": "file",
+            "source_url": str(source_url),
+            "fetched_at": utc_iso(datetime.fromtimestamp(os.path.getmtime(path), tz=timezone.utc)),
+            "provenance_status": "unverified",
+            "sample_pool": {
+                "pool_id": f"file:{os.path.basename(path)}",
+                "team_type": "club",
+                "competition_codes": list(dict.fromkeys(
+                    str(m.get("competition_code")) for m in matches if isinstance(m, dict) and m.get("competition_code")
+                )) or ["unknown"],
+            },
+        }
     elif isinstance(payload, dict) and isinstance(payload.get("matches"), list):
         matches = payload["matches"]
-        fetched_at = payload.get("fetched_at") or datetime.fromtimestamp(
-            os.path.getmtime(path), tz=timezone.utc
-        )
         source_url = payload.get("source_url") or os.path.abspath(path)
+        fetched_at = payload.get("fetched_at") or utc_iso(
+            datetime.fromtimestamp(os.path.getmtime(path), tz=timezone.utc)
+        )
+        sample_pool = payload.get("sample_pool") or {
+            "pool_id": f"file:{os.path.basename(path)}",
+            "team_type": payload.get("context", {}).get("team_type", "club") if isinstance(payload.get("context"), dict) else "club",
+            "competition_codes": list(dict.fromkeys(
+                str(m.get("competition_code")) for m in matches if isinstance(m, dict) and m.get("competition_code")
+            )) or ["unknown"],
+        }
+        snapshot = {
+            "provider": str(payload.get("provider", "file")),
+            "source_url": str(source_url),
+            "fetched_at": utc_iso(fetched_at),
+            "provenance_status": str(payload.get("provenance_status", "unverified")),
+            "sample_pool": sample_pool,
+        }
     else:
         raise ContractError("History file must be an array or an object containing matches")
-    return matches, {
-        "provider": "file",
-        "source_url": str(source_url),
-        "fetched_at": utc_iso(fetched_at),
-    }
+    return matches, snapshot
 
 
-def fetch_live_history(client, competition_code, kickoff, seasons):
-    start = season_start_year(kickoff)
+def fetch_live_history(client, competition_code, kickoff, seasons, season=None):
+    if season is not None:
+        start = season
+    elif competition_code in VERIFIED_JULY_SEASON_COMPETITIONS:
+        start = season_start_year(kickoff)
+    else:
+        raise ContractError("explicit_season_required")
     all_matches = []
     source_urls = []
-    for season in range(start - seasons + 1, start + 1):
-        payload, source_url = client.competition_matches(competition_code, season)
+    for s in range(start - seasons + 1, start + 1):
+        payload, source_url = client.competition_matches(competition_code, s)
         matches = payload.get("matches")
         if not isinstance(matches, list):
-            raise ProviderError(f"Provider response for season {season} has no matches array")
+            raise ProviderError(f"Provider response for season {s} has no matches array")
         all_matches.extend(matches)
         source_urls.append(source_url)
     return all_matches, {
         "provider": "football-data.org",
         "source_url": ",".join(source_urls),
         "fetched_at": utc_iso(utc_now()),
+        "provenance_status": "unverified",
+        "sample_pool": {
+            "pool_id": f"football-data.org:{competition_code}",
+            "team_type": "club",
+            "competition_codes": [competition_code],
+        },
     }
 
 
@@ -134,7 +168,6 @@ def list_live_teams(client, competition_code, season):
         aliases = [value for value in (team.get("shortName"), team.get("tla")) if value]
         teams.append({"team_id": str(team_id), "name": str(name), "aliases": aliases})
     return {
-        "schema_version": "2.0",
         "kind": "club_registry",
         "competition_code": competition_code,
         "season": str(season),
@@ -170,10 +203,15 @@ def merge_team_registry(history_teams, registry_teams):
 
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(
-        description="Build a five-league club prediction from football-data.org history."
+        description="Build a football prediction from history data."
     )
-    parser.add_argument("--competition", required=True, choices=sorted(SUPPORTED_COMPETITIONS))
-    parser.add_argument("--history-file", help="Explicit football-data.org or normalized history JSON")
+    parser.add_argument("--competition", required=True, help="Competition code (e.g. PL, PD, J1)")
+    parser.add_argument("--competition-name", help="Display name for the competition")
+    parser.add_argument("--team-type", choices=("club", "national", "unknown"), default="club")
+    parser.add_argument("--competition-type", choices=("league", "cup", "other", "unknown"), default="league")
+    parser.add_argument("--venue", choices=("home", "neutral", "unknown"), default="home")
+    parser.add_argument("--context-file", help="Path to JSON file with match context object")
+    parser.add_argument("--history-file", help="Explicit history JSON file")
     parser.add_argument("--aliases-file", help="JSON map from exact aliases to provider team IDs")
     parser.add_argument("--list-teams", action="store_true", help="List current provider team IDs")
     parser.add_argument("--home-team", help="Provider team ID or exact provider name/alias")
@@ -194,24 +232,43 @@ def parse_args(argv=None):
 
 
 def run(args):
+    if not args.competition or not args.competition.strip():
+        raise ContractError("competition is required and cannot be blank")
     if args.history_seasons < 1:
         raise ContractError("history-seasons must be positive")
     token = os.environ.get(FOOTBALL_DATA_TOKEN_ENV)
     client = FootballDataClient(token) if not args.history_file else None
 
+    if args.context_file:
+        context = load_json(args.context_file)
+    else:
+        context = {
+            "team_type": args.team_type,
+            "competition_type": args.competition_type,
+            "venue": args.venue,
+            "score_basis": "regulation",
+        }
+
     reference_time = args.kickoff or utc_now()
-    season = args.season or season_start_year(reference_time)
+    if args.season is not None:
+        season = args.season
+    elif args.competition in VERIFIED_JULY_SEASON_COMPETITIONS:
+        season = season_start_year(reference_time)
+    else:
+        season = args.season
+
     if args.list_teams:
         if client is None:
             history, snapshot = load_history_file(args.history_file)
             return {
-                "schema_version": "2.0",
                 "kind": "club_registry",
                 "competition_code": args.competition,
-                "season": str(season),
+                "season": str(season if season is not None else "unknown"),
                 **snapshot,
                 "teams": sorted(collect_teams(history).values(), key=lambda team: team["name"]),
             }
+        if season is None:
+            raise ContractError("explicit_season_required")
         return list_live_teams(client, args.competition, season)
 
     if not args.home_team or not args.away_team or not args.kickoff:
@@ -220,11 +277,13 @@ def run(args):
         history, snapshot = load_history_file(args.history_file)
     else:
         history, snapshot = fetch_live_history(
-            client, args.competition, args.kickoff, args.history_seasons
+            client, args.competition, args.kickoff, args.history_seasons, season=season
         )
 
     teams = collect_teams(history)
     if client is not None:
+        if season is None:
+            raise ContractError("explicit_season_required")
         current_registry = list_live_teams(client, args.competition, season)
         teams = merge_team_registry(teams, current_registry["teams"])
     aliases = load_aliases(args.aliases_file)
@@ -238,8 +297,9 @@ def run(args):
         **away_team,
         "aliases": list(dict.fromkeys([*away_team.get("aliases", []), *args.away_alias])),
     }
+    provider_prefix = "file" if args.history_file else "football-data.org"
     match_id = args.match_id or (
-        f"football-data:{args.competition}:{home_team['team_id']}:{away_team['team_id']}:"
+        f"{provider_prefix}:{args.competition}:{home_team['team_id']}:{away_team['team_id']}:"
         f"{str(args.kickoff)[:10]}"
     )
     prediction = create_prediction(
@@ -248,9 +308,10 @@ def run(args):
             "match_id": match_id,
             "lottery_match_id": args.lottery_match_id,
             "competition_code": args.competition,
-            "competition_name": SUPPORTED_COMPETITIONS[args.competition],
-            "season": str(season),
+            "competition_name": args.competition_name or COMPETITION_NAMES.get(args.competition, args.competition),
+            "season": str(season if season is not None else "unknown"),
             "kickoff_utc": args.kickoff,
+            "context": context,
             "home_team": home_team,
             "away_team": away_team,
         },

@@ -1,6 +1,6 @@
 # ADR 0001：五大联赛数据契约与错误关闭
 
-- 状态：已接受
+- 状态：已被 [ADR 0002](file:///Users/liyingjin/projects/docker-project/football_lottery_sporttery_scope/docs/adr/0002-sporttery-football-scope.md) 替代（赛事适用范围由五大联赛扩展至全部中国体育彩票官方在售竞彩足球赛事；保留本 ADR 作为历史演进决策记录）
 - 日期：2026-08-25
 - 受众：预测脚本、投注脚本和 skill 维护者
 - 前置条件：Python 3.9+；实时运行需要数据提供方凭据和网络访问

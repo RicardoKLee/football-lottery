@@ -5,7 +5,6 @@ import math
 from datetime import timedelta
 
 from contracts import (
-    SCHEMA_VERSION,
     ContractError,
     normalize_name,
     parse_datetime,
@@ -43,6 +42,56 @@ EXPECTED_MARKET_OPTIONS = {
     | CRS_AWAY_OPTIONS
     | {"胜其他", "平其他", "负其他"},
 }
+
+
+def market_reasons(match: dict, market: str) -> list:
+    if not isinstance(match, dict):
+        return ["market_sale_unknown"]
+    market_status = match.get("market_status")
+    if not isinstance(market_status, dict) or market not in market_status:
+        return ["market_sale_unknown"]
+    status = market_status.get(market)
+    if status == "open":
+        return []
+    if status == "closed":
+        return ["market_closed"]
+    return ["market_sale_unknown"]
+
+
+def recommendation_reasons(prediction: dict) -> list:
+    if not isinstance(prediction, dict):
+        return ["prediction_invalid"]
+    reasons = []
+    quality = prediction.get("quality")
+    if not isinstance(quality, dict):
+        reasons.append("quality_missing")
+    else:
+        if quality.get("status") != "sufficient":
+            reasons.append("prediction_quality_insufficient")
+        for m in quality.get("missing_data", []):
+            reasons.append(m)
+
+    match = prediction.get("match") if isinstance(prediction, dict) else {}
+    context = match.get("context") if isinstance(match, dict) else None
+    if not isinstance(context, dict):
+        reasons.append("context_missing")
+    else:
+        from match_context import context_reasons
+        try:
+            reasons.extend(context_reasons(context))
+        except ValueError:
+            reasons.append("context_invalid")
+
+    snapshot = prediction.get("data_snapshot") if isinstance(prediction, dict) else {}
+    if not isinstance(snapshot, dict):
+        reasons.append("data_snapshot_missing")
+    else:
+        if snapshot.get("provenance_status") != "verified":
+            reasons.append("provenance_unverified")
+        sample_pool = snapshot.get("sample_pool")
+        if not isinstance(sample_pool, dict) or not sample_pool:
+            reasons.append("sample_pool_invalid")
+    return list(dict.fromkeys(reasons))
 
 
 def calculate_market_margin_and_implied_probs(odds_dict):
@@ -130,6 +179,8 @@ def _model_probabilities(prediction, market_name, odds):
 def evaluate_match(match, prediction, probability_haircut=0.03, min_ev_low=0.05):
     evaluations = []
     for market_name in ("had", "hhad", "ttg", "crs"):
+        if market_reasons(match, market_name):
+            continue
         odds = match.get("odds", {}).get(market_name)
         if not isinstance(odds, dict):
             continue
@@ -295,7 +346,6 @@ def build_two_leg_parlays(bets, min_ev_low=0.05, max_position=0.02):
 
 def _empty_report(now, bankroll, policy, rejections):
     return {
-        "schema_version": SCHEMA_VERSION,
         "kind": "betting_report",
         "generated_at": utc_iso(now),
         "policy": policy,
@@ -370,6 +420,16 @@ def analyze_daily(
     eligible_by_match = []
     for match in odds_snapshot["matches"]:
         match_id = match["match_id"]
+        listing = match.get("official_listing")
+        if not isinstance(listing, dict) or listing.get("status") != "confirmed":
+            rejections.append(
+                {
+                    "match_id": match_id,
+                    "reason": "match_not_officially_listed",
+                    "detail": listing.get("status") if isinstance(listing, dict) else "missing",
+                }
+            )
+            continue
         sale_status = str(match.get("sale_status", "")).casefold()
         if not match.get("is_available") or sale_status not in OPEN_SALE_STATUSES:
             rejections.append(
@@ -397,9 +457,11 @@ def analyze_daily(
         if prediction is None:
             rejections.append({"match_id": match_id, "reason": "prediction_not_found"})
             continue
-        if prediction["quality"]["status"] != "sufficient":
+        pred_reasons = recommendation_reasons(prediction)
+        if pred_reasons:
+            reason = "prediction_quality_insufficient" if "prediction_quality_insufficient" in pred_reasons else "prediction_rejected"
             rejections.append(
-                {"match_id": match_id, "reason": "prediction_quality_insufficient", "detail": prediction["quality"]["missing_data"]}
+                {"match_id": match_id, "reason": reason, "detail": pred_reasons}
             )
             continue
         prediction_age = (now - parse_datetime(prediction["data_snapshot"]["fetched_at"])).total_seconds()
@@ -409,7 +471,7 @@ def analyze_daily(
         kickoff_delta = abs(
             (parse_datetime(match["kickoff_utc"]) - parse_datetime(prediction["match"]["kickoff_utc"])).total_seconds()
         )
-        if kickoff_delta > timedelta(hours=6).total_seconds():
+        if kickoff_delta > timedelta(minutes=15).total_seconds():
             rejections.append({"match_id": match_id, "reason": "kickoff_mismatch", "detail": kickoff_delta})
             continue
         match_evaluations = evaluate_match(
@@ -441,7 +503,6 @@ def analyze_daily(
                 {"match_id": item.get("match_id"), "reason": "kelly_stake_below_minimum_unit", "detail": item["raw_stake"]}
             )
     return {
-        "schema_version": SCHEMA_VERSION,
         "kind": "betting_report",
         "generated_at": utc_iso(now),
         "odds_snapshot": {
@@ -470,7 +531,7 @@ def _selection_label(recommendation):
 def render_markdown(report, title_date=None):
     title_date = title_date or report["generated_at"][:10]
     lines = [
-        f"# 五大联赛竞彩足球投注分析（{title_date}）",
+        f"# 竞彩足球投注分析（{title_date}）",
         "",
         f"- 赔率快照：{report.get('odds_snapshot', {}).get('fetched_at', '不可用')}",
         f"- 概率折减：{report['policy']['probability_haircut']:.1%}",

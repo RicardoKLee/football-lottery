@@ -7,10 +7,10 @@ import sys
 from dataclasses import asdict
 from datetime import timedelta
 
-from contracts import SCHEMA_VERSION, parse_datetime, utc_iso, write_json
+from contracts import parse_datetime, utc_iso, write_json
 from fetch_match_data import load_history_file
 from model_core import (
-    SUPPORTED_COMPETITIONS,
+    COMPETITION_NAMES,
     ModelParameters,
     build_elo_ratings,
     create_prediction,
@@ -30,6 +30,8 @@ def _actual_outcome(match):
 
 
 def _simple_elo_probabilities(training_matches, target, parameters):
+    target_context = target.get("context") if isinstance(target.get("context"), dict) else {}
+    advantage = 0.0 if target_context.get("venue") == "neutral" else parameters.home_advantage_elo
     ratings, _ = build_elo_ratings(
         training_matches,
         home_advantage_elo=parameters.home_advantage_elo,
@@ -41,7 +43,7 @@ def _simple_elo_probabilities(training_matches, target, parameters):
     home_expectation = expected_home_result(
         ratings.get(home_id, parameters.initial_elo),
         ratings.get(away_id, parameters.initial_elo),
-        parameters.home_advantage_elo,
+        advantage,
     )
     draws = sum(match["home_score"] == match["away_score"] for match in training_matches)
     draw_probability = (draws + 2.5) / (len(training_matches) + 10.0)
@@ -98,13 +100,26 @@ def run_walk_forward(
     competition_code,
     min_training_matches=50,
     parameters=None,
+    sample_pool=None,
 ):
-    if competition_code not in SUPPORTED_COMPETITIONS:
-        raise ValueError(f"Unsupported competition: {competition_code}")
+    competition_code = str(competition_code).strip()
+    if not competition_code:
+        raise ValueError("competition_code is required")
     if min_training_matches < 1:
         raise ValueError("min_training_matches must be positive")
     parameters = parameters or ModelParameters()
     ordered = finished_matches_before(history_matches)
+    if sample_pool is None:
+        target_team_type = (
+            ordered[0].get("context", {}).get("team_type", "club")
+            if (ordered and isinstance(ordered[0].get("context"), dict))
+            else "club"
+        )
+        sample_pool = {
+            "pool_id": f"history:{competition_code}",
+            "team_type": target_team_type,
+            "competition_codes": [competition_code],
+        }
     model_predictions = []
     elo_predictions = []
     outcomes = []
@@ -119,21 +134,30 @@ def run_walk_forward(
         ]
         if len(training) < min_training_matches:
             continue
+        target_context = target.get("context") if isinstance(target.get("context"), dict) else {
+            "team_type": "club",
+            "competition_type": "league",
+            "venue": "home",
+            "score_basis": "regulation",
+        }
         prediction = create_prediction(
             history_matches=training,
             match={
                 "match_id": target["match_id"],
                 "competition_code": competition_code,
-                "competition_name": SUPPORTED_COMPETITIONS[competition_code],
+                "competition_name": target.get("competition_name") or COMPETITION_NAMES.get(competition_code, competition_code),
                 "season": str(target_kickoff.year),
                 "kickoff_utc": target["kickoff_utc"],
+                "context": target_context,
                 "home_team": target["home_team"],
                 "away_team": target["away_team"],
             },
             data_snapshot={
-                "provider": "walk-forward-history",
+                "provider": "history-adapter",
                 "source_url": "in-memory-history-before-target",
                 "fetched_at": utc_iso(target_kickoff - timedelta(seconds=1)),
+                "provenance_status": "verified",
+                "sample_pool": sample_pool,
             },
             parameters=parameters,
         )
@@ -155,6 +179,7 @@ def run_walk_forward(
                 "training_match_count": len(training),
                 "latest_training_kickoff_utc": training[-1]["kickoff_utc"],
                 "target_kickoff_utc": target["kickoff_utc"],
+                "target_context": target_context,
             }
         )
     if not outcomes:
@@ -162,7 +187,6 @@ def run_walk_forward(
     model_metrics = _metric_summary(model_predictions, outcomes)
     elo_metrics = _metric_summary(elo_predictions, outcomes)
     return {
-        "schema_version": SCHEMA_VERSION,
         "kind": "backtest_report",
         "method": "walk_forward",
         "competition_code": competition_code,
@@ -172,7 +196,7 @@ def run_walk_forward(
         "evaluated_matches": len(outcomes),
         "skipped_matches": skipped,
         "metrics": {
-            "club_league_elo_poisson": model_metrics,
+            "football_elo_poisson": model_metrics,
             "simple_home_elo": elo_metrics,
         },
         "metric_delta_model_minus_elo": {
@@ -193,9 +217,9 @@ def run_walk_forward(
 
 
 def parse_args(argv=None):
-    parser = argparse.ArgumentParser(description="Walk-forward backtest for the club league model.")
+    parser = argparse.ArgumentParser(description="Walk-forward backtest for the football model.")
     parser.add_argument("--history-file", required=True)
-    parser.add_argument("--competition", required=True, choices=sorted(SUPPORTED_COMPETITIONS))
+    parser.add_argument("--competition", required=True, help="Competition code (e.g. PL, PD, J1)")
     parser.add_argument("--min-training-matches", type=int, default=50)
     parser.add_argument("--min-team-matches", type=int, default=5)
     parser.add_argument("--home-advantage-elo", type=float, default=60.0)

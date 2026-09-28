@@ -44,18 +44,22 @@ def make_history():
     for index, (home_id, away_id, home_goals, away_goals) in enumerate(results):
         matches.append(
             {
-                "id": f"history-{index}",
-                "utcDate": iso(NOW - timedelta(days=90 - index * 7)),
+                "match_id": f"fixture:history-{index}",
+                "kickoff_utc": iso(NOW - timedelta(days=90 - index * 7)),
                 "status": "FINISHED",
-                "homeTeam": {"id": int(home_id), "name": names[home_id]},
-                "awayTeam": {"id": int(away_id), "name": names[away_id]},
-                "score": {"fullTime": {"home": home_goals, "away": away_goals}},
+                "competition_code": "PL",
+                "context": {"team_type": "club", "competition_type": "league",
+                            "venue": "home", "score_basis": "regulation"},
+                "home_team": {"team_id": f"fixture:{home_id}", "name": names[home_id]},
+                "away_team": {"team_id": f"fixture:{away_id}", "name": names[away_id]},
+                "home_score": home_goals, "away_score": away_goals,
+                "synthetic": True,
             }
         )
     return matches
 
 
-def make_prediction(match_id="sporttery:1001", quality="sufficient", home_probability=0.60):
+def make_prediction(match_id="sporttery:1001", quality="sufficient", home_probability=0.60, provenance_status="unverified"):
     away_probability = 0.16
     draw_probability = 1.0 - home_probability - away_probability
     score = {
@@ -70,22 +74,24 @@ def make_prediction(match_id="sporttery:1001", quality="sufficient", home_probab
     }
     ttg = {"s0": 0.08, "s1": 0.30, "s2": 0.39, "s3": 0.16, "s4": 0.05, "s5": 0.01, "s6": 0.005, "s7": 0.005}
     return {
-        "schema_version": "2.0",
         "kind": "model_prediction",
-        "model": {"name": "club-league-elo-poisson", "version": "2.0.0", "parameters": {}},
+        "model": {"name": "football-elo-poisson", "parameters": {}},
         "match": {
             "match_id": match_id,
             "lottery_match_id": match_id,
             "competition_code": "PL",
             "competition_name": "Premier League",
             "kickoff_utc": iso(NOW + timedelta(hours=8)),
-            "home_team": {"team_id": "65", "name": "Manchester City FC", "aliases": ["曼城"]},
-            "away_team": {"team_id": "66", "name": "Manchester United FC", "aliases": ["曼联"]},
+            "context": {"team_type": "club", "competition_type": "league", "venue": "home", "score_basis": "regulation"},
+            "home_team": {"team_id": "football-data.org:65", "name": "Manchester City FC", "aliases": ["曼城"]},
+            "away_team": {"team_id": "football-data.org:66", "name": "Manchester United FC", "aliases": ["曼联"]},
         },
         "data_snapshot": {
             "provider": "football-data.org",
             "source_url": "https://api.football-data.org/v4/competitions/PL/matches",
             "fetched_at": iso(NOW - timedelta(minutes=10)),
+            "provenance_status": provenance_status,
+            "sample_pool": {"pool_id": "fixture:PL", "team_type": "club", "competition_codes": ["PL"]},
         },
         "expected_goals": {"home": 1.8, "away": 0.9},
         "probabilities": {
@@ -103,7 +109,6 @@ def make_prediction(match_id="sporttery:1001", quality="sufficient", home_probab
 def make_odds_snapshot(fetched_at=None, available=True):
     fetched_at = fetched_at or NOW - timedelta(seconds=30)
     return {
-        "schema_version": "2.0",
         "kind": "odds_snapshot",
         "provider": "china-sporttery",
         "source_url": fetch_lottery_data.SPORTTERY_API_URL,
@@ -114,13 +119,25 @@ def make_odds_snapshot(fetched_at=None, available=True):
             {
                 "match_id": "sporttery:1001",
                 "provider_match_id": "1001",
+                "official_listing": {
+                    "status": "confirmed" if available else "unknown",
+                    "source_url": fetch_lottery_data.SPORTTERY_API_URL,
+                    "observed_at": iso(fetched_at),
+                    "provider_match_id": "1001",
+                },
+                "market_status": {
+                    "had": "open" if available else "closed",
+                    "hhad": "open" if available else "closed",
+                    "ttg": "open" if available else "closed",
+                    "crs": "open" if available else "closed",
+                },
                 "match_num": "周二001",
                 "competition": "英超",
                 "match_date": "2026-08-25",
                 "kickoff_utc": iso(NOW + timedelta(hours=8)),
                 "cutoff_utc": iso(NOW + timedelta(hours=7, minutes=55)),
                 "cutoff_is_estimated": True,
-                "sale_status": "listed_by_official_api" if available else "closed",
+                "sale_status": "open" if available else "closed",
                 "is_available": available,
                 "availability_reasons": [] if available else ["sale_closed"],
                 "odds_observed_at": iso(fetched_at),
@@ -170,24 +187,24 @@ class TestClubModel(unittest.TestCase):
     def test_should_build_club_elo_from_finished_matches(self):
         ratings, counts = model_core.build_elo_ratings(make_history(), home_advantage_elo=60.0)
 
-        self.assertEqual(set(ratings), {"1", "2", "3"})
-        self.assertGreater(counts["1"], 0)
-        self.assertGreater(ratings["1"], ratings["3"])
+        self.assertEqual(set(ratings), {"fixture:1", "fixture:2", "fixture:3"})
+        self.assertGreater(counts["fixture:1"], 0)
+        self.assertGreater(ratings["fixture:1"], ratings["fixture:3"])
 
     def test_should_resolve_team_by_stable_id_or_exact_alias_only(self):
         teams = model_core.collect_teams(make_history())
 
-        by_id = model_core.resolve_team("1", teams)
+        by_id = model_core.resolve_team("fixture:1", teams)
         by_name = model_core.resolve_team("Alpha FC", teams)
 
-        self.assertEqual(by_id["team_id"], "1")
-        self.assertEqual(by_name["team_id"], "1")
+        self.assertEqual(by_id["team_id"], "fixture:1")
+        self.assertEqual(by_name["team_id"], "fixture:1")
         with self.assertRaises(model_core.TeamResolutionError):
             model_core.resolve_team("Alpha", teams)
 
     def test_should_reject_malformed_finished_history_instead_of_silently_dropping_it(self):
         malformed = make_history()
-        malformed[0]["score"]["fullTime"]["home"] = None
+        malformed[0]["home_score"] = None
 
         with self.assertRaises(model_core.ModelDataError):
             model_core.finished_matches_before(malformed)
@@ -204,18 +221,21 @@ class TestClubModel(unittest.TestCase):
         prediction = model_core.create_prediction(
             history_matches=make_history(),
             match={
-                "match_id": "future-1",
+                "match_id": "fixture:future-1",
                 "competition_code": "PL",
                 "competition_name": "Premier League",
                 "season": "2026",
                 "kickoff_utc": iso(NOW + timedelta(hours=8)),
-                "home_team": {"team_id": "1", "name": "Alpha FC", "aliases": ["阿尔法"]},
-                "away_team": {"team_id": "2", "name": "Beta FC", "aliases": ["贝塔"]},
+                "context": {"team_type": "club", "competition_type": "league", "venue": "home", "score_basis": "regulation"},
+                "home_team": {"team_id": "fixture:1", "name": "Alpha FC", "aliases": ["阿尔法"]},
+                "away_team": {"team_id": "fixture:2", "name": "Beta FC", "aliases": ["贝塔"]},
             },
             data_snapshot={
                 "provider": "fixture",
-                "source_url": "tests",
+                "source_url": "https://example.invalid/fixture",
                 "fetched_at": iso(NOW),
+                "provenance_status": "verified",
+                "sample_pool": {"pool_id": "fixture:PL", "team_type": "club", "competition_codes": ["PL"]},
             },
             parameters=model_core.ModelParameters(min_team_matches=2),
         )
@@ -248,10 +268,10 @@ class TestLotteryData(unittest.TestCase):
 
     def test_should_treat_future_match_listed_by_live_official_api_as_available(self):
         snapshot = fetch_lottery_data.parse_odds_data(
-            self.raw_match(), fetched_at=NOW, source_mode="live", now=NOW
+            self.raw_match("open"), fetched_at=NOW, source_mode="live", now=NOW
         )
 
-        self.assertEqual(snapshot["matches"][0]["sale_status"], "listed_by_official_api")
+        self.assertEqual(snapshot["matches"][0]["sale_status"], "open")
         self.assertTrue(snapshot["matches"][0]["is_available"])
 
     def test_should_fail_closed_when_file_snapshot_has_no_sale_status(self):
@@ -272,7 +292,7 @@ class TestLotteryData(unittest.TestCase):
 
     def test_should_filter_available_matches_by_date(self):
         snapshot = fetch_lottery_data.parse_odds_data(
-            self.raw_match(), fetched_at=NOW, source_mode="live", now=NOW
+            self.raw_match("open"), fetched_at=NOW, source_mode="live", now=NOW
         )
 
         matches = fetch_lottery_data.filter_matches(
@@ -304,7 +324,7 @@ class TestBettingAnalysis(unittest.TestCase):
         snapshot = make_odds_snapshot(fetched_at=NOW - timedelta(hours=1))
 
         report = betting.analyze_daily(
-            snapshot, [make_prediction()], now=NOW, max_odds_age_seconds=900
+            snapshot, [make_prediction(provenance_status="verified")], now=NOW, max_odds_age_seconds=900
         )
 
         self.assertEqual(report["recommendations"], [])
@@ -312,7 +332,7 @@ class TestBettingAnalysis(unittest.TestCase):
 
     def test_should_return_no_recommendation_when_prediction_is_insufficient(self):
         report = betting.analyze_daily(
-            make_odds_snapshot(), [make_prediction(quality="insufficient")], now=NOW
+            make_odds_snapshot(), [make_prediction(quality="insufficient", provenance_status="verified")], now=NOW
         )
 
         self.assertEqual(report["recommendations"], [])
@@ -321,7 +341,7 @@ class TestBettingAnalysis(unittest.TestCase):
     def test_should_use_real_odds_and_keep_unallocated_cash(self):
         report = betting.analyze_daily(
             make_odds_snapshot(),
-            [make_prediction()],
+            [make_prediction(provenance_status="verified")],
             now=NOW,
             bankroll=200.0,
             probability_haircut=0.02,
@@ -336,7 +356,7 @@ class TestBettingAnalysis(unittest.TestCase):
         self.assertLess(report["bankroll"]["staked"], 200.0)
 
     def test_should_not_create_odds_when_match_cannot_be_mapped(self):
-        prediction = make_prediction(match_id="different-id")
+        prediction = make_prediction(match_id="fixture:different-id", provenance_status="verified")
         prediction["match"]["lottery_match_id"] = "different-id"
         prediction["match"]["home_team"]["aliases"] = []
         prediction["match"]["away_team"]["aliases"] = []
@@ -351,7 +371,7 @@ class TestBettingAnalysis(unittest.TestCase):
         snapshot["matches"][0]["sale_status"] = "closed"
         snapshot["matches"][0]["is_available"] = True
 
-        report = betting.analyze_daily(snapshot, [make_prediction()], now=NOW)
+        report = betting.analyze_daily(snapshot, [make_prediction(provenance_status="verified")], now=NOW)
 
         self.assertEqual(report["recommendations"], [])
         self.assertTrue(any(item["reason"] == "match_not_available" for item in report["rejections"]))
@@ -360,7 +380,7 @@ class TestBettingAnalysis(unittest.TestCase):
         snapshot = make_odds_snapshot()
         snapshot["matches"][0]["odds"]["had"] = {"h": 2.0, "d": 3.6}
 
-        report = betting.analyze_daily(snapshot, [make_prediction()], now=NOW)
+        report = betting.analyze_daily(snapshot, [make_prediction(provenance_status="verified")], now=NOW)
 
         self.assertEqual(report["recommendations"], [])
         self.assertTrue(any(item["reason"] == "no_selection_above_ev_threshold" for item in report["rejections"]))
@@ -433,7 +453,7 @@ class TestWalkForwardBacktest(unittest.TestCase):
 
     def test_should_exclude_other_match_with_same_kickoff_from_training(self):
         history = make_history()
-        history[4]["utcDate"] = history[3]["utcDate"]
+        history[4]["kickoff_utc"] = history[3]["kickoff_utc"]
 
         report = backtest_model.run_walk_forward(
             history,
@@ -457,7 +477,7 @@ class TestWalkForwardBacktest(unittest.TestCase):
             parameters=model_core.ModelParameters(min_team_matches=1),
         )
 
-        for model_name in ("club_league_elo_poisson", "simple_home_elo"):
+        for model_name in ("football_elo_poisson", "simple_home_elo"):
             metrics = report["metrics"][model_name]
             self.assertGreaterEqual(metrics["log_loss"], 0.0)
             self.assertGreaterEqual(metrics["brier_score"], 0.0)

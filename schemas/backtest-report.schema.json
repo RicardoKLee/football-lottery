@@ -3,17 +3,16 @@
   "$id": "https://football-lottery.local/schemas/backtest-report.schema.json",
   "title": "Walk-forward backtest report",
   "type": "object",
-  "required": ["schema_version", "kind", "method", "competition_code", "parameters", "evaluated_matches", "metrics", "audit"],
+  "required": ["kind", "method", "competition_code", "parameters", "evaluated_matches", "metrics", "audit"],
   "properties": {
-    "schema_version": {"const": "2.0"},
     "kind": {"const": "backtest_report"},
     "method": {"const": "walk_forward"},
-    "competition_code": {"enum": ["PL", "PD", "BL1", "SA", "FL1"]},
+    "competition_code": {"type": "string", "pattern": "\\S"},
     "parameters": {"type": "object"},
     "evaluated_matches": {"type": "integer", "minimum": 1},
     "metrics": {
       "type": "object",
-      "required": ["club_league_elo_poisson", "simple_home_elo"]
+      "required": ["football_elo_poisson", "simple_home_elo"]
     },
     "audit": {"type": "array", "items": {"type": "object"}}
   }

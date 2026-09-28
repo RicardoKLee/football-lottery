@@ -1,27 +1,26 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://football-lottery.local/schemas/model-prediction.schema.json",
-  "title": "Club league model prediction",
+  "title": "Football model prediction",
   "type": "object",
-  "required": ["schema_version", "kind", "model", "match", "data_snapshot", "probabilities", "quality"],
+  "required": ["kind", "model", "match", "data_snapshot", "probabilities", "quality"],
   "properties": {
-    "schema_version": {"const": "2.0"},
     "kind": {"const": "model_prediction"},
     "model": {
       "type": "object",
-      "required": ["name", "version", "parameters"],
+      "required": ["name", "parameters"],
       "properties": {
-        "name": {"type": "string"},
-        "version": {"type": "string"},
+        "name": {"type": "string", "pattern": "\\S"},
         "parameters": {"type": "object"}
       }
     },
     "match": {
       "type": "object",
-      "required": ["match_id", "competition_code", "kickoff_utc", "home_team", "away_team"],
+      "required": ["match_id", "competition_code", "kickoff_utc", "home_team", "away_team", "context"],
       "properties": {
-        "match_id": {"type": "string", "minLength": 1},
-        "competition_code": {"enum": ["PL", "PD", "BL1", "SA", "FL1"]},
+        "match_id": {"type": "string", "pattern": "^[^\\s:]+:\\S+(?![\\s\\S])"},
+        "competition_code": {"type": "string", "pattern": "\\S"},
+        "context": {"$ref": "#/$defs/context"},
         "kickoff_utc": {"type": "string", "format": "date-time"},
         "home_team": {"$ref": "#/$defs/team"},
         "away_team": {"$ref": "#/$defs/team"}
@@ -29,10 +28,12 @@
     },
     "data_snapshot": {
       "type": "object",
-      "required": ["provider", "source_url", "fetched_at"],
+      "required": ["provider", "source_url", "fetched_at", "provenance_status", "sample_pool"],
       "properties": {
-        "provider": {"type": "string"},
-        "source_url": {"type": "string"},
+        "provider": {"type": "string", "pattern": "\\S"},
+        "source_url": {"type": "string", "pattern": "\\S"},
+        "provenance_status": {"enum": ["verified", "unverified"], "description": "Structural declaration only; adapter evidence is required for trust."},
+        "sample_pool": {"$ref": "#/$defs/samplePool"},
         "fetched_at": {"type": "string", "format": "date-time"}
       }
     },
@@ -40,7 +41,7 @@
       "type": "object",
       "required": ["had", "score", "ttg"],
       "properties": {
-        "had": {"$ref": "#/$defs/probabilityMap"},
+        "had": {"$ref": "#/$defs/probabilityMap", "required": ["H", "D", "A"], "maxProperties": 3},
         "score": {"$ref": "#/$defs/probabilityMap"},
         "ttg": {"$ref": "#/$defs/probabilityMap"}
       }
@@ -55,12 +56,31 @@
     }
   },
   "$defs": {
+    "context": {
+      "type": "object",
+      "required": ["team_type", "competition_type", "venue", "score_basis"],
+      "properties": {
+        "team_type": {"enum": ["club", "national", "unknown"]},
+        "competition_type": {"enum": ["league", "cup", "other", "unknown"]},
+        "venue": {"enum": ["home", "neutral", "unknown"]},
+        "score_basis": {"enum": ["regulation", "unknown"]}
+      }
+    },
+    "samplePool": {
+      "type": "object",
+      "required": ["pool_id", "team_type", "competition_codes"],
+      "properties": {
+        "pool_id": {"type": "string", "pattern": "\\S"},
+        "team_type": {"enum": ["club", "national", "unknown"]},
+        "competition_codes": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "\\S"}}
+      }
+    },
     "team": {
       "type": "object",
       "required": ["team_id", "name", "aliases"],
       "properties": {
-        "team_id": {"type": "string", "minLength": 1},
-        "name": {"type": "string", "minLength": 1},
+        "team_id": {"type": "string", "pattern": "^[^\\s:]+:\\S+(?![\\s\\S])"},
+        "name": {"type": "string", "pattern": "\\S"},
         "aliases": {"type": "array", "items": {"type": "string"}}
       }
     },
