@@ -1,0 +1,6001 @@
+{
+  "count": 187,
+  "fetched_at": "2026-09-28T15:06:35.274526Z",
+  "matches": [
+    {
+      "away_score": 3,
+      "away_team": {
+        "aliases": [
+          "瑞典"
+        ],
+        "name": "瑞典",
+        "team_id": "china-sporttery:755"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 0,
+      "half_score": "0:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "阿塞拜疆"
+        ],
+        "name": "阿塞拜疆",
+        "team_id": "china-sporttery:741"
+      },
+      "kickoff_utc": "2024-09-05T16:00:00Z",
+      "match_id": "china-sporttery:2030605",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "卢森堡"
+        ],
+        "name": "卢森堡",
+        "team_id": "china-sporttery:747"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 0,
+      "half_score": "2:0",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "北爱尔兰"
+        ],
+        "name": "北爱尔兰",
+        "team_id": "china-sporttery:252"
+      },
+      "kickoff_utc": "2024-09-05T18:45:00Z",
+      "match_id": "china-sporttery:2030601",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "列支敦"
+        ],
+        "name": "列支敦",
+        "team_id": "china-sporttery:876"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 0,
+      "half_score": "0:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "圣马力诺"
+        ],
+        "name": "圣马力诺",
+        "team_id": "china-sporttery:1761"
+      },
+      "kickoff_utc": "2024-09-05T18:45:00Z",
+      "match_id": "china-sporttery:2030603",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "斯洛伐克"
+        ],
+        "name": "斯洛伐克",
+        "team_id": "china-sporttery:63"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 0,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "爱沙尼亚"
+        ],
+        "name": "爱沙尼亚",
+        "team_id": "china-sporttery:740"
+      },
+      "kickoff_utc": "2024-09-05T18:45:00Z",
+      "match_id": "china-sporttery:2030604",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "保加利亚"
+        ],
+        "name": "保加利亚",
+        "team_id": "china-sporttery:73"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 0,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "白俄罗斯"
+        ],
+        "name": "白俄罗斯",
+        "team_id": "china-sporttery:76"
+      },
+      "kickoff_utc": "2024-09-05T18:45:00Z",
+      "match_id": "china-sporttery:2030606",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 3,
+      "away_team": {
+        "aliases": [
+          "波兰"
+        ],
+        "name": "波兰",
+        "team_id": "china-sporttery:251"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 1026859,
+      "half_score": "0:2",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "苏格兰"
+        ],
+        "name": "苏格兰",
+        "team_id": "china-sporttery:64"
+      },
+      "kickoff_utc": "2024-09-05T18:45:00Z",
+      "match_id": "china-sporttery:2066909",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "瑞士"
+        ],
+        "name": "瑞士",
+        "team_id": "china-sporttery:407"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 1026861,
+      "half_score": "0:0",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "丹麦"
+        ],
+        "name": "丹麦",
+        "team_id": "china-sporttery:749"
+      },
+      "kickoff_utc": "2024-09-05T18:45:00Z",
+      "match_id": "china-sporttery:2066913",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "克罗地亚"
+        ],
+        "name": "克罗地亚",
+        "team_id": "china-sporttery:1731"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 1026860,
+      "half_score": "2:1",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "葡萄牙"
+        ],
+        "name": "葡萄牙",
+        "team_id": "china-sporttery:754"
+      },
+      "kickoff_utc": "2024-09-05T18:45:00Z",
+      "match_id": "china-sporttery:2066914",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "西班牙"
+        ],
+        "name": "西班牙",
+        "team_id": "china-sporttery:77"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 1026862,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "塞尔维亚"
+        ],
+        "name": "塞尔维亚",
+        "team_id": "china-sporttery:89"
+      },
+      "kickoff_utc": "2024-09-05T18:45:00Z",
+      "match_id": "china-sporttery:2066915",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "挪威"
+        ],
+        "name": "挪威",
+        "team_id": "china-sporttery:414"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 1026875,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "哈萨克"
+        ],
+        "name": "哈萨克",
+        "team_id": "china-sporttery:78"
+      },
+      "kickoff_utc": "2024-09-06T14:00:00Z",
+      "match_id": "china-sporttery:2068731",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "塞浦路斯"
+        ],
+        "name": "塞浦路斯",
+        "team_id": "china-sporttery:913"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 0,
+      "half_score": "0:1",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "立陶宛"
+        ],
+        "name": "立陶宛",
+        "team_id": "china-sporttery:59"
+      },
+      "kickoff_utc": "2024-09-06T16:00:00Z",
+      "match_id": "china-sporttery:2030598",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "以色列"
+        ],
+        "name": "以色列",
+        "team_id": "china-sporttery:60"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 0,
+      "half_score": "1:1",
+      "home_score": 3,
+      "home_team": {
+        "aliases": [
+          "比利时"
+        ],
+        "name": "比利时",
+        "team_id": "china-sporttery:750"
+      },
+      "kickoff_utc": "2024-09-06T18:45:00Z",
+      "match_id": "china-sporttery:2030594",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 3,
+      "away_team": {
+        "aliases": [
+          "罗马尼亚"
+        ],
+        "name": "罗马尼亚",
+        "team_id": "china-sporttery:413"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 0,
+      "half_score": "0:1",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "科索沃"
+        ],
+        "name": "科索沃",
+        "team_id": "china-sporttery:745"
+      },
+      "kickoff_utc": "2024-09-06T18:45:00Z",
+      "match_id": "china-sporttery:2030599",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 3,
+      "away_team": {
+        "aliases": [
+          "意大利"
+        ],
+        "name": "意大利",
+        "team_id": "china-sporttery:74"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 1026877,
+      "half_score": "1:1",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "法国"
+        ],
+        "name": "法国",
+        "team_id": "china-sporttery:748"
+      },
+      "kickoff_utc": "2024-09-06T18:45:00Z",
+      "match_id": "china-sporttery:2068732",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "奥地利"
+        ],
+        "name": "奥地利",
+        "team_id": "china-sporttery:62"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 1026879,
+      "half_score": "1:1",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "斯洛文尼"
+        ],
+        "name": "斯洛文尼",
+        "team_id": "china-sporttery:93"
+      },
+      "kickoff_utc": "2024-09-06T18:45:00Z",
+      "match_id": "china-sporttery:2068734",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "黑山"
+        ],
+        "name": "黑山",
+        "team_id": "china-sporttery:1728"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 1026878,
+      "half_score": "1:0",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "冰岛"
+        ],
+        "name": "冰岛",
+        "team_id": "china-sporttery:1729"
+      },
+      "kickoff_utc": "2024-09-06T18:45:00Z",
+      "match_id": "china-sporttery:2068735",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "土耳其"
+        ],
+        "name": "土耳其",
+        "team_id": "china-sporttery:411"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 1026880,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "威尔士"
+        ],
+        "name": "威尔士",
+        "team_id": "china-sporttery:92"
+      },
+      "kickoff_utc": "2024-09-06T18:45:00Z",
+      "match_id": "china-sporttery:2068737",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "北马其顿"
+        ],
+        "name": "北马其顿",
+        "team_id": "china-sporttery:746"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 0,
+      "half_score": "1:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "法罗群岛"
+        ],
+        "name": "法罗群岛",
+        "team_id": "china-sporttery:758"
+      },
+      "kickoff_utc": "2024-09-07T13:00:00Z",
+      "match_id": "china-sporttery:2030588",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "马耳他"
+        ],
+        "name": "马耳他",
+        "team_id": "china-sporttery:1763"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 0,
+      "half_score": "2:0",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "摩尔多瓦"
+        ],
+        "name": "摩尔多瓦",
+        "team_id": "china-sporttery:918"
+      },
+      "kickoff_utc": "2024-09-07T16:00:00Z",
+      "match_id": "china-sporttery:2030586",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "拉脱维亚"
+        ],
+        "name": "拉脱维亚",
+        "team_id": "china-sporttery:694"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 0,
+      "half_score": "2:1",
+      "home_score": 4,
+      "home_team": {
+        "aliases": [
+          "亚美尼亚"
+        ],
+        "name": "亚美尼亚",
+        "team_id": "china-sporttery:914"
+      },
+      "kickoff_utc": "2024-09-07T16:00:00Z",
+      "match_id": "china-sporttery:2030587",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "英格兰"
+        ],
+        "name": "英格兰",
+        "team_id": "china-sporttery:1730"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 1026892,
+      "half_score": "0:2",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "爱尔兰"
+        ],
+        "name": "爱尔兰",
+        "team_id": "china-sporttery:412"
+      },
+      "kickoff_utc": "2024-09-07T16:00:00Z",
+      "match_id": "china-sporttery:2069237",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "捷克"
+        ],
+        "name": "捷克",
+        "team_id": "china-sporttery:75"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 1026893,
+      "half_score": "1:0",
+      "home_score": 4,
+      "home_team": {
+        "aliases": [
+          "格鲁吉亚"
+        ],
+        "name": "格鲁吉亚",
+        "team_id": "china-sporttery:912"
+      },
+      "kickoff_utc": "2024-09-07T16:00:00Z",
+      "match_id": "china-sporttery:2069239",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "阿尔巴尼"
+        ],
+        "name": "阿尔巴尼",
+        "team_id": "china-sporttery:458"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 0,
+      "half_score": "0:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "乌克兰"
+        ],
+        "name": "乌克兰",
+        "team_id": "china-sporttery:88"
+      },
+      "kickoff_utc": "2024-09-07T18:45:00Z",
+      "match_id": "china-sporttery:2030582",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "波黑"
+        ],
+        "name": "波黑",
+        "team_id": "china-sporttery:61"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 1026894,
+      "half_score": "2:1",
+      "home_score": 5,
+      "home_team": {
+        "aliases": [
+          "荷兰"
+        ],
+        "name": "荷兰",
+        "team_id": "china-sporttery:518"
+      },
+      "kickoff_utc": "2024-09-07T18:45:00Z",
+      "match_id": "china-sporttery:2069240",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "匈牙利"
+        ],
+        "name": "匈牙利",
+        "team_id": "china-sporttery:426"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 1026895,
+      "half_score": "1:0",
+      "home_score": 5,
+      "home_team": {
+        "aliases": [
+          "德国"
+        ],
+        "name": "德国",
+        "team_id": "china-sporttery:90"
+      },
+      "kickoff_utc": "2024-09-07T18:45:00Z",
+      "match_id": "china-sporttery:2069241",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "芬兰"
+        ],
+        "name": "芬兰",
+        "team_id": "china-sporttery:38"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "1",
+      "gm_match_id": 1026896,
+      "half_score": "2:0",
+      "home_score": 3,
+      "home_team": {
+        "aliases": [
+          "希腊"
+        ],
+        "name": "希腊",
+        "team_id": "china-sporttery:72"
+      },
+      "kickoff_utc": "2024-09-07T18:45:00Z",
+      "match_id": "china-sporttery:2069242",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "白俄罗斯"
+        ],
+        "name": "白俄罗斯",
+        "team_id": "china-sporttery:76"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 0,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "卢森堡"
+        ],
+        "name": "卢森堡",
+        "team_id": "china-sporttery:747"
+      },
+      "kickoff_utc": "2024-09-08T13:00:00Z",
+      "match_id": "china-sporttery:2030581",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "列支敦"
+        ],
+        "name": "列支敦",
+        "team_id": "china-sporttery:876"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 0,
+      "half_score": "1:0",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "直布罗陀"
+        ],
+        "name": "直布罗陀",
+        "team_id": "china-sporttery:1279"
+      },
+      "kickoff_utc": "2024-09-08T16:00:00Z",
+      "match_id": "china-sporttery:2030451",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "北爱尔兰"
+        ],
+        "name": "北爱尔兰",
+        "team_id": "china-sporttery:252"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 0,
+      "half_score": "1:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "保加利亚"
+        ],
+        "name": "保加利亚",
+        "team_id": "china-sporttery:73"
+      },
+      "kickoff_utc": "2024-09-08T16:00:00Z",
+      "match_id": "china-sporttery:2030576",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "阿塞拜疆"
+        ],
+        "name": "阿塞拜疆",
+        "team_id": "china-sporttery:741"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 0,
+      "half_score": "2:0",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "斯洛伐克"
+        ],
+        "name": "斯洛伐克",
+        "team_id": "china-sporttery:63"
+      },
+      "kickoff_utc": "2024-09-08T16:00:00Z",
+      "match_id": "china-sporttery:2030578",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "塞尔维亚"
+        ],
+        "name": "塞尔维亚",
+        "team_id": "china-sporttery:89"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 1026906,
+      "half_score": "1:0",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "丹麦"
+        ],
+        "name": "丹麦",
+        "team_id": "china-sporttery:749"
+      },
+      "kickoff_utc": "2024-09-08T16:00:00Z",
+      "match_id": "china-sporttery:2069250",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "爱沙尼亚"
+        ],
+        "name": "爱沙尼亚",
+        "team_id": "china-sporttery:740"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 0,
+      "half_score": "3:0",
+      "home_score": 3,
+      "home_team": {
+        "aliases": [
+          "瑞典"
+        ],
+        "name": "瑞典",
+        "team_id": "china-sporttery:755"
+      },
+      "kickoff_utc": "2024-09-08T18:45:00Z",
+      "match_id": "china-sporttery:2030579",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "苏格兰"
+        ],
+        "name": "苏格兰",
+        "team_id": "china-sporttery:64"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 1026908,
+      "half_score": "0:1",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "葡萄牙"
+        ],
+        "name": "葡萄牙",
+        "team_id": "china-sporttery:754"
+      },
+      "kickoff_utc": "2024-09-08T18:45:00Z",
+      "match_id": "china-sporttery:2069251",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 4,
+      "away_team": {
+        "aliases": [
+          "西班牙"
+        ],
+        "name": "西班牙",
+        "team_id": "china-sporttery:77"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 1026907,
+      "half_score": "1:2",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "瑞士"
+        ],
+        "name": "瑞士",
+        "team_id": "china-sporttery:407"
+      },
+      "kickoff_utc": "2024-09-08T18:45:00Z",
+      "match_id": "china-sporttery:2069254",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "波兰"
+        ],
+        "name": "波兰",
+        "team_id": "china-sporttery:251"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 1026909,
+      "half_score": "0:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "克罗地亚"
+        ],
+        "name": "克罗地亚",
+        "team_id": "china-sporttery:1731"
+      },
+      "kickoff_utc": "2024-09-08T18:45:00Z",
+      "match_id": "china-sporttery:2069255",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 4,
+      "away_team": {
+        "aliases": [
+          "科索沃"
+        ],
+        "name": "科索沃",
+        "team_id": "china-sporttery:745"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 0,
+      "half_score": "0:2",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "塞浦路斯"
+        ],
+        "name": "塞浦路斯",
+        "team_id": "china-sporttery:913"
+      },
+      "kickoff_utc": "2024-09-09T16:00:00Z",
+      "match_id": "china-sporttery:2030568",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "立陶宛"
+        ],
+        "name": "立陶宛",
+        "team_id": "china-sporttery:59"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 0,
+      "half_score": "1:1",
+      "home_score": 3,
+      "home_team": {
+        "aliases": [
+          "罗马尼亚"
+        ],
+        "name": "罗马尼亚",
+        "team_id": "china-sporttery:413"
+      },
+      "kickoff_utc": "2024-09-09T18:45:00Z",
+      "match_id": "china-sporttery:2030572",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "意大利"
+        ],
+        "name": "意大利",
+        "team_id": "china-sporttery:74"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 0,
+      "half_score": "0:1",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "以色列"
+        ],
+        "name": "以色列",
+        "team_id": "china-sporttery:60"
+      },
+      "kickoff_utc": "2024-09-09T18:45:00Z",
+      "match_id": "china-sporttery:2030573",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "冰岛"
+        ],
+        "name": "冰岛",
+        "team_id": "china-sporttery:1729"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 1026910,
+      "half_score": "1:1",
+      "home_score": 3,
+      "home_team": {
+        "aliases": [
+          "土耳其"
+        ],
+        "name": "土耳其",
+        "team_id": "china-sporttery:411"
+      },
+      "kickoff_utc": "2024-09-09T18:45:00Z",
+      "match_id": "china-sporttery:2069229",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "威尔士"
+        ],
+        "name": "威尔士",
+        "team_id": "china-sporttery:92"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 1026911,
+      "half_score": "0:2",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "黑山"
+        ],
+        "name": "黑山",
+        "team_id": "china-sporttery:1728"
+      },
+      "kickoff_utc": "2024-09-09T18:45:00Z",
+      "match_id": "china-sporttery:2069230",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "奥地利"
+        ],
+        "name": "奥地利",
+        "team_id": "china-sporttery:62"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 1026912,
+      "half_score": "1:1",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "挪威"
+        ],
+        "name": "挪威",
+        "team_id": "china-sporttery:414"
+      },
+      "kickoff_utc": "2024-09-09T18:45:00Z",
+      "match_id": "china-sporttery:2069231",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "哈萨克"
+        ],
+        "name": "哈萨克",
+        "team_id": "china-sporttery:78"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 1026913,
+      "half_score": "2:0",
+      "home_score": 3,
+      "home_team": {
+        "aliases": [
+          "斯洛文尼"
+        ],
+        "name": "斯洛文尼",
+        "team_id": "china-sporttery:93"
+      },
+      "kickoff_utc": "2024-09-09T18:45:00Z",
+      "match_id": "china-sporttery:2069232",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "比利时"
+        ],
+        "name": "比利时",
+        "team_id": "china-sporttery:750"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 1026914,
+      "half_score": "1:0",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "法国"
+        ],
+        "name": "法国",
+        "team_id": "china-sporttery:748"
+      },
+      "kickoff_utc": "2024-09-09T18:45:00Z",
+      "match_id": "china-sporttery:2069235",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "法罗群岛"
+        ],
+        "name": "法罗群岛",
+        "team_id": "china-sporttery:758"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 0,
+      "half_score": "0:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "拉脱维亚"
+        ],
+        "name": "拉脱维亚",
+        "team_id": "china-sporttery:694"
+      },
+      "kickoff_utc": "2024-09-10T16:00:00Z",
+      "match_id": "china-sporttery:2030561",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "乌克兰"
+        ],
+        "name": "乌克兰",
+        "team_id": "china-sporttery:88"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 0,
+      "half_score": "2:1",
+      "home_score": 3,
+      "home_team": {
+        "aliases": [
+          "捷克"
+        ],
+        "name": "捷克",
+        "team_id": "china-sporttery:75"
+      },
+      "kickoff_utc": "2024-09-10T18:45:00Z",
+      "match_id": "china-sporttery:2030560",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "马耳他"
+        ],
+        "name": "马耳他",
+        "team_id": "china-sporttery:1763"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 0,
+      "half_score": "0:1",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "安道尔"
+        ],
+        "name": "安道尔",
+        "team_id": "china-sporttery:877"
+      },
+      "kickoff_utc": "2024-09-10T18:45:00Z",
+      "match_id": "china-sporttery:2030563",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "波黑"
+        ],
+        "name": "波黑",
+        "team_id": "china-sporttery:61"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 1026928,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "匈牙利"
+        ],
+        "name": "匈牙利",
+        "team_id": "china-sporttery:426"
+      },
+      "kickoff_utc": "2024-09-10T18:45:00Z",
+      "match_id": "china-sporttery:2071513",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "芬兰"
+        ],
+        "name": "芬兰",
+        "team_id": "china-sporttery:38"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 1026930,
+      "half_score": "0:0",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "英格兰"
+        ],
+        "name": "英格兰",
+        "team_id": "china-sporttery:1730"
+      },
+      "kickoff_utc": "2024-09-10T18:45:00Z",
+      "match_id": "china-sporttery:2071514",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "希腊"
+        ],
+        "name": "希腊",
+        "team_id": "china-sporttery:72"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 1026929,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "爱尔兰"
+        ],
+        "name": "爱尔兰",
+        "team_id": "china-sporttery:412"
+      },
+      "kickoff_utc": "2024-09-10T18:45:00Z",
+      "match_id": "china-sporttery:2071515",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "德国"
+        ],
+        "name": "德国",
+        "team_id": "china-sporttery:90"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 1026931,
+      "half_score": "1:2",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "荷兰"
+        ],
+        "name": "荷兰",
+        "team_id": "china-sporttery:518"
+      },
+      "kickoff_utc": "2024-09-10T18:45:00Z",
+      "match_id": "china-sporttery:2071516",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "亚美尼亚"
+        ],
+        "name": "亚美尼亚",
+        "team_id": "china-sporttery:914"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 1026933,
+      "half_score": "0:0",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "北马其顿"
+        ],
+        "name": "北马其顿",
+        "team_id": "china-sporttery:746"
+      },
+      "kickoff_utc": "2024-09-10T18:45:00Z",
+      "match_id": "china-sporttery:2071517",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "格鲁吉亚"
+        ],
+        "name": "格鲁吉亚",
+        "team_id": "china-sporttery:912"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "2",
+      "gm_match_id": 1026932,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "阿尔巴尼"
+        ],
+        "name": "阿尔巴尼",
+        "team_id": "china-sporttery:458"
+      },
+      "kickoff_utc": "2024-09-10T18:45:00Z",
+      "match_id": "china-sporttery:2071518",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 3,
+      "away_team": {
+        "aliases": [
+          "北马其顿"
+        ],
+        "name": "北马其顿",
+        "team_id": "china-sporttery:746"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 0,
+      "half_score": "0:1",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "拉脱维亚"
+        ],
+        "name": "拉脱维亚",
+        "team_id": "china-sporttery:694"
+      },
+      "kickoff_utc": "2024-10-10T16:00:00Z",
+      "match_id": "china-sporttery:2030550",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "安道尔"
+        ],
+        "name": "安道尔",
+        "team_id": "china-sporttery:877"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 0,
+      "half_score": "1:0",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "摩尔多瓦"
+        ],
+        "name": "摩尔多瓦",
+        "team_id": "china-sporttery:918"
+      },
+      "kickoff_utc": "2024-10-10T16:00:00Z",
+      "match_id": "china-sporttery:2030555",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "哈萨克"
+        ],
+        "name": "哈萨克",
+        "team_id": "china-sporttery:78"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 0,
+      "half_score": "1:0",
+      "home_score": 4,
+      "home_team": {
+        "aliases": [
+          "奥地利"
+        ],
+        "name": "奥地利",
+        "team_id": "china-sporttery:62"
+      },
+      "kickoff_utc": "2024-10-10T18:45:00Z",
+      "match_id": "china-sporttery:2030543",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "圣马力诺"
+        ],
+        "name": "圣马力诺",
+        "team_id": "china-sporttery:1761"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 0,
+      "half_score": "0:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "直布罗陀"
+        ],
+        "name": "直布罗陀",
+        "team_id": "china-sporttery:1279"
+      },
+      "kickoff_utc": "2024-10-10T18:45:00Z",
+      "match_id": "china-sporttery:2030549",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "爱尔兰"
+        ],
+        "name": "爱尔兰",
+        "team_id": "china-sporttery:412"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 0,
+      "half_score": "1:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "芬兰"
+        ],
+        "name": "芬兰",
+        "team_id": "china-sporttery:38"
+      },
+      "kickoff_utc": "2024-10-10T18:45:00Z",
+      "match_id": "china-sporttery:2030552",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 4,
+      "away_team": {
+        "aliases": [
+          "法国"
+        ],
+        "name": "法国",
+        "team_id": "china-sporttery:748"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 0,
+      "half_score": "1:2",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "以色列"
+        ],
+        "name": "以色列",
+        "team_id": "china-sporttery:60"
+      },
+      "kickoff_utc": "2024-10-10T18:45:00Z",
+      "match_id": "china-sporttery:2030553",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "亚美尼亚"
+        ],
+        "name": "亚美尼亚",
+        "team_id": "china-sporttery:914"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 0,
+      "half_score": "1:1",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "法罗群岛"
+        ],
+        "name": "法罗群岛",
+        "team_id": "china-sporttery:758"
+      },
+      "kickoff_utc": "2024-10-10T18:45:00Z",
+      "match_id": "china-sporttery:2030558",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "希腊"
+        ],
+        "name": "希腊",
+        "team_id": "china-sporttery:72"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 1027296,
+      "half_score": "0:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "英格兰"
+        ],
+        "name": "英格兰",
+        "team_id": "china-sporttery:1730"
+      },
+      "kickoff_utc": "2024-10-10T18:45:00Z",
+      "match_id": "china-sporttery:2083963",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "比利时"
+        ],
+        "name": "比利时",
+        "team_id": "china-sporttery:750"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 1027297,
+      "half_score": "2:1",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "意大利"
+        ],
+        "name": "意大利",
+        "team_id": "china-sporttery:74"
+      },
+      "kickoff_utc": "2024-10-10T18:45:00Z",
+      "match_id": "china-sporttery:2083965",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "斯洛文尼"
+        ],
+        "name": "斯洛文尼",
+        "team_id": "china-sporttery:93"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 1027298,
+      "half_score": "1:0",
+      "home_score": 3,
+      "home_team": {
+        "aliases": [
+          "挪威"
+        ],
+        "name": "挪威",
+        "team_id": "china-sporttery:414"
+      },
+      "kickoff_utc": "2024-10-10T18:45:00Z",
+      "match_id": "china-sporttery:2083967",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "阿塞拜疆"
+        ],
+        "name": "阿塞拜疆",
+        "team_id": "china-sporttery:741"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 0,
+      "half_score": "2:1",
+      "home_score": 3,
+      "home_team": {
+        "aliases": [
+          "爱沙尼亚"
+        ],
+        "name": "爱沙尼亚",
+        "team_id": "china-sporttery:740"
+      },
+      "kickoff_utc": "2024-10-11T16:00:00Z",
+      "match_id": "china-sporttery:2030548",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "格鲁吉亚"
+        ],
+        "name": "格鲁吉亚",
+        "team_id": "china-sporttery:912"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 0,
+      "half_score": "1:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "乌克兰"
+        ],
+        "name": "乌克兰",
+        "team_id": "china-sporttery:88"
+      },
+      "kickoff_utc": "2024-10-11T18:45:00Z",
+      "match_id": "china-sporttery:2030539",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "瑞典"
+        ],
+        "name": "瑞典",
+        "team_id": "china-sporttery:755"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 1027309,
+      "half_score": "1:2",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "斯洛伐克"
+        ],
+        "name": "斯洛伐克",
+        "team_id": "china-sporttery:63"
+      },
+      "kickoff_utc": "2024-10-11T18:45:00Z",
+      "match_id": "china-sporttery:2085068",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "黑山"
+        ],
+        "name": "黑山",
+        "team_id": "china-sporttery:1728"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 1027311,
+      "half_score": "0:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "土耳其"
+        ],
+        "name": "土耳其",
+        "team_id": "china-sporttery:411"
+      },
+      "kickoff_utc": "2024-10-11T18:45:00Z",
+      "match_id": "china-sporttery:2085070",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "德国"
+        ],
+        "name": "德国",
+        "team_id": "china-sporttery:90"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 1027313,
+      "half_score": "0:2",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "波黑"
+        ],
+        "name": "波黑",
+        "team_id": "china-sporttery:61"
+      },
+      "kickoff_utc": "2024-10-11T18:45:00Z",
+      "match_id": "china-sporttery:2085071",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "荷兰"
+        ],
+        "name": "荷兰",
+        "team_id": "china-sporttery:518"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 1027312,
+      "half_score": "1:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "匈牙利"
+        ],
+        "name": "匈牙利",
+        "team_id": "china-sporttery:426"
+      },
+      "kickoff_utc": "2024-10-11T18:45:00Z",
+      "match_id": "china-sporttery:2085072",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "威尔士"
+        ],
+        "name": "威尔士",
+        "team_id": "china-sporttery:92"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 1027314,
+      "half_score": "0:2",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "冰岛"
+        ],
+        "name": "冰岛",
+        "team_id": "china-sporttery:1729"
+      },
+      "kickoff_utc": "2024-10-11T18:45:00Z",
+      "match_id": "china-sporttery:2085073",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "阿尔巴尼"
+        ],
+        "name": "阿尔巴尼",
+        "team_id": "china-sporttery:458"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 1027310,
+      "half_score": "1:0",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "捷克"
+        ],
+        "name": "捷克",
+        "team_id": "china-sporttery:75"
+      },
+      "kickoff_utc": "2024-10-11T18:45:00Z",
+      "match_id": "china-sporttery:2085074",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "科索沃"
+        ],
+        "name": "科索沃",
+        "team_id": "china-sporttery:745"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 0,
+      "half_score": "0:1",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "立陶宛"
+        ],
+        "name": "立陶宛",
+        "team_id": "china-sporttery:59"
+      },
+      "kickoff_utc": "2024-10-12T13:00:00Z",
+      "match_id": "china-sporttery:2030533",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "苏格兰"
+        ],
+        "name": "苏格兰",
+        "team_id": "china-sporttery:64"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 1027319,
+      "half_score": "1:1",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "克罗地亚"
+        ],
+        "name": "克罗地亚",
+        "team_id": "china-sporttery:1731"
+      },
+      "kickoff_utc": "2024-10-12T16:00:00Z",
+      "match_id": "china-sporttery:2085348",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "卢森堡"
+        ],
+        "name": "卢森堡",
+        "team_id": "china-sporttery:747"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 1027318,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "保加利亚"
+        ],
+        "name": "保加利亚",
+        "team_id": "china-sporttery:73"
+      },
+      "kickoff_utc": "2024-10-12T16:00:00Z",
+      "match_id": "china-sporttery:2085350",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "北爱尔兰"
+        ],
+        "name": "北爱尔兰",
+        "team_id": "china-sporttery:252"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 0,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "白俄罗斯"
+        ],
+        "name": "白俄罗斯",
+        "team_id": "china-sporttery:76"
+      },
+      "kickoff_utc": "2024-10-12T18:45:00Z",
+      "match_id": "china-sporttery:2030536",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "丹麦"
+        ],
+        "name": "丹麦",
+        "team_id": "china-sporttery:749"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 1027322,
+      "half_score": "0:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "西班牙"
+        ],
+        "name": "西班牙",
+        "team_id": "china-sporttery:77"
+      },
+      "kickoff_utc": "2024-10-12T18:45:00Z",
+      "match_id": "china-sporttery:2085349",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 3,
+      "away_team": {
+        "aliases": [
+          "罗马尼亚"
+        ],
+        "name": "罗马尼亚",
+        "team_id": "china-sporttery:413"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 1027321,
+      "half_score": "0:3",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "塞浦路斯"
+        ],
+        "name": "塞浦路斯",
+        "team_id": "china-sporttery:913"
+      },
+      "kickoff_utc": "2024-10-12T18:45:00Z",
+      "match_id": "china-sporttery:2085351",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "瑞士"
+        ],
+        "name": "瑞士",
+        "team_id": "china-sporttery:407"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 1027323,
+      "half_score": "1:0",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "塞尔维亚"
+        ],
+        "name": "塞尔维亚",
+        "team_id": "china-sporttery:89"
+      },
+      "kickoff_utc": "2024-10-12T18:45:00Z",
+      "match_id": "china-sporttery:2085355",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 3,
+      "away_team": {
+        "aliases": [
+          "葡萄牙"
+        ],
+        "name": "葡萄牙",
+        "team_id": "china-sporttery:754"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "3",
+      "gm_match_id": 1027324,
+      "half_score": "0:2",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "波兰"
+        ],
+        "name": "波兰",
+        "team_id": "china-sporttery:251"
+      },
+      "kickoff_utc": "2024-10-12T18:45:00Z",
+      "match_id": "china-sporttery:2085359",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "斯洛文尼"
+        ],
+        "name": "斯洛文尼",
+        "team_id": "china-sporttery:93"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 1027329,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "哈萨克"
+        ],
+        "name": "哈萨克",
+        "team_id": "china-sporttery:78"
+      },
+      "kickoff_utc": "2024-10-13T13:00:00Z",
+      "match_id": "china-sporttery:2085356",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "摩尔多瓦"
+        ],
+        "name": "摩尔多瓦",
+        "team_id": "china-sporttery:918"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 0,
+      "half_score": "0:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "马耳他"
+        ],
+        "name": "马耳他",
+        "team_id": "china-sporttery:1763"
+      },
+      "kickoff_utc": "2024-10-13T16:00:00Z",
+      "match_id": "china-sporttery:2030525",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "直布罗陀"
+        ],
+        "name": "直布罗陀",
+        "team_id": "china-sporttery:1279"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 0,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "列支敦"
+        ],
+        "name": "列支敦",
+        "team_id": "china-sporttery:876"
+      },
+      "kickoff_utc": "2024-10-13T16:00:00Z",
+      "match_id": "china-sporttery:2030528",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "北马其顿"
+        ],
+        "name": "北马其顿",
+        "team_id": "china-sporttery:746"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 1027331,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "亚美尼亚"
+        ],
+        "name": "亚美尼亚",
+        "team_id": "china-sporttery:914"
+      },
+      "kickoff_utc": "2024-10-13T16:00:00Z",
+      "match_id": "china-sporttery:2085360",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 3,
+      "away_team": {
+        "aliases": [
+          "英格兰"
+        ],
+        "name": "英格兰",
+        "team_id": "china-sporttery:1730"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 1027330,
+      "half_score": "0:1",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "芬兰"
+        ],
+        "name": "芬兰",
+        "team_id": "china-sporttery:38"
+      },
+      "kickoff_utc": "2024-10-13T16:00:00Z",
+      "match_id": "china-sporttery:2085363",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "拉脱维亚"
+        ],
+        "name": "拉脱维亚",
+        "team_id": "china-sporttery:694"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 0,
+      "half_score": "1:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "法罗群岛"
+        ],
+        "name": "法罗群岛",
+        "team_id": "china-sporttery:758"
+      },
+      "kickoff_utc": "2024-10-13T18:45:00Z",
+      "match_id": "china-sporttery:2030523",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "挪威"
+        ],
+        "name": "挪威",
+        "team_id": "china-sporttery:414"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 1027332,
+      "half_score": "1:1",
+      "home_score": 5,
+      "home_team": {
+        "aliases": [
+          "奥地利"
+        ],
+        "name": "奥地利",
+        "team_id": "china-sporttery:62"
+      },
+      "kickoff_utc": "2024-10-13T18:45:00Z",
+      "match_id": "china-sporttery:2085358",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "爱尔兰"
+        ],
+        "name": "爱尔兰",
+        "team_id": "china-sporttery:412"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 1027333,
+      "half_score": "0:0",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "希腊"
+        ],
+        "name": "希腊",
+        "team_id": "china-sporttery:72"
+      },
+      "kickoff_utc": "2024-10-13T18:45:00Z",
+      "match_id": "china-sporttery:2085364",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "阿尔巴尼"
+        ],
+        "name": "阿尔巴尼",
+        "team_id": "china-sporttery:458"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 1027335,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "格鲁吉亚"
+        ],
+        "name": "格鲁吉亚",
+        "team_id": "china-sporttery:912"
+      },
+      "kickoff_utc": "2024-10-14T16:00:00Z",
+      "match_id": "china-sporttery:2085341",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 3,
+      "away_team": {
+        "aliases": [
+          "斯洛伐克"
+        ],
+        "name": "斯洛伐克",
+        "team_id": "china-sporttery:63"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 1027336,
+      "half_score": "1:1",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "阿塞拜疆"
+        ],
+        "name": "阿塞拜疆",
+        "team_id": "china-sporttery:741"
+      },
+      "kickoff_utc": "2024-10-14T16:00:00Z",
+      "match_id": "china-sporttery:2085342",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "以色列"
+        ],
+        "name": "以色列",
+        "team_id": "china-sporttery:60"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 0,
+      "half_score": "1:0",
+      "home_score": 4,
+      "home_team": {
+        "aliases": [
+          "意大利"
+        ],
+        "name": "意大利",
+        "team_id": "china-sporttery:74"
+      },
+      "kickoff_utc": "2024-10-14T18:45:00Z",
+      "match_id": "china-sporttery:2030515",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "捷克"
+        ],
+        "name": "捷克",
+        "team_id": "china-sporttery:75"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 0,
+      "half_score": "0:1",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "乌克兰"
+        ],
+        "name": "乌克兰",
+        "team_id": "china-sporttery:88"
+      },
+      "kickoff_utc": "2024-10-14T18:45:00Z",
+      "match_id": "china-sporttery:2030516",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "法国"
+        ],
+        "name": "法国",
+        "team_id": "china-sporttery:748"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 1027337,
+      "half_score": "1:1",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "比利时"
+        ],
+        "name": "比利时",
+        "team_id": "china-sporttery:750"
+      },
+      "kickoff_utc": "2024-10-14T18:45:00Z",
+      "match_id": "china-sporttery:2085343",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "匈牙利"
+        ],
+        "name": "匈牙利",
+        "team_id": "china-sporttery:426"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 1027340,
+      "half_score": "0:1",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "波黑"
+        ],
+        "name": "波黑",
+        "team_id": "china-sporttery:61"
+      },
+      "kickoff_utc": "2024-10-14T18:45:00Z",
+      "match_id": "china-sporttery:2085344",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 3,
+      "away_team": {
+        "aliases": [
+          "瑞典"
+        ],
+        "name": "瑞典",
+        "team_id": "china-sporttery:755"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 1027338,
+      "half_score": "0:2",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "爱沙尼亚"
+        ],
+        "name": "爱沙尼亚",
+        "team_id": "china-sporttery:740"
+      },
+      "kickoff_utc": "2024-10-14T18:45:00Z",
+      "match_id": "china-sporttery:2085345",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "荷兰"
+        ],
+        "name": "荷兰",
+        "team_id": "china-sporttery:518"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 1027339,
+      "half_score": "0:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "德国"
+        ],
+        "name": "德国",
+        "team_id": "china-sporttery:90"
+      },
+      "kickoff_utc": "2024-10-14T18:45:00Z",
+      "match_id": "china-sporttery:2085346",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 4,
+      "away_team": {
+        "aliases": [
+          "土耳其"
+        ],
+        "name": "土耳其",
+        "team_id": "china-sporttery:411"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 1027341,
+      "half_score": "1:0",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "冰岛"
+        ],
+        "name": "冰岛",
+        "team_id": "china-sporttery:1729"
+      },
+      "kickoff_utc": "2024-10-14T18:45:00Z",
+      "match_id": "china-sporttery:2085347",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "黑山"
+        ],
+        "name": "黑山",
+        "team_id": "china-sporttery:1728"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 1027342,
+      "half_score": "1:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "威尔士"
+        ],
+        "name": "威尔士",
+        "team_id": "china-sporttery:92"
+      },
+      "kickoff_utc": "2024-10-14T18:45:00Z",
+      "match_id": "china-sporttery:2085353",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "卢森堡"
+        ],
+        "name": "卢森堡",
+        "team_id": "china-sporttery:747"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 0,
+      "half_score": "0:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "白俄罗斯"
+        ],
+        "name": "白俄罗斯",
+        "team_id": "china-sporttery:76"
+      },
+      "kickoff_utc": "2024-10-15T18:45:00Z",
+      "match_id": "china-sporttery:2030506",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "罗马尼亚"
+        ],
+        "name": "罗马尼亚",
+        "team_id": "china-sporttery:413"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 0,
+      "half_score": "1:1",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "立陶宛"
+        ],
+        "name": "立陶宛",
+        "team_id": "china-sporttery:59"
+      },
+      "kickoff_utc": "2024-10-15T18:45:00Z",
+      "match_id": "china-sporttery:2030508",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "塞尔维亚"
+        ],
+        "name": "塞尔维亚",
+        "team_id": "china-sporttery:89"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 1027362,
+      "half_score": "1:0",
+      "home_score": 3,
+      "home_team": {
+        "aliases": [
+          "西班牙"
+        ],
+        "name": "西班牙",
+        "team_id": "china-sporttery:77"
+      },
+      "kickoff_utc": "2024-10-15T18:45:00Z",
+      "match_id": "china-sporttery:2086926",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "塞浦路斯"
+        ],
+        "name": "塞浦路斯",
+        "team_id": "china-sporttery:913"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 1027363,
+      "half_score": "1:0",
+      "home_score": 3,
+      "home_team": {
+        "aliases": [
+          "科索沃"
+        ],
+        "name": "科索沃",
+        "team_id": "china-sporttery:745"
+      },
+      "kickoff_utc": "2024-10-15T18:45:00Z",
+      "match_id": "china-sporttery:2086927",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "葡萄牙"
+        ],
+        "name": "葡萄牙",
+        "team_id": "china-sporttery:754"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 1027364,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "苏格兰"
+        ],
+        "name": "苏格兰",
+        "team_id": "china-sporttery:64"
+      },
+      "kickoff_utc": "2024-10-15T18:45:00Z",
+      "match_id": "china-sporttery:2086929",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "丹麦"
+        ],
+        "name": "丹麦",
+        "team_id": "china-sporttery:749"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 1027366,
+      "half_score": "2:1",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "瑞士"
+        ],
+        "name": "瑞士",
+        "team_id": "china-sporttery:407"
+      },
+      "kickoff_utc": "2024-10-15T18:45:00Z",
+      "match_id": "china-sporttery:2086930",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 3,
+      "away_team": {
+        "aliases": [
+          "克罗地亚"
+        ],
+        "name": "克罗地亚",
+        "team_id": "china-sporttery:1731"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 1027365,
+      "half_score": "2:3",
+      "home_score": 3,
+      "home_team": {
+        "aliases": [
+          "波兰"
+        ],
+        "name": "波兰",
+        "team_id": "china-sporttery:251"
+      },
+      "kickoff_utc": "2024-10-15T18:45:00Z",
+      "match_id": "china-sporttery:2086931",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "保加利亚"
+        ],
+        "name": "保加利亚",
+        "team_id": "china-sporttery:73"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "4",
+      "gm_match_id": 1027367,
+      "half_score": "3:0",
+      "home_score": 5,
+      "home_team": {
+        "aliases": [
+          "北爱尔兰"
+        ],
+        "name": "北爱尔兰",
+        "team_id": "china-sporttery:252"
+      },
+      "kickoff_utc": "2024-10-15T18:45:00Z",
+      "match_id": "china-sporttery:2086933",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "奥地利"
+        ],
+        "name": "奥地利",
+        "team_id": "china-sporttery:62"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 0,
+      "half_score": "0:2",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "哈萨克"
+        ],
+        "name": "哈萨克",
+        "team_id": "china-sporttery:78"
+      },
+      "kickoff_utc": "2024-11-14T15:00:00Z",
+      "match_id": "china-sporttery:2030507",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "法罗群岛"
+        ],
+        "name": "法罗群岛",
+        "team_id": "china-sporttery:758"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 0,
+      "half_score": "0:1",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "亚美尼亚"
+        ],
+        "name": "亚美尼亚",
+        "team_id": "china-sporttery:914"
+      },
+      "kickoff_utc": "2024-11-14T17:00:00Z",
+      "match_id": "china-sporttery:2030502",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "以色列"
+        ],
+        "name": "以色列",
+        "team_id": "china-sporttery:60"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 0,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "法国"
+        ],
+        "name": "法国",
+        "team_id": "china-sporttery:748"
+      },
+      "kickoff_utc": "2024-11-14T19:45:00Z",
+      "match_id": "china-sporttery:2030500",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "拉脱维亚"
+        ],
+        "name": "拉脱维亚",
+        "team_id": "china-sporttery:694"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 0,
+      "half_score": "0:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "北马其顿"
+        ],
+        "name": "北马其顿",
+        "team_id": "china-sporttery:746"
+      },
+      "kickoff_utc": "2024-11-14T19:45:00Z",
+      "match_id": "china-sporttery:2030501",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 4,
+      "away_team": {
+        "aliases": [
+          "挪威"
+        ],
+        "name": "挪威",
+        "team_id": "china-sporttery:414"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 1027887,
+      "half_score": "1:2",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "斯洛文尼"
+        ],
+        "name": "斯洛文尼",
+        "team_id": "china-sporttery:93"
+      },
+      "kickoff_utc": "2024-11-14T19:45:00Z",
+      "match_id": "china-sporttery:2108379",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 3,
+      "away_team": {
+        "aliases": [
+          "英格兰"
+        ],
+        "name": "英格兰",
+        "team_id": "china-sporttery:1730"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 1027886,
+      "half_score": "0:1",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "希腊"
+        ],
+        "name": "希腊",
+        "team_id": "china-sporttery:72"
+      },
+      "kickoff_utc": "2024-11-14T19:45:00Z",
+      "match_id": "china-sporttery:2108381",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "意大利"
+        ],
+        "name": "意大利",
+        "team_id": "china-sporttery:74"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 1027889,
+      "half_score": "0:1",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "比利时"
+        ],
+        "name": "比利时",
+        "team_id": "china-sporttery:750"
+      },
+      "kickoff_utc": "2024-11-14T19:45:00Z",
+      "match_id": "china-sporttery:2108382",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "芬兰"
+        ],
+        "name": "芬兰",
+        "team_id": "china-sporttery:38"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 1027888,
+      "half_score": "1:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "爱尔兰"
+        ],
+        "name": "爱尔兰",
+        "team_id": "china-sporttery:412"
+      },
+      "kickoff_utc": "2024-11-14T19:45:00Z",
+      "match_id": "china-sporttery:2108383",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "立陶宛"
+        ],
+        "name": "立陶宛",
+        "team_id": "china-sporttery:59"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 0,
+      "half_score": "1:0",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "塞浦路斯"
+        ],
+        "name": "塞浦路斯",
+        "team_id": "china-sporttery:913"
+      },
+      "kickoff_utc": "2024-11-15T17:00:00Z",
+      "match_id": "china-sporttery:2030490",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "直布罗陀"
+        ],
+        "name": "直布罗陀",
+        "team_id": "china-sporttery:1279"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 0,
+      "half_score": "0:1",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "圣马力诺"
+        ],
+        "name": "圣马力诺",
+        "team_id": "china-sporttery:1761"
+      },
+      "kickoff_utc": "2024-11-15T19:45:00Z",
+      "match_id": "china-sporttery:2030484",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "白俄罗斯"
+        ],
+        "name": "白俄罗斯",
+        "team_id": "china-sporttery:76"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 0,
+      "half_score": "0:0",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "北爱尔兰"
+        ],
+        "name": "北爱尔兰",
+        "team_id": "china-sporttery:252"
+      },
+      "kickoff_utc": "2024-11-15T19:45:00Z",
+      "match_id": "china-sporttery:2030495",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "保加利亚"
+        ],
+        "name": "保加利亚",
+        "team_id": "china-sporttery:73"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 1027924,
+      "half_score": "0:1",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "卢森堡"
+        ],
+        "name": "卢森堡",
+        "team_id": "china-sporttery:747"
+      },
+      "kickoff_utc": "2024-11-15T19:45:00Z",
+      "match_id": "china-sporttery:2110828",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "克罗地亚"
+        ],
+        "name": "克罗地亚",
+        "team_id": "china-sporttery:1731"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 1027923,
+      "half_score": "0:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "苏格兰"
+        ],
+        "name": "苏格兰",
+        "team_id": "china-sporttery:64"
+      },
+      "kickoff_utc": "2024-11-15T19:45:00Z",
+      "match_id": "china-sporttery:2110829",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "波兰"
+        ],
+        "name": "波兰",
+        "team_id": "china-sporttery:251"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 1027926,
+      "half_score": "0:0",
+      "home_score": 5,
+      "home_team": {
+        "aliases": [
+          "葡萄牙"
+        ],
+        "name": "葡萄牙",
+        "team_id": "china-sporttery:754"
+      },
+      "kickoff_utc": "2024-11-15T19:45:00Z",
+      "match_id": "china-sporttery:2110830",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "塞尔维亚"
+        ],
+        "name": "塞尔维亚",
+        "team_id": "china-sporttery:89"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 1027925,
+      "half_score": "0:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "瑞士"
+        ],
+        "name": "瑞士",
+        "team_id": "china-sporttery:407"
+      },
+      "kickoff_utc": "2024-11-15T19:45:00Z",
+      "match_id": "china-sporttery:2110831",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "西班牙"
+        ],
+        "name": "西班牙",
+        "team_id": "china-sporttery:77"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 1027928,
+      "half_score": "0:1",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "丹麦"
+        ],
+        "name": "丹麦",
+        "team_id": "china-sporttery:749"
+      },
+      "kickoff_utc": "2024-11-15T19:45:00Z",
+      "match_id": "china-sporttery:2110834",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "爱沙尼亚"
+        ],
+        "name": "爱沙尼亚",
+        "team_id": "china-sporttery:740"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 1027949,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "阿塞拜疆"
+        ],
+        "name": "阿塞拜疆",
+        "team_id": "china-sporttery:741"
+      },
+      "kickoff_utc": "2024-11-16T14:00:00Z",
+      "match_id": "china-sporttery:2111366",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "乌克兰"
+        ],
+        "name": "乌克兰",
+        "team_id": "china-sporttery:88"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 0,
+      "half_score": "0:1",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "格鲁吉亚"
+        ],
+        "name": "格鲁吉亚",
+        "team_id": "china-sporttery:912"
+      },
+      "kickoff_utc": "2024-11-16T17:00:00Z",
+      "match_id": "china-sporttery:2030482",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "摩尔多瓦"
+        ],
+        "name": "摩尔多瓦",
+        "team_id": "china-sporttery:918"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 0,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "安道尔"
+        ],
+        "name": "安道尔",
+        "team_id": "china-sporttery:877"
+      },
+      "kickoff_utc": "2024-11-16T17:00:00Z",
+      "match_id": "china-sporttery:2030485",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "冰岛"
+        ],
+        "name": "冰岛",
+        "team_id": "china-sporttery:1729"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 1027950,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "黑山"
+        ],
+        "name": "黑山",
+        "team_id": "china-sporttery:1728"
+      },
+      "kickoff_utc": "2024-11-16T17:00:00Z",
+      "match_id": "china-sporttery:2111367",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "威尔士"
+        ],
+        "name": "威尔士",
+        "team_id": "china-sporttery:92"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 1027951,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "土耳其"
+        ],
+        "name": "土耳其",
+        "team_id": "china-sporttery:411"
+      },
+      "kickoff_utc": "2024-11-16T17:00:00Z",
+      "match_id": "china-sporttery:2111372",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "捷克"
+        ],
+        "name": "捷克",
+        "team_id": "china-sporttery:75"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 1027952,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "阿尔巴尼"
+        ],
+        "name": "阿尔巴尼",
+        "team_id": "china-sporttery:458"
+      },
+      "kickoff_utc": "2024-11-16T19:45:00Z",
+      "match_id": "china-sporttery:2111368",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "波黑"
+        ],
+        "name": "波黑",
+        "team_id": "china-sporttery:61"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 1027954,
+      "half_score": "3:0",
+      "home_score": 7,
+      "home_team": {
+        "aliases": [
+          "德国"
+        ],
+        "name": "德国",
+        "team_id": "china-sporttery:90"
+      },
+      "kickoff_utc": "2024-11-16T19:45:00Z",
+      "match_id": "china-sporttery:2111369",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "匈牙利"
+        ],
+        "name": "匈牙利",
+        "team_id": "china-sporttery:426"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 1027953,
+      "half_score": "2:0",
+      "home_score": 4,
+      "home_team": {
+        "aliases": [
+          "荷兰"
+        ],
+        "name": "荷兰",
+        "team_id": "china-sporttery:518"
+      },
+      "kickoff_utc": "2024-11-16T19:45:00Z",
+      "match_id": "china-sporttery:2111373",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "斯洛伐克"
+        ],
+        "name": "斯洛伐克",
+        "team_id": "china-sporttery:63"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "5",
+      "gm_match_id": 1027955,
+      "half_score": "1:1",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "瑞典"
+        ],
+        "name": "瑞典",
+        "team_id": "china-sporttery:755"
+      },
+      "kickoff_utc": "2024-11-16T19:45:00Z",
+      "match_id": "china-sporttery:2111374",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "亚美尼亚"
+        ],
+        "name": "亚美尼亚",
+        "team_id": "china-sporttery:914"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 1027970,
+      "half_score": "0:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "拉脱维亚"
+        ],
+        "name": "拉脱维亚",
+        "team_id": "china-sporttery:694"
+      },
+      "kickoff_utc": "2024-11-17T14:00:00Z",
+      "match_id": "china-sporttery:2111371",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "法罗群岛"
+        ],
+        "name": "法罗群岛",
+        "team_id": "china-sporttery:758"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 1027958,
+      "half_score": "0:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "北马其顿"
+        ],
+        "name": "北马其顿",
+        "team_id": "china-sporttery:746"
+      },
+      "kickoff_utc": "2024-11-17T14:00:00Z",
+      "match_id": "china-sporttery:2111376",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "斯洛文尼"
+        ],
+        "name": "斯洛文尼",
+        "team_id": "china-sporttery:93"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 1027959,
+      "half_score": "1:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "奥地利"
+        ],
+        "name": "奥地利",
+        "team_id": "china-sporttery:62"
+      },
+      "kickoff_utc": "2024-11-17T17:00:00Z",
+      "match_id": "china-sporttery:2111377",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "希腊"
+        ],
+        "name": "希腊",
+        "team_id": "china-sporttery:72"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 1027961,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "芬兰"
+        ],
+        "name": "芬兰",
+        "team_id": "china-sporttery:38"
+      },
+      "kickoff_utc": "2024-11-17T17:00:00Z",
+      "match_id": "china-sporttery:2111379",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "爱尔兰"
+        ],
+        "name": "爱尔兰",
+        "team_id": "china-sporttery:412"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 1027960,
+      "half_score": "0:0",
+      "home_score": 5,
+      "home_team": {
+        "aliases": [
+          "英格兰"
+        ],
+        "name": "英格兰",
+        "team_id": "china-sporttery:1730"
+      },
+      "kickoff_utc": "2024-11-17T17:00:00Z",
+      "match_id": "china-sporttery:2111380",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "哈萨克"
+        ],
+        "name": "哈萨克",
+        "team_id": "china-sporttery:78"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 1027962,
+      "half_score": "3:0",
+      "home_score": 5,
+      "home_team": {
+        "aliases": [
+          "挪威"
+        ],
+        "name": "挪威",
+        "team_id": "china-sporttery:414"
+      },
+      "kickoff_utc": "2024-11-17T17:00:00Z",
+      "match_id": "china-sporttery:2111381",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "比利时"
+        ],
+        "name": "比利时",
+        "team_id": "china-sporttery:750"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 0,
+      "half_score": "0:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "以色列"
+        ],
+        "name": "以色列",
+        "team_id": "china-sporttery:60"
+      },
+      "kickoff_utc": "2024-11-17T19:45:00Z",
+      "match_id": "china-sporttery:2030476",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 3,
+      "away_team": {
+        "aliases": [
+          "法国"
+        ],
+        "name": "法国",
+        "team_id": "china-sporttery:748"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 1027963,
+      "half_score": "1:2",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "意大利"
+        ],
+        "name": "意大利",
+        "team_id": "china-sporttery:74"
+      },
+      "kickoff_utc": "2024-11-17T19:45:00Z",
+      "match_id": "china-sporttery:2111378",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "立陶宛"
+        ],
+        "name": "立陶宛",
+        "team_id": "china-sporttery:59"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 0,
+      "half_score": "1:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "科索沃"
+        ],
+        "name": "科索沃",
+        "team_id": "china-sporttery:745"
+      },
+      "kickoff_utc": "2024-11-18T19:45:00Z",
+      "match_id": "china-sporttery:2030458",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "白俄罗斯"
+        ],
+        "name": "白俄罗斯",
+        "team_id": "china-sporttery:76"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 0,
+      "half_score": "1:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "保加利亚"
+        ],
+        "name": "保加利亚",
+        "team_id": "china-sporttery:73"
+      },
+      "kickoff_utc": "2024-11-18T19:45:00Z",
+      "match_id": "china-sporttery:2030462",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 3,
+      "away_team": {
+        "aliases": [
+          "圣马力诺"
+        ],
+        "name": "圣马力诺",
+        "team_id": "china-sporttery:1761"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 0,
+      "half_score": "1:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "列支敦"
+        ],
+        "name": "列支敦",
+        "team_id": "china-sporttery:876"
+      },
+      "kickoff_utc": "2024-11-18T19:45:00Z",
+      "match_id": "china-sporttery:2030466",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "瑞士"
+        ],
+        "name": "瑞士",
+        "team_id": "china-sporttery:407"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 1027964,
+      "half_score": "1:0",
+      "home_score": 3,
+      "home_team": {
+        "aliases": [
+          "西班牙"
+        ],
+        "name": "西班牙",
+        "team_id": "china-sporttery:77"
+      },
+      "kickoff_utc": "2024-11-18T19:45:00Z",
+      "match_id": "china-sporttery:2111359",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "北爱尔兰"
+        ],
+        "name": "北爱尔兰",
+        "team_id": "china-sporttery:252"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 1027967,
+      "half_score": "0:1",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "卢森堡"
+        ],
+        "name": "卢森堡",
+        "team_id": "china-sporttery:747"
+      },
+      "kickoff_utc": "2024-11-18T19:45:00Z",
+      "match_id": "china-sporttery:2111360",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "塞浦路斯"
+        ],
+        "name": "塞浦路斯",
+        "team_id": "china-sporttery:913"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 1027966,
+      "half_score": "2:0",
+      "home_score": 4,
+      "home_team": {
+        "aliases": [
+          "罗马尼亚"
+        ],
+        "name": "罗马尼亚",
+        "team_id": "china-sporttery:413"
+      },
+      "kickoff_utc": "2024-11-18T19:45:00Z",
+      "match_id": "china-sporttery:2111361",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "葡萄牙"
+        ],
+        "name": "葡萄牙",
+        "team_id": "china-sporttery:754"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 1027965,
+      "half_score": "0:1",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "克罗地亚"
+        ],
+        "name": "克罗地亚",
+        "team_id": "china-sporttery:1731"
+      },
+      "kickoff_utc": "2024-11-18T19:45:00Z",
+      "match_id": "china-sporttery:2111362",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "苏格兰"
+        ],
+        "name": "苏格兰",
+        "team_id": "china-sporttery:64"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 1027968,
+      "half_score": "0:1",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "波兰"
+        ],
+        "name": "波兰",
+        "team_id": "china-sporttery:251"
+      },
+      "kickoff_utc": "2024-11-18T19:45:00Z",
+      "match_id": "china-sporttery:2111363",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "丹麦"
+        ],
+        "name": "丹麦",
+        "team_id": "china-sporttery:749"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 1027969,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "塞尔维亚"
+        ],
+        "name": "塞尔维亚",
+        "team_id": "china-sporttery:89"
+      },
+      "kickoff_utc": "2024-11-18T19:45:00Z",
+      "match_id": "china-sporttery:2111364",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "安道尔"
+        ],
+        "name": "安道尔",
+        "team_id": "china-sporttery:877"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 0,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "马耳他"
+        ],
+        "name": "马耳他",
+        "team_id": "china-sporttery:1763"
+      },
+      "kickoff_utc": "2024-11-19T19:45:00Z",
+      "match_id": "china-sporttery:2030454",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "乌克兰"
+        ],
+        "name": "乌克兰",
+        "team_id": "china-sporttery:88"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 0,
+      "half_score": "0:2",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "阿尔巴尼"
+        ],
+        "name": "阿尔巴尼",
+        "team_id": "china-sporttery:458"
+      },
+      "kickoff_utc": "2024-11-19T19:45:00Z",
+      "match_id": "china-sporttery:2030461",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "格鲁吉亚"
+        ],
+        "name": "格鲁吉亚",
+        "team_id": "china-sporttery:912"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 1028011,
+      "half_score": "2:0",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "捷克"
+        ],
+        "name": "捷克",
+        "team_id": "china-sporttery:75"
+      },
+      "kickoff_utc": "2024-11-19T19:45:00Z",
+      "match_id": "china-sporttery:2112846",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "冰岛"
+        ],
+        "name": "冰岛",
+        "team_id": "china-sporttery:1729"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 1028012,
+      "half_score": "2:1",
+      "home_score": 4,
+      "home_team": {
+        "aliases": [
+          "威尔士"
+        ],
+        "name": "威尔士",
+        "team_id": "china-sporttery:92"
+      },
+      "kickoff_utc": "2024-11-19T19:45:00Z",
+      "match_id": "china-sporttery:2112847",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "德国"
+        ],
+        "name": "德国",
+        "team_id": "china-sporttery:90"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 1028010,
+      "half_score": "0:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "匈牙利"
+        ],
+        "name": "匈牙利",
+        "team_id": "china-sporttery:426"
+      },
+      "kickoff_utc": "2024-11-19T19:45:00Z",
+      "match_id": "china-sporttery:2112850",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "土耳其"
+        ],
+        "name": "土耳其",
+        "team_id": "china-sporttery:411"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 1028014,
+      "half_score": "2:1",
+      "home_score": 3,
+      "home_team": {
+        "aliases": [
+          "黑山"
+        ],
+        "name": "黑山",
+        "team_id": "china-sporttery:1728"
+      },
+      "kickoff_utc": "2024-11-19T19:45:00Z",
+      "match_id": "china-sporttery:2112853",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "爱沙尼亚"
+        ],
+        "name": "爱沙尼亚",
+        "team_id": "china-sporttery:740"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 1028013,
+      "half_score": "0:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "斯洛伐克"
+        ],
+        "name": "斯洛伐克",
+        "team_id": "china-sporttery:63"
+      },
+      "kickoff_utc": "2024-11-19T19:45:00Z",
+      "match_id": "china-sporttery:2112854",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "阿塞拜疆"
+        ],
+        "name": "阿塞拜疆",
+        "team_id": "china-sporttery:741"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 1028016,
+      "half_score": "3:0",
+      "home_score": 6,
+      "home_team": {
+        "aliases": [
+          "瑞典"
+        ],
+        "name": "瑞典",
+        "team_id": "china-sporttery:755"
+      },
+      "kickoff_utc": "2024-11-19T19:45:00Z",
+      "match_id": "china-sporttery:2112855",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "荷兰"
+        ],
+        "name": "荷兰",
+        "team_id": "china-sporttery:518"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "6",
+      "gm_match_id": 1028015,
+      "half_score": "0:1",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "波黑"
+        ],
+        "name": "波黑",
+        "team_id": "china-sporttery:61"
+      },
+      "kickoff_utc": "2024-11-19T19:45:00Z",
+      "match_id": "china-sporttery:2112856",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 3,
+      "away_team": {
+        "aliases": [
+          "格鲁吉亚"
+        ],
+        "name": "格鲁吉亚",
+        "team_id": "china-sporttery:912"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2030581,
+      "half_score": "0:2",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "亚美尼亚"
+        ],
+        "name": "亚美尼亚",
+        "team_id": "china-sporttery:914"
+      },
+      "kickoff_utc": "2025-03-20T17:00:00Z",
+      "match_id": "china-sporttery:2181365",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "匈牙利"
+        ],
+        "name": "匈牙利",
+        "team_id": "china-sporttery:426"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2030582,
+      "half_score": "1:1",
+      "home_score": 3,
+      "home_team": {
+        "aliases": [
+          "土耳其"
+        ],
+        "name": "土耳其",
+        "team_id": "china-sporttery:411"
+      },
+      "kickoff_utc": "2025-03-20T17:00:00Z",
+      "match_id": "china-sporttery:2181367",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "比利时"
+        ],
+        "name": "比利时",
+        "team_id": "china-sporttery:750"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 0,
+      "half_score": "0:1",
+      "home_score": 3,
+      "home_team": {
+        "aliases": [
+          "乌克兰"
+        ],
+        "name": "乌克兰",
+        "team_id": "china-sporttery:88"
+      },
+      "kickoff_utc": "2025-03-20T19:45:00Z",
+      "match_id": "china-sporttery:2115129",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "爱尔兰"
+        ],
+        "name": "爱尔兰",
+        "team_id": "china-sporttery:412"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2030585,
+      "half_score": "1:2",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "保加利亚"
+        ],
+        "name": "保加利亚",
+        "team_id": "china-sporttery:73"
+      },
+      "kickoff_utc": "2025-03-20T19:45:00Z",
+      "match_id": "china-sporttery:2181368",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "冰岛"
+        ],
+        "name": "冰岛",
+        "team_id": "china-sporttery:1729"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2030586,
+      "half_score": "1:1",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "科索沃"
+        ],
+        "name": "科索沃",
+        "team_id": "china-sporttery:745"
+      },
+      "kickoff_utc": "2025-03-20T19:45:00Z",
+      "match_id": "china-sporttery:2181372",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "塞尔维亚"
+        ],
+        "name": "塞尔维亚",
+        "team_id": "china-sporttery:89"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2030589,
+      "half_score": "1:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "奥地利"
+        ],
+        "name": "奥地利",
+        "team_id": "china-sporttery:62"
+      },
+      "kickoff_utc": "2025-03-20T19:45:00Z",
+      "match_id": "china-sporttery:2181373",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "斯洛文尼"
+        ],
+        "name": "斯洛文尼",
+        "team_id": "china-sporttery:93"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2030587,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "斯洛伐克"
+        ],
+        "name": "斯洛伐克",
+        "team_id": "china-sporttery:63"
+      },
+      "kickoff_utc": "2025-03-20T19:45:00Z",
+      "match_id": "china-sporttery:2181374",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "苏格兰"
+        ],
+        "name": "苏格兰",
+        "team_id": "china-sporttery:64"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2030588,
+      "half_score": "0:1",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "希腊"
+        ],
+        "name": "希腊",
+        "team_id": "china-sporttery:72"
+      },
+      "kickoff_utc": "2025-03-20T19:45:00Z",
+      "match_id": "china-sporttery:2181375",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "葡萄牙"
+        ],
+        "name": "葡萄牙",
+        "team_id": "china-sporttery:754"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2030592,
+      "half_score": "0:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "丹麦"
+        ],
+        "name": "丹麦",
+        "team_id": "china-sporttery:749"
+      },
+      "kickoff_utc": "2025-03-20T19:45:00Z",
+      "match_id": "china-sporttery:2181376",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "西班牙"
+        ],
+        "name": "西班牙",
+        "team_id": "china-sporttery:77"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2030591,
+      "half_score": "1:1",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "荷兰"
+        ],
+        "name": "荷兰",
+        "team_id": "china-sporttery:518"
+      },
+      "kickoff_utc": "2025-03-20T19:45:00Z",
+      "match_id": "china-sporttery:2181377",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "德国"
+        ],
+        "name": "德国",
+        "team_id": "china-sporttery:90"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2030593,
+      "half_score": "1:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "意大利"
+        ],
+        "name": "意大利",
+        "team_id": "china-sporttery:74"
+      },
+      "kickoff_utc": "2025-03-20T19:45:00Z",
+      "match_id": "china-sporttery:2181378",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "法国"
+        ],
+        "name": "法国",
+        "team_id": "china-sporttery:748"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2030590,
+      "half_score": "2:0",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "克罗地亚"
+        ],
+        "name": "克罗地亚",
+        "team_id": "china-sporttery:1731"
+      },
+      "kickoff_utc": "2025-03-20T19:45:00Z",
+      "match_id": "china-sporttery:2181381",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "亚美尼亚"
+        ],
+        "name": "亚美尼亚",
+        "team_id": "china-sporttery:914"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2030653,
+      "half_score": "5:0",
+      "home_score": 6,
+      "home_team": {
+        "aliases": [
+          "格鲁吉亚"
+        ],
+        "name": "格鲁吉亚",
+        "team_id": "china-sporttery:912"
+      },
+      "kickoff_utc": "2025-03-23T14:00:00Z",
+      "match_id": "china-sporttery:2183866",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 3,
+      "away_team": {
+        "aliases": [
+          "科索沃"
+        ],
+        "name": "科索沃",
+        "team_id": "china-sporttery:745"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 0,
+      "half_score": "1:2",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "冰岛"
+        ],
+        "name": "冰岛",
+        "team_id": "china-sporttery:1729"
+      },
+      "kickoff_utc": "2025-03-23T17:00:00Z",
+      "match_id": "china-sporttery:2115112",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "斯洛伐克"
+        ],
+        "name": "斯洛伐克",
+        "team_id": "china-sporttery:63"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2030654,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "斯洛文尼"
+        ],
+        "name": "斯洛文尼",
+        "team_id": "china-sporttery:93"
+      },
+      "kickoff_utc": "2025-03-23T17:00:00Z",
+      "match_id": "china-sporttery:2183868",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "奥地利"
+        ],
+        "name": "奥地利",
+        "team_id": "china-sporttery:62"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2030656,
+      "half_score": "0:0",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "塞尔维亚"
+        ],
+        "name": "塞尔维亚",
+        "team_id": "china-sporttery:89"
+      },
+      "kickoff_utc": "2025-03-23T17:00:00Z",
+      "match_id": "china-sporttery:2183869",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 3,
+      "away_team": {
+        "aliases": [
+          "希腊"
+        ],
+        "name": "希腊",
+        "team_id": "china-sporttery:72"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2030655,
+      "half_score": "0:2",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "苏格兰"
+        ],
+        "name": "苏格兰",
+        "team_id": "china-sporttery:64"
+      },
+      "kickoff_utc": "2025-03-23T17:00:00Z",
+      "match_id": "china-sporttery:2183870",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 3,
+      "away_team": {
+        "aliases": [
+          "土耳其"
+        ],
+        "name": "土耳其",
+        "team_id": "china-sporttery:411"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2030657,
+      "half_score": "0:2",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "匈牙利"
+        ],
+        "name": "匈牙利",
+        "team_id": "china-sporttery:426"
+      },
+      "kickoff_utc": "2025-03-23T17:00:00Z",
+      "match_id": "china-sporttery:2183871",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "乌克兰"
+        ],
+        "name": "乌克兰",
+        "team_id": "china-sporttery:88"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 0,
+      "half_score": "0:0",
+      "home_score": 3,
+      "home_team": {
+        "aliases": [
+          "比利时"
+        ],
+        "name": "比利时",
+        "team_id": "china-sporttery:750"
+      },
+      "kickoff_utc": "2025-03-23T19:45:00Z",
+      "match_id": "china-sporttery:2115121",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "丹麦"
+        ],
+        "name": "丹麦",
+        "team_id": "china-sporttery:749"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2030659,
+      "half_score": "1:0",
+      "home_score": 3,
+      "home_team": {
+        "aliases": [
+          "葡萄牙"
+        ],
+        "name": "葡萄牙",
+        "team_id": "china-sporttery:754"
+      },
+      "kickoff_utc": "2025-03-23T19:45:00Z",
+      "match_id": "china-sporttery:2183872",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "克罗地亚"
+        ],
+        "name": "克罗地亚",
+        "team_id": "china-sporttery:1731"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2030660,
+      "half_score": "0:0",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "法国"
+        ],
+        "name": "法国",
+        "team_id": "china-sporttery:748"
+      },
+      "kickoff_utc": "2025-03-23T19:45:00Z",
+      "match_id": "china-sporttery:2183873",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 3,
+      "away_team": {
+        "aliases": [
+          "意大利"
+        ],
+        "name": "意大利",
+        "team_id": "china-sporttery:74"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2030662,
+      "half_score": "3:0",
+      "home_score": 3,
+      "home_team": {
+        "aliases": [
+          "德国"
+        ],
+        "name": "德国",
+        "team_id": "china-sporttery:90"
+      },
+      "kickoff_utc": "2025-03-23T19:45:00Z",
+      "match_id": "china-sporttery:2183874",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "保加利亚"
+        ],
+        "name": "保加利亚",
+        "team_id": "china-sporttery:73"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2030658,
+      "half_score": "0:1",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "爱尔兰"
+        ],
+        "name": "爱尔兰",
+        "team_id": "china-sporttery:412"
+      },
+      "kickoff_utc": "2025-03-23T19:45:00Z",
+      "match_id": "china-sporttery:2183875",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "荷兰"
+        ],
+        "name": "荷兰",
+        "team_id": "china-sporttery:518"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2030661,
+      "half_score": "1:0",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "西班牙"
+        ],
+        "name": "西班牙",
+        "team_id": "china-sporttery:77"
+      },
+      "kickoff_utc": "2025-03-23T19:45:00Z",
+      "match_id": "china-sporttery:2183876",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "葡萄牙"
+        ],
+        "name": "葡萄牙",
+        "team_id": "china-sporttery:754"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2032076,
+      "half_score": "0:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "德国"
+        ],
+        "name": "德国",
+        "team_id": "china-sporttery:90"
+      },
+      "kickoff_utc": "2025-06-04T19:00:00Z",
+      "match_id": "china-sporttery:2203588",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 4,
+      "away_team": {
+        "aliases": [
+          "法国"
+        ],
+        "name": "法国",
+        "team_id": "china-sporttery:748"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2032083,
+      "half_score": "2:0",
+      "home_score": 5,
+      "home_team": {
+        "aliases": [
+          "西班牙"
+        ],
+        "name": "西班牙",
+        "team_id": "china-sporttery:77"
+      },
+      "kickoff_utc": "2025-06-05T19:00:00Z",
+      "match_id": "china-sporttery:2203597",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "法国"
+        ],
+        "name": "法国",
+        "team_id": "china-sporttery:748"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2032129,
+      "half_score": "0:1",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "德国"
+        ],
+        "name": "德国",
+        "team_id": "china-sporttery:90"
+      },
+      "kickoff_utc": "2025-06-08T13:00:00Z",
+      "match_id": "china-sporttery:2204645",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "西班牙"
+        ],
+        "name": "西班牙",
+        "team_id": "china-sporttery:77"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 2032130,
+      "half_score": "1:2",
+      "home_score": 2,
+      "home_team": {
+        "aliases": [
+          "葡萄牙"
+        ],
+        "name": "葡萄牙",
+        "team_id": "china-sporttery:754"
+      },
+      "kickoff_utc": "2025-06-08T19:00:00Z",
+      "match_id": "china-sporttery:2204646",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 1,
+      "away_team": {
+        "aliases": [
+          "拉脱维亚"
+        ],
+        "name": "拉脱维亚",
+        "team_id": "china-sporttery:694"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 0,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "直布罗陀"
+        ],
+        "name": "直布罗陀",
+        "team_id": "china-sporttery:1279"
+      },
+      "kickoff_utc": "2026-03-26T17:00:00Z",
+      "match_id": "china-sporttery:2115125",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 2,
+      "away_team": {
+        "aliases": [
+          "卢森堡"
+        ],
+        "name": "卢森堡",
+        "team_id": "china-sporttery:747"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 0,
+      "half_score": "0:0",
+      "home_score": 0,
+      "home_team": {
+        "aliases": [
+          "马耳他"
+        ],
+        "name": "马耳他",
+        "team_id": "china-sporttery:1763"
+      },
+      "kickoff_utc": "2026-03-26T17:00:00Z",
+      "match_id": "china-sporttery:2115130",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "直布罗陀"
+        ],
+        "name": "直布罗陀",
+        "team_id": "china-sporttery:1279"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 0,
+      "half_score": "0:0",
+      "home_score": 1,
+      "home_team": {
+        "aliases": [
+          "拉脱维亚"
+        ],
+        "name": "拉脱维亚",
+        "team_id": "china-sporttery:694"
+      },
+      "kickoff_utc": "2026-03-31T16:00:00Z",
+      "match_id": "china-sporttery:2115127",
+      "status": "FINISHED"
+    },
+    {
+      "away_score": 0,
+      "away_team": {
+        "aliases": [
+          "马耳他"
+        ],
+        "name": "马耳他",
+        "team_id": "china-sporttery:1763"
+      },
+      "competition_code": "UNL",
+      "competition_name": "欧国联",
+      "context": {
+        "competition_type": "league",
+        "score_basis": "regulation",
+        "team_type": "national",
+        "venue": "home"
+      },
+      "gameweek": "",
+      "gm_match_id": 0,
+      "half_score": "1:0",
+      "home_score": 3,
+      "home_team": {
+        "aliases": [
+          "卢森堡"
+        ],
+        "name": "卢森堡",
+        "team_id": "china-sporttery:747"
+      },
+      "kickoff_utc": "2026-03-31T16:00:00Z",
+      "match_id": "china-sporttery:2115132",
+      "status": "FINISHED"
+    }
+  ],
+  "provenance_status": "verified",
+  "provider": "china-sporttery",
+  "sample_pool": {
+    "competition_codes": [
+      "UNL"
+    ],
+    "pool_id": "china-sporttery:league:69:season:11388",
+    "team_type": "national"
+  },
+  "skipped_unplayed_or_invalid": 1,
+  "source_url": "https://webapi.sporttery.cn/gateway/uniform/football/league/getMatchResultV1.qry?seasonId=11388&uniformLeagueId=69"
+}

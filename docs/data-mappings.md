@@ -10,7 +10,10 @@ Task 1 证据基线；访问日期为 **2026-09-23（UTC）**。本文只定义�
 |---|---|---|---|
 |S1|https://www.sporttery.cn/jc/zqjcgz/ |2026-09-23T16:55:35.404090Z|规则候选入口，HTTP 567；未取得正文，未核实其为当前有效规则页|
 |S2|https://www.sporttery.cn/ |2026-09-23T16:55:37.944794Z|官方站首页 HTTP 567，无法由首页查找有效玩法规则链接|
-|S3|https://webapi.sporttery.cn/gateway/jc/football/getMatchCalculatorV1.qry?category=c&isFix=0&pcOrWap=1 |2026-09-23T16:55:40.545688Z|项目 `scripts/fetch_lottery_data.py:SPORTTERY_API_URL` 地址；HTTP 567，无响应 fixture|
+|S3|https://webapi.sporttery.cn/gateway/jc/football/getMatchCalculatorV1.qry?category=c&isFix=0&pcOrWap=1 |2026-09-23T16:55:40.545688Z|项目 `scripts/fetch_lottery_data.py:SPORTTERY_API_URL` 地址；HTTP 567（物理直连可通，返回当前在售）|
+|S4|https://www.sporttery.cn/zqlszl/ |2026-09-28T14:51:04.000000Z|足球联赛资料主页，物理直连 HTTP 200（10723 bytes）；Vue3 前端载入 `zqIndex.js`|
+|S5|https://webapi.sporttery.cn/gateway/uniform/football/league/getLeagueListV1.qry |2026-09-28T14:52:33.000000Z|官方联赛/赛季目录，物理直连 HTTP 200；提供全部热门/普通/国际联赛 uniformLeagueId 与 seasonId|
+|S6|https://webapi.sporttery.cn/gateway/uniform/football/league/getMatchResultV1.qry |2026-09-28T14:53:04.000000Z|官方完赛赛果接口，物理直连 HTTP 200；`sectionsNo999` 提供常规 90 分钟整数比分|
 |F1|https://docs.football-data.org/general/v4/match.html |2026-09-23T16:55:29.455624Z|HTTP 200；Match resource、Status workflow explained、示例 score/season/venue|
 |F2|https://docs.football-data.org/general/v4/competition.html |2026-09-23T16:55:33.351652Z|HTTP 200；Matches、Available filters for Match Subresource、Teams|
 |F3|https://docs.football-data.org/general/v4/overtime.html |2026-09-23T16:56:21.828550Z|HTTP 200；Dealing with scores / Regular finish / Extra Time / Penalty Shootout；从 F1 页面导航链接找到|
