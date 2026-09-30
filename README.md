@@ -98,7 +98,7 @@ python3 scripts/generate_betting_recommendation_strict.py \
 - 预测与开球时间容差最多 15 分钟（防比赛改期）；
 - 预测快照数据最多 24 小时；
 - 官方未在售（`official_listing.status != confirmed`）或玩法未在售（`market_status != open`）安全跳过；
-- 概率折减 3%、保守 EV 至少 5%、单项仓位不超过 5%、总敞口不超过 20%。串关默认关闭，可用 `--include-parlays` 显式启用跨场 2 串 1。
+- 概率折减 3%、保守 EV 至少 5%、单项仓位不超过 5%、总敞口不超过 50%。默认同时输出单关、2 串 1 与 4 串 1 投注建议（支持混合过关，可用 `--no-parlays` 仅输出单关）。
 
 输出包括：
 - `output/YYYYMMDD_betting.json`：唯一机器结果；

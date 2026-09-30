@@ -12,6 +12,7 @@ from contracts import (
     BUSINESS_TIMEZONE,
     ContractError,
     load_json,
+    parse_datetime,
     utc_now,
     validate_model_prediction,
     validate_odds_snapshot,
@@ -115,20 +116,86 @@ def parse_args(argv=None):
     )
     parser.add_argument("--probability-haircut", type=float, default=0.03)
     parser.add_argument("--min-ev-low", type=float, default=0.05)
-    parser.add_argument("--max-total-exposure", type=float, default=0.20)
-    parser.add_argument("--include-parlays", action="store_true")
+    parser.add_argument(
+        "--max-divergence-ratio",
+        type=float,
+        default=2.0,
+        help="Maximum ratio of model probability to de-vigged market probability (default: 2.0)",
+    )
+    parser.add_argument(
+        "--max-single-odds",
+        type=float,
+        default=70.0,
+        help="Maximum decimal odds allowed for single bet recommendations (default: 70.0)",
+    )
+    parser.add_argument(
+        "--all-eligible",
+        action="store_true",
+        help="Include all eligible selections with EV > threshold across markets (default: 1 per match)",
+    )
+    parser.add_argument(
+        "--max-total-exposure",
+        type=float,
+        default=0.50,
+        help="Maximum total exposure fraction (default: 0.50)",
+    )
+    parser.add_argument(
+        "--include-parlays",
+        dest="include_parlays",
+        action="store_true",
+        default=True,
+        help="Include multi-leg mixed parlays (2-leg and 4-leg) in recommendations (default: True)",
+    )
+    parser.add_argument(
+        "--no-parlays",
+        dest="include_parlays",
+        action="store_false",
+        help="Disable parlay recommendations and generate single bets only",
+    )
+    parser.add_argument(
+        "--parlay-legs",
+        type=int,
+        nargs="+",
+        default=[2, 4],
+        help="Leg counts for parlays when enabled (default: 2 4)",
+    )
+    parser.add_argument(
+        "--max-match-repetition",
+        type=int,
+        default=None,
+        help="Maximum appearances of any match across recommended parlays to prevent concentration risk (decentralized pairing)",
+    )
+    parser.add_argument(
+        "--include-system-bets",
+        action="store_true",
+        help="Include fault-tolerant system bets (e.g. 3串4, 4串11)",
+    )
+    parser.add_argument(
+        "--system-types",
+        nargs="+",
+        default=["3_in_4", "4_in_11"],
+        help="System bet types (choices: 3_in_3, 3_in_4, 4_in_4, 4_in_5, 4_in_6, 4_in_11)",
+    )
     parser.add_argument("--output-dir", default="output")
     parser.add_argument("--json-output")
     parser.add_argument("--markdown-output")
+    parser.add_argument(
+        "--now",
+        help="Simulate execution at this ISO 8601 timestamp (for replay/backtest)",
+    )
     return parser.parse_args(argv)
 
 
 def run(args, now=None):
-    now = now or utc_now()
+    if getattr(args, "now", None):
+        now = parse_datetime(args.now)
+    else:
+        now = now or utc_now()
     business_today = now.astimezone(BUSINESS_TIMEZONE).date().isoformat()
     requested_date = args.date or business_today
     predictions, prediction_load_errors = load_predictions(args.predictions)
     odds_snapshot = load_odds_snapshot(args.lottery_file, requested_date, now)
+    include_parlays = args.parlay_legs if args.include_parlays else False
     report = analyze_daily(
         odds_snapshot,
         predictions,
@@ -140,7 +207,13 @@ def run(args, now=None):
         probability_haircut=args.probability_haircut,
         min_ev_low=args.min_ev_low,
         max_total_exposure=args.max_total_exposure,
-        include_parlays=args.include_parlays,
+        include_parlays=include_parlays,
+        max_divergence_ratio=args.max_divergence_ratio,
+        max_single_odds=args.max_single_odds,
+        all_eligible=getattr(args, "all_eligible", False),
+        max_match_repetition=args.max_match_repetition,
+        include_system_bets=args.include_system_bets,
+        system_types=args.system_types,
     )
     if prediction_load_errors:
         report["rejections"].extend(

@@ -43,13 +43,37 @@ python3 scripts/fetch_match_data.py --competition J1 --competition-name "日职�
 python3 scripts/fetch_lottery_data.py --date "2026-08-25" --available-only
 ```
 
+## `fetch_sporttery_league_data.py`
+
+直接从中国体育彩票官方“足球联赛资料”（`https://www.sporttery.cn/zqlszl/`）抓取官方权威联赛目录、赛季历史完赛赛果与积分榜。自动解析常规时间 90 分钟整数比分（`sectionsNo999`），输出符合当前统一契约的 `history_snapshot`（`provenance_status="verified"`）。
+
+```bash
+# 查询支持的全部联赛与赛季列表
+python3 scripts/fetch_sporttery_league_data.py --list-leagues
+
+# 抓取德甲 25/26 赛季历史完赛数据
+python3 scripts/fetch_sporttery_league_data.py --league-id 1803 --season-id 13419 \
+  --competition-code BL1 --competition-name 德甲 --output data/sporttery_bl1.json
+
+# 抓取联赛积分榜（总榜/主场榜/客场榜）
+python3 scripts/fetch_sporttery_league_data.py --league-id 1803 --season-id 13419 \
+  --standings --output data/sporttery_bl1_standings.json
+```
+
 ## `generate_betting_recommendation.py`
 
-纯数学计算模块：逐玩法准入检查（`market_reasons`）、预测准入检查（`recommendation_reasons`）、去抽水概率计算、保守 EV、凯利仓位计算、资金分配、跨场串关与“竞彩足球投注分析”Markdown 报告渲染。
+纯数学计算与风控决策模块：
+- **逐玩法与预测准入校验**（`market_reasons` / `recommendation_reasons`）；
+- **去抽水市场隐含概率对比**（Power-law / Normalization 去抽水）；
+- **市场概率分歧度硬熔断**（`max_divergence_ratio`，默认 2.0x，防范泊松尾部虚高引发的模型幻觉）；
+- **单关极端赔率上限**（`max_single_odds`，默认 20.0，杜绝长尾博冷绑架主要建议）；
+- **玩法分层与风险调整排序**（优先胜平负/让球等流动性基准玩法，按夏普比率 Sharpe Ratio 排序，兼顾预期超额收益与下行波动）；
+- **保守 EV 与分数凯利仓位计算**、全组合资金分配与跨场稳健串关（2串1、4串1等）；
+- 生成标准规范的“竞彩足球投注分析”Markdown 报告。
 
 ## `generate_betting_recommendation_strict.py`
 
-正式投注报告编排入口。严格执行 15 分钟赔率时效与 15 分钟开球容差校验，未确认在售或停售玩法直接拒绝，同时输出 JSON 机器结果与 Markdown 读者报告。
+正式投注报告编排入口。严格执行 15 分钟赔率时效与 15 分钟开球容差校验，未确认在售或停售玩法直接拒绝，同时输出 JSON 机器结果与 Markdown 读者报告。支持 `--include-parlays` 组合输出与 `--now` 历史模拟复盘。
 
 ## `simulate_stochastic_prediction.py`
 

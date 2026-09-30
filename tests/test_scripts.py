@@ -418,6 +418,257 @@ class TestBettingAnalysis(unittest.TestCase):
         for parlay in parlays:
             self.assertEqual(len(set(parlay["match_ids"])), 2)
 
+    def test_should_build_four_leg_mixed_parlays_with_handicap_labels(self):
+        bets = [
+            {"bet_id": "m1:had:h", "match_id": "m1", "match_num": "周二001", "home_team": "TeamA", "market": "had", "option": "h", "probability": 0.6, "conservative_probability": 0.57, "odds": 2.0},
+            {"bet_id": "m2:hhad:h", "match_id": "m2", "match_num": "周二002", "home_team": "TeamB", "market": "hhad", "option": "h", "goal_line": -1, "probability": 0.5, "conservative_probability": 0.47, "odds": 2.5},
+            {"bet_id": "m3:ttg:s2", "match_id": "m3", "match_num": "周二003", "home_team": "TeamC", "market": "ttg", "option": "s2", "probability": 0.45, "conservative_probability": 0.42, "odds": 3.4},
+            {"bet_id": "m4:crs:1-0", "match_id": "m4", "match_num": "周二004", "home_team": "TeamD", "market": "crs", "option": "1-0", "probability": 0.35, "conservative_probability": 0.32, "odds": 5.0},
+        ]
+        parlays = betting.build_multi_leg_parlays(bets, leg_count=4, min_ev_low=0.0)
+        self.assertEqual(len(parlays), 1)
+        p = parlays[0]
+        self.assertEqual(p["type"], "4_leg_parlay")
+        self.assertEqual(len(p["legs"]), 4)
+        self.assertEqual(len(set(p["match_ids"])), 4)
+        self.assertAlmostEqual(p["odds"], 2.0 * 2.5 * 3.4 * 5.0, places=2)
+        # Verify leg labels include market and goal_line
+        self.assertIn("周二001 TeamA(HAD-h)", p["leg_labels"])
+        self.assertIn("周二002 TeamB(HHAD(-1)-h)", p["leg_labels"])
+        self.assertIn("周二003 TeamC(TTG-s2)", p["leg_labels"])
+        self.assertIn("周二004 TeamD(CRS-1-0)", p["leg_labels"])
+
+    def test_should_enforce_sporttery_mixed_parlay_leg_limits(self):
+        # Sporttery: CRS allows max 4 legs
+        bets = [
+            {"bet_id": f"m{i}:had:h", "match_id": f"m{i}", "market": "had", "option": "h", "probability": 0.7, "conservative_probability": 0.65, "odds": 1.8}
+            for i in range(1, 5)
+        ]
+        bets.append(
+            {"bet_id": "m5:crs:1-0", "match_id": "m5", "market": "crs", "option": "1-0", "probability": 0.5, "conservative_probability": 0.45, "odds": 4.0}
+        )
+        # 5-leg parlay containing CRS should be rejected by official max allowed legs limit
+        parlays = betting.build_multi_leg_parlays(bets, leg_count=5, min_ev_low=0.0)
+        self.assertEqual(len(parlays), 0)
+
+    def test_should_render_subsections_in_markdown_for_singles_and_parlays(self):
+        report = {
+            "generated_at": "2026-08-25T08:00:00Z",
+            "policy": {"probability_haircut": 0.03, "min_ev_low": 0.05, "max_divergence_ratio": 2.0, "max_single_odds": 70.0, "max_total_exposure": 0.5},
+            "recommendations": [
+                {"match_num": "周二001", "home_team": "TeamA", "away_team": "TeamB", "market": "had", "option": "h", "odds": 2.0, "probability": 0.6, "conservative_probability": 0.57, "ev_low": 0.14, "kelly_fraction": 0.05, "stake": 10.0},
+                {"type": "two_leg_parlay", "leg_labels": ["周二001 TeamA(HAD-h)", "周二002 TeamB(HAD-h)"], "odds": 4.0, "probability": 0.36, "conservative_probability": 0.32, "ev_low": 0.28, "kelly_fraction": 0.02, "stake": 4.0},
+                {"type": "4_leg_parlay", "leg_labels": ["周二001 TeamA(HAD-h)", "周二002 TeamB(HAD-h)", "周二003 TeamC(HAD-h)", "周二004 TeamD(HAD-h)"], "odds": 16.0, "probability": 0.13, "conservative_probability": 0.10, "ev_low": 0.60, "kelly_fraction": 0.01, "stake": 2.0},
+            ],
+            "rejections": [],
+            "bankroll": {"total": 200, "staked": 16, "cash_reserved": 184},
+        }
+        md = betting.render_markdown(report)
+        self.assertIn("### 单关投注建议", md)
+        self.assertIn("### 2 串 1 混合过关建议", md)
+        self.assertIn("### 4 串 1 混合过关建议", md)
+
+    def test_strict_betting_cli_parlays_enabled_by_default(self):
+        args = strict_betting.parse_args([])
+        self.assertTrue(args.include_parlays)
+        self.assertEqual(args.parlay_legs, [2, 4])
+
+        args_disabled = strict_betting.parse_args(["--no-parlays"])
+        self.assertFalse(args_disabled.include_parlays)
+
+    def test_should_filter_non_single_bets_and_record_rejections_while_retaining_in_parlays(self):
+        # 2 matches where HAD has positive EV, but Match 1 has had single_status=False, Match 2 has had single_status=True
+        snap = make_odds_snapshot()
+        match1 = dict(snap["matches"][0])
+        match1["match_id"] = "sporttery:1001"
+        match1["single_status"] = {"had": False, "hhad": False, "ttg": False, "crs": True}
+        match1["odds"]["had"] = {"h": 2.10, "d": 3.40, "a": 3.80}
+
+        match2 = dict(snap["matches"][0])
+        match2["match_id"] = "sporttery:1002"
+        match2["provider_match_id"] = "1002"
+        match2["match_num"] = "周二002"
+        match2["home_team"] = {"name": "TeamB", "provider_id": "2"}
+        match2["away_team"] = {"name": "TeamC", "provider_id": "3"}
+        match2["single_status"] = {"had": True, "hhad": False, "ttg": False, "crs": True}
+        match2["odds"]["had"] = {"h": 2.10, "d": 3.40, "a": 3.80}
+
+        snap["matches"] = [match1, match2]
+
+        pred1 = make_prediction(match_id="sporttery:1001", provenance_status="verified", home_probability=0.65)
+        pred2 = make_prediction(match_id="sporttery:1002", provenance_status="verified", home_probability=0.65)
+        pred2["match"]["match_id"] = "sporttery:1002"
+        pred2["match"]["lottery_match_id"] = "sporttery:1002"
+        pred2["match"]["home_team"]["name"] = "TeamB"
+        pred2["match"]["away_team"]["name"] = "TeamC"
+
+        report = betting.analyze_daily(
+            snap, [pred1, pred2], now=NOW, include_parlays=[2], probability_haircut=0.02
+        )
+
+        # Single recommendations should ONLY contain Match 2 (Match 1 was filtered out because single_status['had'] == False)
+        singles = [r for r in report["recommendations"] if not str(r.get("type", "")).endswith("_leg_parlay")]
+        self.assertEqual(len(singles), 1)
+        self.assertEqual(singles[0]["match_id"], "sporttery:1002")
+
+        # Rejection record MUST contain single_betting_not_allowed for Match 1
+        filtered_rejections = [r for r in report["rejections"] if r.get("reason") == "single_betting_not_allowed"]
+        self.assertEqual(len(filtered_rejections), 1)
+        self.assertEqual(filtered_rejections[0]["match_id"], "sporttery:1001")
+        self.assertIn("未开通单关固定奖", filtered_rejections[0]["detail"])
+
+        # BUT Match 1 should still be present in 2-leg parlay!
+        parlays = [r for r in report["recommendations"] if r.get("type") == "two_leg_parlay"]
+        self.assertEqual(len(parlays), 1)
+        self.assertIn("sporttery:1001", parlays[0]["match_ids"])
+        self.assertIn("sporttery:1002", parlays[0]["match_ids"])
+
+        # Markdown should contain the single filter explanation note
+        md = betting.render_markdown(report)
+        self.assertIn("单关销售限制说明", md)
+        self.assertIn("未开通单关固定奖", md)
+
+    def test_should_reject_market_divergence_above_threshold(self):
+        snapshot = make_odds_snapshot()
+        # Market implies ~8% home win prob, but model predicts 60% (divergence > 6x)
+        snapshot["matches"][0]["odds"]["had"] = {"h": 10.0, "d": 2.0, "a": 1.9}
+        prediction = make_prediction(provenance_status="verified", home_probability=0.60)
+
+        report = betting.analyze_daily(
+            snapshot, [prediction], now=NOW, max_divergence_ratio=2.0
+        )
+
+        self.assertEqual(report["recommendations"], [])
+        self.assertTrue(any(item["reason"] == "no_selection_above_ev_threshold" for item in report["rejections"]))
+        h_eval = next(e for e in report["evaluations"] if e["option"] == "h")
+        self.assertIn("market_divergence_too_high", h_eval["rejection_reasons"])
+        self.assertFalse(h_eval["eligible"])
+
+    def test_should_reject_odds_above_ceiling(self):
+        snapshot = make_odds_snapshot()
+        snapshot["matches"][0]["odds"]["had"] = {"h": 25.0, "d": 3.0, "a": 1.4}
+        prediction = make_prediction(provenance_status="verified", home_probability=0.60)
+
+        report = betting.analyze_daily(
+            snapshot, [prediction], now=NOW, max_single_odds=20.0, max_divergence_ratio=100.0
+        )
+
+        self.assertEqual(report["recommendations"], [])
+        h_eval = next(e for e in report["evaluations"] if e["option"] == "h")
+        self.assertIn("odds_above_ceiling", h_eval["rejection_reasons"])
+        self.assertFalse(h_eval["eligible"])
+
+    def test_should_recommend_best_option_per_market_category_and_rank_by_sharpe(self):
+        snapshot = make_odds_snapshot()
+        # Provide both HAD and TTG
+        snapshot["matches"][0]["odds"]["had"] = {"h": 1.90, "d": 3.40, "a": 4.00}
+        snapshot["matches"][0]["odds"]["ttg"] = {
+            "s0": 10.0, "s1": 4.5, "s2": 3.4, "s3": 3.9,
+            "s4": 5.5, "s5": 11.0, "s6": 25.0, "s7": 30.0,
+        }
+        prediction = make_prediction(provenance_status="verified", home_probability=0.65)
+
+        report = betting.analyze_daily(
+            snapshot, [prediction], now=NOW, probability_haircut=0.02, min_ev_low=0.05
+        )
+
+        # Should recommend best pick for each market category (both HAD and TTG)
+        self.assertEqual(len(report["recommendations"]), 2)
+        # Higher Sharpe ratio pick ranked first
+        self.assertEqual(report["recommendations"][0]["market"], "had")
+        self.assertEqual(report["recommendations"][0]["option"], "h")
+        self.assertEqual(report["recommendations"][1]["market"], "ttg")
+
+    def test_should_include_all_eligible_options_when_requested(self):
+        snapshot = make_odds_snapshot()
+        snapshot["matches"][0]["odds"]["had"] = {"h": 1.90, "d": 3.40, "a": 4.00}
+        snapshot["matches"][0]["odds"]["ttg"] = {
+            "s0": 10.0, "s1": 4.5, "s2": 3.4, "s3": 3.9,
+            "s4": 5.5, "s5": 11.0, "s6": 25.0, "s7": 30.0,
+        }
+        prediction = make_prediction(provenance_status="verified", home_probability=0.65)
+
+        report = betting.analyze_daily(
+            snapshot, [prediction], now=NOW, probability_haircut=0.02, min_ev_low=0.05, all_eligible=True
+        )
+
+        self.assertGreaterEqual(len(report["recommendations"]), 2)
+        markets = {r["market"] for r in report["recommendations"]}
+        self.assertIn("had", markets)
+        self.assertIn("ttg", markets)
+
+    def test_should_recommend_ttg_and_crs_single_bets(self):
+        snapshot = make_odds_snapshot()
+        # Single allowed for TTG and CRS
+        snapshot["matches"][0]["single_status"] = {"had": False, "hhad": False, "ttg": True, "crs": True}
+        snapshot["matches"][0]["odds"]["ttg"] = {
+            "s0": 20.0, "s1": 4.5, "s2": 3.4, "s3": 3.9,
+            "s4": 5.5, "s5": 11.0, "s6": 25.0, "s7": 30.0,
+        }
+        crs_odds = {
+            **{opt: 25.0 for opt in ["1-0", "2-0", "2-1", "3-0", "3-1", "3-2", "4-0", "4-1", "4-2", "5-0", "5-1", "5-2"]},
+            **{opt: 25.0 for opt in ["0-0", "1-1", "2-2", "3-3"]},
+            **{opt: 25.0 for opt in ["0-1", "0-2", "1-2", "0-3", "1-3", "2-3", "0-4", "1-4", "2-4", "0-5", "1-5", "2-5"]},
+            **{"胜其他": 30.0, "平其他": 30.0, "负其他": 30.0},
+        }
+        crs_odds["0-0"] = 20.0
+        snapshot["matches"][0]["odds"]["crs"] = crs_odds
+        prediction = make_prediction(provenance_status="verified")
+
+        report = betting.analyze_daily(
+            snapshot, [prediction], now=NOW, probability_haircut=0.02, min_ev_low=0.05, bankroll=200.0, unit=2.0
+        )
+
+        recs = report["recommendations"]
+        markets = {r["market"] for r in recs}
+        self.assertIn("ttg", markets)
+        self.assertIn("crs", markets)
+        for r in recs:
+            self.assertGreaterEqual(r["stake"], 2.0)
+            self.assertEqual(r["stake"] % 2.0, 0.0)
+
+    def test_should_build_and_prioritize_mixed_parlays_across_markets(self):
+        bets = [
+            {"bet_id": "m1:had:h", "match_id": "m1", "match_num": "周二001", "home_team": "TeamA", "market": "had", "option": "h", "probability": 0.6, "conservative_probability": 0.57, "odds": 2.0},
+            {"bet_id": "m1:ttg:s2", "match_id": "m1", "match_num": "周二001", "home_team": "TeamA", "market": "ttg", "option": "s2", "probability": 0.5, "conservative_probability": 0.47, "odds": 2.2},
+            {"bet_id": "m2:hhad:h", "match_id": "m2", "match_num": "周二002", "home_team": "TeamB", "market": "hhad", "option": "h", "goal_line": -1, "probability": 0.55, "conservative_probability": 0.52, "odds": 2.1},
+            {"bet_id": "m2:crs:1-0", "match_id": "m2", "match_num": "周二002", "home_team": "TeamB", "market": "crs", "option": "1-0", "probability": 0.35, "conservative_probability": 0.32, "odds": 5.0},
+        ]
+        parlays = betting.build_multi_leg_parlays(bets, leg_count=2, min_ev_low=0.0)
+        self.assertGreater(len(parlays), 0)
+        # Verify cross-market mixed parlays are marked as is_mixed
+        mixed = [p for p in parlays if p["is_mixed"]]
+        self.assertGreater(len(mixed), 0)
+        # Verify mixed parlays appear ahead of single-market parlays
+        first = parlays[0]
+        self.assertTrue(first["is_mixed"])
+        self.assertIn("mix_label", first)
+        self.assertIn("market_mix", first)
+        # Verify cross-match independence
+        for p in parlays:
+            self.assertEqual(len(set(p["match_ids"])), 2)
+
+    def test_should_render_categorized_markdown_for_had_ttg_and_crs(self):
+        report = {
+            "generated_at": "2026-08-25T08:00:00Z",
+            "policy": {"probability_haircut": 0.03, "min_ev_low": 0.05, "max_divergence_ratio": 2.0, "max_single_odds": 70.0, "max_total_exposure": 0.5},
+            "recommendations": [
+                {"match_num": "周二001", "home_team": "TeamA", "away_team": "TeamB", "market": "had", "option": "h", "odds": 2.0, "probability": 0.6, "conservative_probability": 0.57, "ev_low": 0.14, "kelly_fraction": 0.05, "stake": 10.0},
+                {"match_num": "周二002", "home_team": "TeamC", "away_team": "TeamD", "market": "ttg", "option": "s2", "odds": 3.4, "probability": 0.45, "conservative_probability": 0.42, "ev_low": 0.12, "kelly_fraction": 0.02, "stake": 4.0},
+                {"match_num": "周二003", "home_team": "TeamE", "away_team": "TeamF", "market": "crs", "option": "1-0", "odds": 6.5, "probability": 0.25, "conservative_probability": 0.22, "ev_low": 0.15, "kelly_fraction": 0.01, "stake": 2.0},
+                {"type": "two_leg_parlay", "is_mixed": True, "mix_label": "HAD+TTG", "leg_labels": ["周二001 TeamA(HAD-h)", "周二002 TeamC(TTG-s2)"], "odds": 6.8, "probability": 0.27, "conservative_probability": 0.24, "ev_low": 0.20, "kelly_fraction": 0.02, "stake": 4.0},
+            ],
+            "rejections": [],
+            "bankroll": {"total": 200, "staked": 20, "cash_reserved": 180},
+        }
+        md = betting.render_markdown(report)
+        self.assertIn("### 单关投注建议", md)
+        self.assertIn("#### 胜平负 / 让球胜平负单关", md)
+        self.assertIn("#### 总进球数单关 (TTG)", md)
+        self.assertIn("#### 比分单关 (CRS)", md)
+        self.assertIn("### 2 串 1 混合过关建议", md)
+        self.assertIn("混合过关·HAD+TTG", md)
+
 
 class TestStochasticPrediction(unittest.TestCase):
     def test_should_be_reproducible_when_seed_is_supplied(self):
