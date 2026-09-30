@@ -240,20 +240,61 @@ def _parse_match(match, business_date, fetched_at, source_mode, now):
     observed_at = observed_at or fetched_at
     official_listing = match.get("official_listing")
     if not isinstance(official_listing, dict):
+        listing_status = "confirmed" if (sale_open and provider_match_id) else "unknown"
         official_listing = {
-            "status": "unknown",
+            "status": listing_status,
             "source_url": SPORTTERY_API_URL,
             "provider_match_id": str(provider_match_id),
             "observed_at": utc_iso(fetched_at),
         }
     market_status = match.get("market_status")
     if not isinstance(market_status, dict):
-        market_status = {
-            "had": "unknown",
-            "hhad": "unknown",
-            "ttg": "unknown",
-            "crs": "unknown",
-        }
+        pool_list = match.get("poolList")
+        if isinstance(pool_list, list) and pool_list:
+            pool_map = {
+                str(p.get("poolCode", "")).lower(): str(p.get("poolStatus", "")).lower()
+                for p in pool_list
+                if isinstance(p, dict)
+            }
+            market_status = {}
+            for m, parsed_val in (("had", had), ("hhad", hhad), ("ttg", ttg), ("crs", crs)):
+                p_status = pool_map.get(m)
+                if p_status == "selling" and parsed_val is not None:
+                    market_status[m] = "open"
+                elif p_status is not None:
+                    market_status[m] = "closed"
+                else:
+                    market_status[m] = "open" if (sale_open and parsed_val is not None) else "closed"
+        else:
+            market_status = {
+                "had": "open" if (sale_open and had is not None) else "unknown",
+                "hhad": "open" if (sale_open and hhad is not None) else "unknown",
+                "ttg": "open" if (sale_open and ttg is not None) else "unknown",
+                "crs": "open" if (sale_open and crs is not None) else "unknown",
+            }
+    single_status = match.get("single_status")
+    if not isinstance(single_status, dict):
+        pool_list = match.get("poolList")
+        if isinstance(pool_list, list) and pool_list:
+            single_map = {}
+            for p in pool_list:
+                if isinstance(p, dict):
+                    p_code = str(p.get("poolCode", "")).lower()
+                    is_single = bool(p.get("single") == 1 or p.get("bettingSingle") == 1)
+                    single_map[p_code] = is_single
+            single_status = {
+                "had": bool(single_map.get("had", False)),
+                "hhad": bool(single_map.get("hhad", False)),
+                "ttg": bool(single_map.get("ttg", False)),
+                "crs": bool(single_map.get("crs", True)),
+            }
+        else:
+            single_status = {
+                "had": False,
+                "hhad": False,
+                "ttg": False,
+                "crs": True,
+            }
     return {
         "match_id": f"sporttery:{provider_match_id}",
         "provider_match_id": str(provider_match_id),
@@ -263,6 +304,7 @@ def _parse_match(match, business_date, fetched_at, source_mode, now):
         "match_date": str(match_date),
         "official_listing": official_listing,
         "market_status": market_status,
+        "single_status": single_status,
         "kickoff_utc": utc_iso(kickoff),
         "cutoff_utc": utc_iso(cutoff),
         "cutoff_is_estimated": exact_cutoff is None,
