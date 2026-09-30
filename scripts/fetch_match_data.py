@@ -227,6 +227,13 @@ def parse_args(argv=None):
     parser.add_argument("--home-advantage-elo", type=float, default=60.0)
     parser.add_argument("--form-window", type=int, default=10)
     parser.add_argument("--form-decay", type=float, default=0.85)
+    parser.add_argument("--disciplinary-file", help="JSON file with disciplinary data or match map")
+    parser.add_argument("--home-red-cards", type=float, help="Home team red cards per match")
+    parser.add_argument("--home-yellow-cards", type=float, help="Home team yellow cards per match")
+    parser.add_argument("--away-red-cards", type=float, help="Away team red cards per match")
+    parser.add_argument("--away-yellow-cards", type=float, help="Away team yellow cards per match")
+    parser.add_argument("--referee-cards", type=float, help="Referee cards per match")
+    parser.add_argument("--referee-name", help="Referee name")
     parser.add_argument("--output", help="Write prediction JSON to this path")
     return parser.parse_args(argv)
 
@@ -302,6 +309,47 @@ def run(args):
         f"{provider_prefix}:{args.competition}:{home_team['team_id']}:{away_team['team_id']}:"
         f"{str(args.kickoff)[:10]}"
     )
+    disciplinary_info = {}
+    if args.disciplinary_file:
+        disc_payload = load_json(args.disciplinary_file)
+        if isinstance(disc_payload, dict):
+            matches_map = disc_payload.get("matches") if isinstance(disc_payload.get("matches"), dict) else disc_payload
+            match_key = args.lottery_match_id or args.match_id or f"{home_team['name']}:{away_team['name']}"
+            if match_key in matches_map:
+                disciplinary_info.update(matches_map[match_key])
+            elif args.lottery_match_id and args.lottery_match_id in matches_map:
+                disciplinary_info.update(matches_map[args.lottery_match_id])
+            elif f"{home_team['name']}:{away_team['name']}" in matches_map:
+                disciplinary_info.update(matches_map[f"{home_team['name']}:{away_team['name']}"])
+            else:
+                for k in (
+                    "home_red_cards_per_match",
+                    "home_yellow_cards_per_match",
+                    "away_red_cards_per_match",
+                    "away_yellow_cards_per_match",
+                    "referee_cards_per_match",
+                    "referee_name",
+                    "status",
+                    "referee",
+                    "home",
+                    "away",
+                ):
+                    if k in disc_payload:
+                        disciplinary_info[k] = disc_payload[k]
+
+    if args.home_red_cards is not None:
+        disciplinary_info["home_red_cards_per_match"] = args.home_red_cards
+    if args.home_yellow_cards is not None:
+        disciplinary_info["home_yellow_cards_per_match"] = args.home_yellow_cards
+    if args.away_red_cards is not None:
+        disciplinary_info["away_red_cards_per_match"] = args.away_red_cards
+    if args.away_yellow_cards is not None:
+        disciplinary_info["away_yellow_cards_per_match"] = args.away_yellow_cards
+    if args.referee_cards is not None:
+        disciplinary_info["referee_cards_per_match"] = args.referee_cards
+    if args.referee_name is not None:
+        disciplinary_info["referee_name"] = args.referee_name
+
     prediction = create_prediction(
         history_matches=history,
         match={
@@ -322,6 +370,7 @@ def run(args):
             form_decay=args.form_decay,
             min_team_matches=args.min_team_matches,
         ),
+        disciplinary=disciplinary_info if disciplinary_info else None,
     )
     return prediction
 

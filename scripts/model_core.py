@@ -232,7 +232,75 @@ def _shrunk_ratio(value, weight, baseline, shrinkage_matches):
     return (numerator / denominator) / baseline if denominator else 1.0
 
 
-def create_prediction(history_matches, match, data_snapshot, parameters=None):
+def calculate_disciplinary_risk(
+    home_red_cards_per_match=None,
+    home_yellow_cards_per_match=None,
+    away_red_cards_per_match=None,
+    away_yellow_cards_per_match=None,
+    referee_cards_per_match=None,
+    referee_name=None,
+    base_referee_cards=3.80,
+    base_red_card_rate=0.08,
+    sensitivity=0.35,
+):
+    """
+    Calculate team red card risk and disciplinary haircut based on team discipline
+    and referee strictness.
+    """
+    observed = any(
+        v is not None
+        for v in (
+            home_red_cards_per_match,
+            home_yellow_cards_per_match,
+            away_red_cards_per_match,
+            away_yellow_cards_per_match,
+            referee_cards_per_match,
+        )
+    )
+    h_rc = float(home_red_cards_per_match) if home_red_cards_per_match is not None else 0.08
+    h_yc = float(home_yellow_cards_per_match) if home_yellow_cards_per_match is not None else 1.80
+    a_rc = float(away_red_cards_per_match) if away_red_cards_per_match is not None else 0.08
+    a_yc = float(away_yellow_cards_per_match) if away_yellow_cards_per_match is not None else 1.80
+
+    ref_cards = float(referee_cards_per_match) if referee_cards_per_match is not None else base_referee_cards
+    referee_factor = max(0.60, min(1.80, ref_cards / base_referee_cards))
+
+    lambda_h = max(0.01, (h_rc * 0.75 + h_yc * 0.04) * referee_factor)
+    lambda_a = max(0.01, (a_rc * 0.75 + a_yc * 0.04) * referee_factor)
+
+    p_red_h = 1.0 - math.exp(-lambda_h)
+    p_red_a = 1.0 - math.exp(-lambda_a)
+
+    excess_h = max(0.0, p_red_h - base_red_card_rate)
+    excess_a = max(0.0, p_red_a - base_red_card_rate)
+    ref_penalty = max(0.0, referee_factor - 1.0) * 0.01
+
+    haircut_h = round(excess_h * sensitivity + ref_penalty, 4) if observed else 0.0
+    haircut_a = round(excess_a * sensitivity + ref_penalty, 4) if observed else 0.0
+
+    return {
+        "status": "observed" if observed else "unobserved",
+        "referee": {
+            "name": str(referee_name or "unknown"),
+            "cards_per_match": round(ref_cards, 2) if referee_cards_per_match is not None else None,
+            "strictness_factor": round(referee_factor, 3),
+        },
+        "home": {
+            "yellow_cards_per_match": round(h_yc, 2),
+            "red_cards_per_match": round(h_rc, 3),
+            "red_card_probability": round(p_red_h, 4),
+            "disciplinary_haircut": haircut_h,
+        },
+        "away": {
+            "yellow_cards_per_match": round(a_yc, 2),
+            "red_cards_per_match": round(a_rc, 3),
+            "red_card_probability": round(p_red_a, 4),
+            "disciplinary_haircut": haircut_a,
+        },
+    }
+
+
+def create_prediction(history_matches, match, data_snapshot, parameters=None, disciplinary=None):
     from dataclasses import replace
     from match_context import context_reasons, sample_pool_reasons
 
@@ -301,8 +369,10 @@ def create_prediction(history_matches, match, data_snapshot, parameters=None):
 
     neutral_elo_factor = 10.0 ** ((home_elo - away_elo) / parameters.elo_goal_divisor)
     neutral_elo_factor = max(0.75, min(1.33, neutral_elo_factor))
-    home_expected_goals = league_home_average * home_attack * away_defence * neutral_elo_factor
-    away_expected_goals = league_away_average * away_attack * home_defence / neutral_elo_factor
+    home_form_factor = max(0.40, min(1.80, home_attack * away_defence))
+    away_form_factor = max(0.40, min(1.80, away_attack * home_defence))
+    home_expected_goals = league_home_average * home_form_factor * neutral_elo_factor
+    away_expected_goals = league_away_average * away_form_factor / neutral_elo_factor
     home_expected_goals = max(0.20, min(4.50, home_expected_goals))
     away_expected_goals = max(0.20, min(4.50, away_expected_goals))
 
@@ -334,6 +404,37 @@ def create_prediction(history_matches, match, data_snapshot, parameters=None):
         missing_data.append("sample_pool_invalid")
 
     missing_data = list(dict.fromkeys(missing_data))
+
+    if disciplinary is None:
+        disciplinary_input = match.get("disciplinary")
+        if isinstance(disciplinary_input, dict):
+            if "status" in disciplinary_input and "referee" in disciplinary_input:
+                disciplinary_data = disciplinary_input
+            else:
+                disciplinary_data = calculate_disciplinary_risk(
+                    home_red_cards_per_match=disciplinary_input.get("home_red_cards_per_match"),
+                    home_yellow_cards_per_match=disciplinary_input.get("home_yellow_cards_per_match"),
+                    away_red_cards_per_match=disciplinary_input.get("away_red_cards_per_match"),
+                    away_yellow_cards_per_match=disciplinary_input.get("away_yellow_cards_per_match"),
+                    referee_cards_per_match=disciplinary_input.get("referee_cards_per_match"),
+                    referee_name=disciplinary_input.get("referee_name"),
+                )
+        else:
+            disciplinary_data = calculate_disciplinary_risk()
+    elif isinstance(disciplinary, dict):
+        if "status" in disciplinary and "referee" in disciplinary:
+            disciplinary_data = disciplinary
+        else:
+            disciplinary_data = calculate_disciplinary_risk(
+                home_red_cards_per_match=disciplinary.get("home_red_cards_per_match"),
+                home_yellow_cards_per_match=disciplinary.get("home_yellow_cards_per_match"),
+                away_red_cards_per_match=disciplinary.get("away_red_cards_per_match"),
+                away_yellow_cards_per_match=disciplinary.get("away_yellow_cards_per_match"),
+                referee_cards_per_match=disciplinary.get("referee_cards_per_match"),
+                referee_name=disciplinary.get("referee_name"),
+            )
+    else:
+        disciplinary_data = calculate_disciplinary_risk()
 
     prediction = {
         "kind": "model_prediction",
@@ -382,6 +483,7 @@ def create_prediction(history_matches, match, data_snapshot, parameters=None):
             "home_defence_ratio": home_defence,
             "away_attack_ratio": away_attack,
             "away_defence_ratio": away_defence,
+            "disciplinary": disciplinary_data,
             "sample_pool_composition": sample_pool.get("competition_codes", []) if isinstance(sample_pool, dict) else [],
             "baseline_limitation": "baseline_pending_walk_forward",
         },

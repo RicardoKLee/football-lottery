@@ -52,8 +52,13 @@ description: 预测中国体育彩票官方竞彩足球全部在售赛事（五�
      --kickoff "2026-09-13T12:00:00Z" \
      --lottery-match-id "sporttery:20260913001" \
      --season 2026 \
+     --home-red-cards 0.10 \
+     --away-red-cards 0.05 \
+     --referee-cards 4.5 \
+     --referee-name "主裁判" \
      --output "output/predictions/J1_20260913001.json"
    ```
+   注：纪律性数据可通过命令行参数直接传入，或通过 `--disciplinary-file <json>` 批量注入权威数据源（如 FBref/Transfermarkt/WhoScored 的红黄牌均值与裁判尺度）。若未提供则标记为 `unobserved`。
 4. 离线开发时只能通过 `--history-file` 显式指定赛果快照。快照必须包含合法来源信息与常规时间整数比分，系统不自动寻找或复用未经验证的缓存。
 5. 检查 `data_snapshot`、`quality`、两队历史场次数和 `calibration_status`。任一关键条件不满足时明确说明无法形成可靠预测。
 6. 如需模拟参数不确定性，只把模型已经计算的 xG 传给模拟器，并固定 seed 以便复现：
